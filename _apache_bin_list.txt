@@ -1,0 +1,51 @@
+﻿
+
+    Directory: C:\xampp\apache\bin
+
+
+Mode                 LastWriteTime         Length Name                         
+----                 -------------         ------ ----                         
+-a----        10/18/2023   6:06 AM          98304 ab.exe                       
+-a----        10/18/2023   6:06 AM         110592 abs.exe                      
+-a----        10/18/2023   6:06 AM          43008 ApacheMonitor.exe            
+-a----        10/18/2023   6:02 AM          19456 apr_crypto_openssl-1.dll     
+-a----        10/18/2023   6:02 AM          31744 apr_dbd_odbc-1.dll           
+-a----        10/18/2023   6:02 AM          14848 apr_ldap-1.dll               
+-a----        10/18/2023   3:11 AM         137216 brotlicommon.dll             
+-a----        10/18/2023   3:11 AM        3344384 brotlienc.dll                
+-a----         5/30/2022   3:58 AM         215352 curl-ca-bundle.crt           
+-a----        10/10/2023  10:40 PM        6216776 curl.exe                     
+-a----        10/18/2023   6:07 AM           9192 dbmmanage.pl                 
+-a----        10/18/2023   6:06 AM         101888 htcacheclean.exe             
+-a----        10/18/2023   6:06 AM         124928 htdbm.exe                    
+-a----        10/18/2023   6:06 AM          86016 htdigest.exe                 
+-a----        10/18/2023   6:06 AM         119296 htpasswd.exe                 
+-a----        10/18/2023   6:06 AM          30720 httpd.exe                    
+-a----        10/18/2023   6:06 AM          65536 httxt2dbm.exe                
+-a----        10/24/2023   2:56 PM       30422016 icudt71.dll                  
+-a----        10/24/2023   2:56 PM        3031552 icuin71.dll                  
+-a----        10/24/2023   2:56 PM          60928 icuio71.dll                  
+-a----        10/24/2023   2:56 PM        2253312 icuuc71.dll                  
+-a----         11/7/2022   2:40 AM          55296 jansson.dll                  
+-a----        10/18/2023   6:02 AM         216064 libapr-1.dll                 
+-a----        10/18/2023   6:02 AM          36864 libapriconv-1.dll            
+-a----        10/18/2023   6:02 AM         294912 libaprutil-1.dll             
+-a----        10/18/2023   3:54 AM        6109696 libcrypto-3-x64.dll          
+-a----        10/10/2023  10:40 PM        5991496 libcurl.dll                  
+-a----        10/18/2023   6:03 AM         462336 libhttpd.dll                 
+-a----        10/24/2023   2:56 PM         209920 libsasl.dll                  
+-a----        10/24/2023   2:56 PM         380928 libssh2.dll                  
+-a----        10/18/2023   4:01 AM         777216 libssl-3-x64.dll             
+-a----        10/18/2023   3:15 AM        1363456 libxml2.dll                  
+-a----        10/18/2023   6:06 AM          58368 logresolve.exe               
+-a----        10/18/2023   3:22 AM         239104 lua54.dll                    
+-a----        10/19/2023   6:33 AM         158208 nghttp2.dll                  
+-a----        10/18/2023   4:03 AM         722944 openssl.exe                  
+-a----         11/7/2022   3:10 AM         401920 pcre.dll                     
+-a----          1/9/2023   3:13 AM         536576 pcre2-8.dll                  
+-a----         4/16/2012  10:30 AM          61440 pv.exe                       
+-a----        10/18/2023   6:06 AM          79360 rotatelogs.exe               
+-a----        10/18/2023   6:06 AM          18944 wintty.exe                   
+-a----         8/23/2023   6:47 AM          90112 zlib1.dll                    
+
+

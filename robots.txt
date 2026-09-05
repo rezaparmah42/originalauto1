@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+
+# Disallow sensitive admin and internal areas
+Disallow: /admin/
+Disallow: /config/
+Disallow: /backups/
+Disallow: /logs/
+Disallow: /vendor/
+Disallow: /app/Core/
+Disallow: /app/Helpers/
+
+# Prevent indexing of test and debug artifacts
+Disallow: /smoke_test.php
+Disallow: /tmp_
+
+# Sitemap reference
+Sitemap: /sitemap_index.xml

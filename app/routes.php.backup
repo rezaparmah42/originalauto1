@@ -1,0 +1,59 @@
+<?php
+
+use App\Controllers\HomeController;
+use App\Controllers\VehicleController;
+use App\Controllers\ServiceController;
+use App\Controllers\CommonProblemController;
+use App\Controllers\GuideController;
+use App\Controllers\MechanicController;
+use App\Controllers\ArticleController;
+use App\Controllers\ShopController;
+use App\Controllers\BookingController;
+use App\Controllers\BrandController;
+use App\Controllers\AdminController;
+
+$router->get('/', [HomeController::class, 'index']);
+
+$router->get('/vehicles', [VehicleController::class, 'index']);
+
+$router->get('/services', [ServiceController::class, 'index']);
+$router->get('/services/{slug}', [ServiceController::class, 'show']);
+$router->get('/diagnostic', [ServiceController::class, 'show']);
+
+$router->get('/common-problems', [CommonProblemController::class, 'index']);
+$router->get('/maintenance-guides', [GuideController::class, 'index']);
+$router->get('/mechanics', [MechanicController::class, 'index']);
+
+$router->get('/articles', [ArticleController::class, 'index']);
+$router->get('/articles/category/{slug}', [ArticleController::class, 'category']);
+$router->get('/articles/{slug}', [ArticleController::class, 'show']);
+
+$router->get('/shop', [ShopController::class, 'index']);
+
+$router->get('/booking', [BookingController::class, 'create']);
+$router->post('/booking', [BookingController::class, 'store']);
+$router->get('/login', [App\Controllers\AccountController::class, 'login']);
+$router->post('/login', [App\Controllers\AccountController::class, 'login']);
+$router->get('/register', [App\Controllers\AccountController::class, 'register']);
+$router->post('/register', [App\Controllers\AccountController::class, 'register']);
+$router->get('/logout', [App\Controllers\AccountController::class, 'logout']);
+$router->get('/dashboard', [App\Controllers\AccountController::class, 'dashboard']);
+$router->get('/account/dashboard', [App\Controllers\AccountController::class, 'dashboard']);
+
+$router->get('/brands', [BrandController::class, 'index']);
+$router->get('/brands/{brand}', [BrandController::class, 'show']);
+
+$router->get('/admin/login', [AdminController::class, 'login']);
+$router->post('/admin/login', [AdminController::class, 'login']);
+$router->get('/admin/logout', [AdminController::class, 'logout']);
+$router->get('/admin', [AdminController::class, 'index']);
+$router->get('/admin/dashboard', [AdminController::class, 'dashboard']);
+$router->get('/admin/services', [AdminController::class, 'services']);
+$router->get('/admin/brands', [AdminController::class, 'brands']);
+$router->get('/admin/articles', [AdminController::class, 'articles']);
+$router->get('/admin/inquiries', [AdminController::class, 'inquiries']);
+$router->get('/admin/appointments', [AdminController::class, 'appointments']);
+$router->get('/admin/products', [AdminController::class, 'products']);
+$router->get('/admin/homepage', [AdminController::class, 'homepage']);
+$router->get('/admin/seo', [AdminController::class, 'seo']);
+$router->get('/admin/media', [AdminController::class, 'media']);

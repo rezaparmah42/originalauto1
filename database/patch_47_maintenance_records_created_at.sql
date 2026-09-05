@@ -1,0 +1,2 @@
+ALTER TABLE `maintenance_records`
+MODIFY `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;

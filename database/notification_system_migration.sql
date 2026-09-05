@@ -1,0 +1,86 @@
+-- Notification & Communication System Migration
+
+CREATE TABLE IF NOT EXISTS notifications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  type VARCHAR(100) DEFAULT 'general',
+  title VARCHAR(191) NOT NULL,
+  message TEXT,
+  status VARCHAR(50) DEFAULT 'sent',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  read_at DATETIME DEFAULT NULL
+);
+
+CREATE TABLE IF NOT EXISTS sms_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT DEFAULT NULL,
+  phone VARCHAR(50),
+  message TEXT,
+  provider VARCHAR(100) DEFAULT 'mock',
+  status VARCHAR(50) DEFAULT 'queued',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS chat_messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  repair_id INT DEFAULT NULL,
+  sender_id INT DEFAULT NULL,
+  sender_type VARCHAR(50) DEFAULT 'user',
+  message TEXT,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS repair_updates (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  repair_id INT NOT NULL,
+  status VARCHAR(50) DEFAULT NULL,
+  title VARCHAR(191) DEFAULT NULL,
+  description TEXT,
+  created_by INT DEFAULT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+COMMIT;
+-- Notification & Communication System Migration
+
+CREATE TABLE IF NOT EXISTS notifications (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT NOT NULL,
+  type VARCHAR(100) NOT NULL,
+  title VARCHAR(191) NOT NULL,
+  message TEXT NOT NULL,
+  status VARCHAR(50) DEFAULT 'unread',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  read_at DATETIME DEFAULT NULL
+);
+
+CREATE TABLE IF NOT EXISTS sms_logs (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_id INT DEFAULT NULL,
+  phone VARCHAR(50) DEFAULT NULL,
+  message TEXT,
+  provider VARCHAR(100) DEFAULT NULL,
+  status VARCHAR(50) DEFAULT 'pending',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS chat_messages (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  repair_id INT DEFAULT NULL,
+  sender_id INT DEFAULT NULL,
+  sender_type VARCHAR(50) DEFAULT 'user',
+  message TEXT NOT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE IF NOT EXISTS repair_updates (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  repair_id INT NOT NULL,
+  status VARCHAR(100) DEFAULT NULL,
+  title VARCHAR(191) DEFAULT NULL,
+  description TEXT DEFAULT NULL,
+  created_by INT DEFAULT NULL,
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
+COMMIT;

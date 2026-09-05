@@ -1,0 +1,17 @@
+﻿GET    /                  0    -> http://localhost/originalshargh/
+GET    /login             0    -> http://localhost/originalshargh/login
+GET    /register          0    -> http://localhost/originalshargh/register
+GET    /account/dashboard 0    -> http://localhost/originalshargh/account/dashboard
+GET    /admin/dashboard   0    -> http://localhost/originalshargh/admin/dashboard
+GET    /vehicles          0    -> http://localhost/originalshargh/vehicles
+GET    /repairs           0    -> http://localhost/originalshargh/repairs
+GET    /cart              0    -> http://localhost/originalshargh/cart
+GET    /checkout          0    -> http://localhost/originalshargh/checkout
+GET    /orders            0    -> http://localhost/originalshargh/orders
+GET    /payment           0    -> http://localhost/originalshargh/payment
+GET    /invoice           0    -> http://localhost/originalshargh/invoice
+GET    /diagnostic        0    -> http://localhost/originalshargh/diagnostic
+GET    /api               0    -> http://localhost/originalshargh/api
+POST   /api/auth/login    0    -> http://localhost/originalshargh/api/auth/login
+GET    /api/vehicles      0    -> http://localhost/originalshargh/api/vehicles
+GET    /api/diagnostics   0    -> http://localhost/originalshargh/api/diagnostics

@@ -1,0 +1,121 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@extends('layouts.app')
+
+@section('content')
+    <h1>Shop</h1>
+    <form id="vehicle-selector" method="GET" action="{{ route('shop.index') }}">
+            <div class="form-group">
+            <label for="brand_id">خودرو:</label>
+            <select name="brand_id" id="brand_id" class="form-control">
+                @foreach ($brands as $brand)
+                    <option value="{{ $brand->id }}">{{ $brand->name }}</option>
+                @endforeach
+                    <option value="">همه دسته‌بندی‌ها</option>
+                    <?php foreach ($categories as $categoryOption): ?>
+                        <option value="<?= e($categoryOption) ?>" <?= $filter['category'] === $categoryOption ? 'selected' : '' ?>><?= e($categoryOption) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="brand">برند خودرو</label>
+                <select class="form-input" id="brand" name="brand">
+                    <option value="">انتخاب کنید</option>
+                    <?php foreach ($brands as $brandOption): ?>
+                        <option value="<?= e($brandOption) ?>" <?= $filter['brand'] === $brandOption ? 'selected' : '' ?>><?= e($brandOption) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="model">مدل خودرو</label>
+                <select class="form-input" id="model" name="model">
+                    <option value="">انتخاب کنید</option>
+                    <?php foreach ($models as $modelOption): ?>
+                        <option value="<?= e($modelOption) ?>" <?= $filter['model'] === $modelOption ? 'selected' : '' ?>><?= e($modelOption) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="year">سال تولید</label>
+                <select class="form-input" id="year" name="year">
+                    <option value="">انتخاب کنید</option>
+                    <?php foreach ($years as $yearOption): ?>
+                        <option value="<?= e($yearOption) ?>" <?= $filter['year'] === $yearOption ? 'selected' : '' ?>><?= e($yearOption) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="engine">نوع موتور</label>
+                <select class="form-input" id="engine" name="engine">
+                    <option value="">انتخاب کنید</option>
+                    <?php foreach ($engines as $engineOption): ?>
+                        <option value="<?= e($engineOption) ?>" <?= $filter['engine'] === $engineOption ? 'selected' : '' ?>><?= e($engineOption) ?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary">فیلتر کردن</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section class="form-page" style="padding-top:0;">
+    <div class="form-card">
+        <div class="form-header">
+            <h2>محصولات موجود</h2>
+            <p class="form-note">در صورت وجود قطعه‌ی سازگار، اطلاعات آن در این بخش نمایش داده می‌شود.</p>
+        </div>
+
+        <div class="cards">
+            <?php if (empty($filteredProducts)): ?>
+                <div>در حال حاضر محصولی با این فیلترها در دسترس نیست.</div>
+            <?php else: ?>
+                <?php foreach ($filteredProducts as $product): ?>
+                    <div>
+                        <strong><?= e($product['title'] ?? 'محصول') ?></strong>
+                        <p><?= e($product['description'] ?? 'توضیحات محصول در دسترس نیست.') ?></p>
+                        <p>قیمت: <?= e($product['price'] ?? 'تماس بگیرید') ?></p>
+                        <p>دسته‌بندی: <?= e(detectProductCategory($product)) ?></p>
+                    </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
+    </div>
+</section>
+
+<?php require __DIR__.'/../layouts/footer.php'; ?>

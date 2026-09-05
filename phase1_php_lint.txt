@@ -1,0 +1,5 @@
+PHASE1_PHP_LINT - 08/28/2026 07:48:08
+PHP_FILES_TOTAL=427
+\nLINT_FAIL: C:\xampp\htdocs\originalshargh\_diagnose_created_at.php
+PHP Parse error:  syntax error, unexpected double-quoted string "?'?([a-z0-9_]+)'?", expecting ")" in C:\xampp\htdocs\originalshargh\_diagnose_created_at.php on line 21
+\nPHP_LINT_ERRORS=1

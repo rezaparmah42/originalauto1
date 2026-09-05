@@ -1,0 +1,2 @@
+ALTER TABLE `product_compatibility`
+MODIFY `created_at` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;

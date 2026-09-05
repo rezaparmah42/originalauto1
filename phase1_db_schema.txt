@@ -1,0 +1,26 @@
+PHASE1_DB_SCHEMA - generated from database/original_east.sql
+
+DATABASE: original_east (from database/original_east.sql)
+
+TABLES (extracted):
+- users: id, name, phone, email, password, role, created_at
+- vehicles: id, user_id, brand, model, year, engine, vin, mileage, created_at
+- services: id, title, slug, brand_id, category, description, duration, price, image, seo_title, seo_description, status, created_at
+- vehicle_brands: id, name, slug, category, description, status, created_at
+- articles: id, title, slug, category, author, content, image, seo_title, seo_description, meta_description, status, created_at
+- customer_inquiries: id, user_id, name, phone, email, subject, message, status, created_at
+- products: id, title, slug, description, price, stock, image, status, created_at
+- homepage_sections: id, section_key, title, content, status, created_at
+- seo_settings: id, page_key, meta_title, meta_description, meta_keywords, created_at
+- media_library: id, file_name, file_path, file_type, alt_text, uploaded_at
+- bookings: id, user_id, vehicle_id, service_id, problem, status, booking_date, created_at
+- repairs: id, booking_id, diagnosis, repair_notes, cost, status, created_at
+- orders: id, user_id, total, status, created_at
+- reviews: id, user_id, service_id, rating, comment, status, created_at
+
+NOTES:
+- Primary keys are INT AUTO_INCREMENT for listed tables as created in SQL.
+- Character set for DB is utf8mb4; collation utf8mb4_unicode_ci.
+- Many tables lack explicit foreign key constraints in this dump; referential integrity may be enforced only at application level.
+
+SOURCE: database/original_east.sql

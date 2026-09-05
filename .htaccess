@@ -1,0 +1,16 @@
+## .htaccess neutralized for debugging HTTP 500
+## Original rules that denied access to .log files are temporarily disabled.
+
+# Ensure index.php is used as the DirectoryIndex and disable directory listings
+DirectoryIndex index.php
+Options -Indexes
+
+RewriteEngine On
+# Keep the current MVC routes authoritative over legacy physical directories.
+RewriteRule ^services/?$ index.php [QSA,L]
+RewriteRule ^shop/?$ index.php [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^ index.php [QSA,L]

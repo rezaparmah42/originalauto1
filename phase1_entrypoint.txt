@@ -1,0 +1,194 @@
+PHASE1_ENTRYPOINT - 08/28/2026 07:46:59
+\n-- INDEX.PHP EXISTS=True --
+<?php
+
+require_once __DIR__ . '/config/config.php';
+
+// Ensure core Database class is available as early fallback for legacy helpers
+// Some legacy files call `Database::connect()` without a namespace; load the
+// namespaced class and provide a global alias to avoid fatal errors.
+if (file_exists(__DIR__ . '/app/Core/Database.php')) {
+    require_once __DIR__ . '/app/Core/Database.php';
+    if (!class_exists('Database') && class_exists('App\\Core\\Database')) {
+        class_alias('App\\Core\\Database', 'Database');
+    }
+}
+
+define('PROJECT_ACCESS', true);
+require_once __DIR__ . '/includes/functions.php';
+
+ini_set('session.use_strict_mode', '1');
+ini_set('session.use_only_cookies', '1');
+ini_set('session.cookie_httponly', '1');
+ini_set('session.cookie_samesite', 'Lax');
+if (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') {
+    ini_set('session.cookie_secure', '1');
+}
+
+session_name('originalshargh_session');
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+error_reporting(E_ALL);
+if (defined('DEBUG') && DEBUG) {
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+} else {
+    ini_set('display_errors', '0');
+    ini_set('display_startup_errors', '0');
+}
+
+header('X-Content-Type-Options: nosniff');
+header('X-Frame-Options: DENY');
+header('Referrer-Policy: strict-origin-when-cross-origin');
+header('X-XSS-Protection: 1; mode=block');
+header('Permissions-Policy: interest-cohort=()');
+
+spl_autoload_register(function($class){
+    $class = str_replace('App\\', '', $class);
+    $class = str_replace('\\', '/', $class);
+    $file = __DIR__ . '/app/' . $class . '.php';
+
+    if(file_exists($file)){
+        require_once $file;
+    }
+});
+
+use App\Core\Router;
+
+$router = new Router();
+
+require_once __DIR__ . '/app/routes.php';
+require_once __DIR__ . '/app/api_routes.php';
+
+$router->run();
+\n-- HTACCESS EXISTS=True --
+# Ensure index.php is used as the DirectoryIndex and disable directory listings
+DirectoryIndex index.php
+Options -Indexes
+
+RewriteEngine On
+# DirectorySlash intentionally left default (allow Apache to normalize trailing slash)
+
+# Keep the current MVC routes authoritative over legacy physical directories.
+RewriteRule ^services/?$ index.php [QSA,L]
+RewriteRule ^shop/?$ index.php [QSA,L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^ index.php [QSA,L]
+\n-- ROUTER FILE: C:\xampp\htdocs\originalshargh\app\Core\Router.php --
+<?php
+
+namespace App\Core;
+
+class Router
+{
+    private $routes = [
+        'GET' => [],
+        'POST' => [],
+    ];
+
+    public function get($path, $action)
+    {
+        $this->routes['GET'][$path] = $action;
+    }
+
+    public function post($path, $action)
+    {
+        $this->routes['POST'][$path] = $action;
+    }
+
+    public function run()
+    {
+        $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+        $base = dirname($_SERVER['SCRIPT_NAME']);
+        if($base !== '/'){
+            $uri = str_replace($base, '', $uri);
+        }
+
+        $uri = rtrim($uri, '/') ?: '/';
+        $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
+        $routes = $this->routes[$method] ?? [];
+        if ($method === 'HEAD' && empty($routes)) {
+            $routes = $this->routes['GET'] ?? [];
+        }
+
+        if(isset($routes[$uri])){
+            $action = $routes[$uri];
+            $this->dispatch($action);
+            return;
+        }
+
+        foreach ($routes as $route => $action) {
+            if (strpos($route, '{') === false) {
+                continue;
+            }
+
+            $pattern = preg_replace_callback(
+                '/\{([a-zA-Z_][a-zA-Z0-9_]*)\}/',
+                function ($matches) {
+                    return '(?P<' . $matches[1] . '>[^/]+)';
+                },
+                $route
+            );
+
+            $pattern = '#^' . $pattern . '$#u';
+            $matches = [];
+            if (preg_match($pattern, $uri, $matches)) {
+                $params = [];
+                foreach ($matches as $key => $value) {
+                    if (!is_int($key)) {
+                        $params[$key] = $value;
+                    }
+                }
+
+                $this->dispatch($action, $params);
+                return;
+            }
+        }
+
+        http_response_code(404);
+        echo "Page Not Found";
+    }
+
+    private function dispatch($action, $params = [])
+    {
+        if(is_array($action)){
+            $controller = new $action[0]();
+            $method = $action[1];
+            if (method_exists($controller, $method)) {
+                try {
+                    $ref = new \ReflectionMethod($controller, $method);
+                    $required = 0;
+                    foreach ($ref->getParameters() as $p) {
+                        if (!$p->isOptional()) {
+                            $required++;
+                        }
+                    }
+                    $given = count($params);
+                    if ($given < $required) {
+                        // fill missing parameters with nulls to avoid ArgumentCountError
+                        $missing = $required - $given;
+                        for ($i = 0; $i < $missing; $i++) {
+                            $params[] = null;
+                        }
+                    }
+                } catch (\ReflectionException $e) {
+                    // ignore and call normally
+                }
+                call_user_func_array([$controller, $method], array_values($params));
+                return;
+            }
+        } else {
+            if ($params) {
+                call_user_func_array($action, array_values($params));
+            } else {
+                call_user_func($action);
+            }
+        }
+    }
+}

@@ -1,0 +1,156 @@
+﻿=== ORIGINAL SHARGH SMOKE TEST ===
+Started: 2026-08-07 21:55:05
+Environment: production
+
+1. APPLICATION BOOT
+--------------------------------------------------
+Γ£ô Config constants defined
+Γ£ô Upload paths defined
+Γ£ô Database constants defined
+Γ£ô Debug mode setting loaded
+Γ£ô Upload directory exists
+Γ£ô Upload directory writable
+
+2. DATABASE CONNECTION
+--------------------------------------------------
+Γ£ô PDO connection established
+Γ£ô Database query execution
+
+3. DATABASE SCHEMA
+--------------------------------------------------
+Γ£ô Table exists: users
+Γ£ô   ΓåÆ Required columns in users
+Γ£ô Table exists: products
+Γ£ù   ΓåÆ Missing columns in products ΓÇö slug, stock
+Γ£ô Table exists: bookings
+Γ£ô   ΓåÆ Required columns in bookings
+Γ£ô Table exists: services
+Γ£ô   ΓåÆ Required columns in services
+Γ£ô Table exists: vehicle_models
+Γ£ô   ΓåÆ Required columns in vehicle_models
+
+Actual tables in database:
+ai_interactions, api_tokens, bookings, diagnostic_codes, diagnostic_symptoms, invoices, messages, orders, products, repairs, repair_parts, repair_status_log, reviews, services, service_reminders, settings, technicians, users, vehicles, vehicle_brands, vehicle_models
+
+4. CONFIGURATION SETTINGS
+--------------------------------------------------
+Γ£ô SITE_URL configured
+Γ£ô SITE_NAME configured
+Γ£ô Database host configured
+Γ£ô Database name configured
+Γ£ô Upload URL configured
+Γ£ô DEBUG mode OFF
+
+5. SECURITY SETTINGS
+--------------------------------------------------
+Γ£ô CSRF token generation
+Γ£ô CSRF field generation
+ΓÜá WARNING: Session HttpOnly cookie not set
+ΓÜá WARNING: Session SameSite not configured
+Γ£ô Session use_only_cookies
+Γ£ô Auth helper: isLoggedIn
+Γ£ô Auth helper: isCustomerLoggedIn
+Γ£ô Auth helper: requireLogin
+Γ£ô Auth helper: requireCustomer
+
+6. CORE HELPERS
+--------------------------------------------------
+Γ£ô Helper: HTML escape
+Γ£ô Helper: Redirect
+Γ£ô Helper: Back redirect
+Γ£ô Helper: Asset path
+Γ£ô Helper: Upload path
+Γ£ô Helper: Slug generation
+Γ£ô Helper: Price formatting
+Γ£ô Helper: Session getter
+Γ£ô Helper: Session setter
+Γ£ô Helper: POST check
+Γ£ô Helper: GET check
+Γ£ô Helper: Success message
+Γ£ô Helper: Error message
+
+7. CONTROLLER FILES
+--------------------------------------------------
+Γ£ô Controller file exists: AccountController
+Γ£ô Controller file exists: AdminController
+Γ£ô Controller file exists: BookingController
+Γ£ô Controller file exists: ProductController
+Γ£ô Controller file exists: ServiceController
+
+8. MODEL FILES
+--------------------------------------------------
+Γ£ô Model file exists: User
+Γ£ô Model file exists: Admin
+Γ£ô Model file exists: Booking
+Γ£ô Model file exists: Product
+Γ£ô Model file exists: Service
+
+
+=== SMOKE TEST REPORT ===
+Completed: 2026-08-07 21:55:05
+
+PASSED TESTS: 53
+  Γ£ô Config constants defined
+  Γ£ô Upload paths defined
+  Γ£ô Database constants defined
+  Γ£ô Debug mode setting loaded
+  Γ£ô Upload directory exists
+  Γ£ô Upload directory writable
+  Γ£ô PDO connection established
+  Γ£ô Database query execution
+  Γ£ô Table exists: users
+  Γ£ô   ΓåÆ Required columns in users
+  Γ£ô Table exists: products
+  Γ£ô Table exists: bookings
+  Γ£ô   ΓåÆ Required columns in bookings
+  Γ£ô Table exists: services
+  Γ£ô   ΓåÆ Required columns in services
+  Γ£ô Table exists: vehicle_models
+  Γ£ô   ΓåÆ Required columns in vehicle_models
+  Γ£ô SITE_URL configured
+  Γ£ô SITE_NAME configured
+  Γ£ô Database host configured
+  Γ£ô Database name configured
+  Γ£ô Upload URL configured
+  Γ£ô DEBUG mode OFF
+  Γ£ô CSRF token generation
+  Γ£ô CSRF field generation
+  Γ£ô Session use_only_cookies
+  Γ£ô Auth helper: isLoggedIn
+  Γ£ô Auth helper: isCustomerLoggedIn
+  Γ£ô Auth helper: requireLogin
+  Γ£ô Auth helper: requireCustomer
+  Γ£ô Helper: HTML escape
+  Γ£ô Helper: Redirect
+  Γ£ô Helper: Back redirect
+  Γ£ô Helper: Asset path
+  Γ£ô Helper: Upload path
+  Γ£ô Helper: Slug generation
+  Γ£ô Helper: Price formatting
+  Γ£ô Helper: Session getter
+  Γ£ô Helper: Session setter
+  Γ£ô Helper: POST check
+  Γ£ô Helper: GET check
+  Γ£ô Helper: Success message
+  Γ£ô Helper: Error message
+  Γ£ô Controller file exists: AccountController
+  Γ£ô Controller file exists: AdminController
+  Γ£ô Controller file exists: BookingController
+  Γ£ô Controller file exists: ProductController
+  Γ£ô Controller file exists: ServiceController
+  Γ£ô Model file exists: User
+  Γ£ô Model file exists: Admin
+  Γ£ô Model file exists: Booking
+  Γ£ô Model file exists: Product
+  Γ£ô Model file exists: Service
+
+FAILED TESTS: 1
+  Γ£ù   ΓåÆ Missing columns in products ΓÇö slug, stock
+
+WARNINGS: 2
+  ΓÜá Session HttpOnly cookie not set
+  ΓÜá Session SameSite not configured
+
+=== SUMMARY ===
+Pass Rate: 98% (54 tests)
+Status: Γ£ô HEALTHY

@@ -1,0 +1,902 @@
+{
+    "generated_at": "2026-08-26T11:52:52+02:00",
+    "php_binary": "C:\\xampp\\php\\php.exe",
+    "results": {
+        "verify_customer_smart_garage.php": {
+            "exists": true,
+            "command": "C:^\\xampp^\\php^\\php.exe -d display_errors=1 -d display_startup_errors=1 -d log_errors=0 -d error_reporting=E_ALL \"C:\\xampp\\htdocs\\originalshargh\\verify_customer_smart_garage.php\"",
+            "exit_code": 0,
+            "stdout": "",
+            "result_file": "garage_verify_result.txt",
+            "result_file_contents": "START\nGARAGE_SMART_FINAL_PASS\nGARAGE_DB_SCHEMA_OK\nGARAGE_ROUTES_OK\nGARAGE_VEHICLE_LIST_OK\nGARAGE_PROFILE_OK\nGARAGE_HISTORY_OK\nGARAGE_REPAIR_PARTS_OK\nGARAGE_MAINTENANCE_OK\nGARAGE_COMPAT_SUGGESTIONS_OK\nGARAGE_SECURITY_OK\nGARAGE_CLEANUP_OK\nEND\n"
+        },
+        "verify_customer_garage.php": {
+            "exists": true,
+            "command": "C:^\\xampp^\\php^\\php.exe -d display_errors=1 -d display_startup_errors=1 -d log_errors=0 -d error_reporting=E_ALL \"C:\\xampp\\htdocs\\originalshargh\\verify_customer_garage.php\"",
+            "exit_code": 0,
+            "stdout": "GARAGE_ROUTES_OK\nGARAGE_VEHICLE_LIST_OK\nGARAGE_HISTORY_OK\nGARAGE_MAINTENANCE_OK\nGARAGE_COMPAT_SUGGESTIONS_OK",
+            "result_file": "garage_verify_result.txt",
+            "result_file_contents": "START\nGARAGE_SMART_FINAL_PASS\nGARAGE_DB_SCHEMA_OK\nGARAGE_ROUTES_OK\nGARAGE_VEHICLE_LIST_OK\nGARAGE_PROFILE_OK\nGARAGE_HISTORY_OK\nGARAGE_REPAIR_PARTS_OK\nGARAGE_MAINTENANCE_OK\nGARAGE_COMPAT_SUGGESTIONS_OK\nGARAGE_SECURITY_OK\nGARAGE_CLEANUP_OK\nEND\n"
+        },
+        "verify_workshop.php": {
+            "exists": true,
+            "command": "C:^\\xampp^\\php^\\php.exe -d display_errors=1 -d display_startup_errors=1 -d log_errors=0 -d error_reporting=E_ALL \"C:\\xampp\\htdocs\\originalshargh\\verify_workshop.php\"",
+            "exit_code": 0,
+            "stdout": "ROUTE_OK\nDB_SCHEMA_OK\nCRUD_OK",
+            "result_file": "workshop_verify_result.txt",
+            "result_file_contents": null
+        },
+        "verify_milestone.php": {
+            "exists": true,
+            "command": "C:^\\xampp^\\php^\\php.exe -d display_errors=1 -d display_startup_errors=1 -d log_errors=0 -d error_reporting=E_ALL \"C:\\xampp\\htdocs\\originalshargh\\verify_milestone.php\"",
+            "exit_code": 0,
+            "stdout": "ROUTES_OK\nSTOCK_DEDUCTION_OK\nNO_DOUBLE_DEDUCTION_OK",
+            "result_file": "milestone_verify_result.txt",
+            "result_file_contents": null
+        },
+        "verify_workshop_vehicle_history.php": {
+            "exists": true,
+            "command": "C:^\\xampp^\\php^\\php.exe -d display_errors=1 -d display_startup_errors=1 -d log_errors=0 -d error_reporting=E_ALL \"C:\\xampp\\htdocs\\originalshargh\\verify_workshop_vehicle_history.php\"",
+            "exit_code": 0,
+            "stdout": "VEHICLE_HISTORY_OK\nREPAIR_PART_HISTORY_OK",
+            "result_file": "workshop_vehicle_history_result.txt",
+            "result_file_contents": null
+        }
+    },
+    "lint": [
+        {
+            "file": "app\/Controllers\\AccountController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AccountController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminAIController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminAIController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminAPIController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminAPIController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminCommunicationController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminCommunicationController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminDiagnosticController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminDiagnosticController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminOrderController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminOrderController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminProductImagesController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminProductImagesController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminUserController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminUserController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AdminVehicleController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AdminVehicleController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\AIRepairController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\AIRepairController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\API\\AuthController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\API\\AuthController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\API\\DiagnosticsController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\API\\DiagnosticsController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\API\\NotificationsController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\API\\NotificationsController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\API\\OrdersController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\API\\OrdersController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\API\\PaymentsController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\API\\PaymentsController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\API\\RepairsController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\API\\RepairsController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\API\\VehiclesController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\API\\VehiclesController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ArticleController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ArticleController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\BookingController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\BookingController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\BrandController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\BrandController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\CartController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\CartController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ChatController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ChatController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\CommonProblemController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\CommonProblemController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\DiagnosticController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\DiagnosticController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ECUDatabaseController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ECUDatabaseController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ECUProgrammerController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ECUProgrammerController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\FlashController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\FlashController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\GuideController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\GuideController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\HomeController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\HomeController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\InventoryController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\InventoryController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\InvoiceController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\InvoiceController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\J2534Controller.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\J2534Controller.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\LoyaltyController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\LoyaltyController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\MaintenanceController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\MaintenanceController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\MechanicController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\MechanicController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\MechanicRepairController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\MechanicRepairController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\NotificationController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\NotificationController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\OrderController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\OrderController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\PaymentController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\PaymentController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ProductCategoryController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ProductCategoryController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ProductController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ProductController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\RepairPartsController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\RepairPartsController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ReportController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ReportController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ServiceController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ServiceController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\ShopController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\ShopController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\SupplierController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\SupplierController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\TechnicianController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\TechnicianController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\VehicleCatalogController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\VehicleCatalogController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\VehicleController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\VehicleController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\VehicleProfileController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\VehicleProfileController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\WarrantyController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\WarrantyController.php"
+            ]
+        },
+        {
+            "file": "app\/Controllers\\WorkshopController.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Controllers\\WorkshopController.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Admin.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Admin.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\AiDiagnosis.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\AiDiagnosis.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ApiDevice.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ApiDevice.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ApiLog.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ApiLog.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ApiToken.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ApiToken.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Article.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Article.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Booking.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Booking.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Cart.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Cart.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ChatMessage.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ChatMessage.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Diagnostic.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Diagnostic.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\DiagnosticAI.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\DiagnosticAI.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\DiagnosticScan.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\DiagnosticScan.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\DiagnosticSession.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\DiagnosticSession.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\DtcCode.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\DtcCode.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ECUBackup.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ECUBackup.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ECULibrary.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ECULibrary.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\FaultKnowledge.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\FaultKnowledge.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\FinanceReport.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\FinanceReport.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Invoice.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Invoice.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\LoyaltyPoint.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\LoyaltyPoint.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Maintenance.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Maintenance.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\MaintenanceReminder.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\MaintenanceReminder.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\MechanicReport.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\MechanicReport.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Model.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Model.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Notification.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Notification.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\OBDCode.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\OBDCode.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Order.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Order.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\OrderItem.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\OrderItem.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Payment.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Payment.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Product.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Product.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ProductCategory.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ProductCategory.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\ProductCompatibility.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\ProductCompatibility.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Recommendation.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Recommendation.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Repair.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Repair.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\RepairNote.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\RepairNote.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\RepairPart.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\RepairPart.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\RepairReport.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\RepairReport.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\RepairUpdate.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\RepairUpdate.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Review.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Review.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Service.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Service.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\SMS.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\SMS.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Supplier.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Supplier.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Technician.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Technician.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\User.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\User.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Vehicle.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Vehicle.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\VehicleCatalog.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\VehicleCatalog.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\VehicleDatabase.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\VehicleDatabase.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\VehicleModel.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\VehicleModel.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\Warranty.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\Warranty.php"
+            ]
+        },
+        {
+            "file": "app\/Models\\WorkshopTask.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Models\\WorkshopTask.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\APIResponse.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\APIResponse.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\ArticleSEO.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\ArticleSEO.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\Backup.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\Backup.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\Controller.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\Controller.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\Database.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\Database.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\Notification.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\Notification.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\NotificationManager.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\NotificationManager.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\Router.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\Router.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\Security.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\Security.php"
+            ]
+        },
+        {
+            "file": "app\/Core\\SEO.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/app\/Core\\SEO.php"
+            ]
+        },
+        {
+            "file": "_verify_live.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/_verify_live.php"
+            ]
+        },
+        {
+            "file": "_verify_patch46.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/_verify_patch46.php"
+            ]
+        },
+        {
+            "file": "run_verify_inproc.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/run_verify_inproc.php"
+            ]
+        },
+        {
+            "file": "verify_compat_test.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/verify_compat_test.php"
+            ]
+        },
+        {
+            "file": "verify_customer_garage.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/verify_customer_garage.php"
+            ]
+        },
+        {
+            "file": "verify_customer_smart_garage.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/verify_customer_smart_garage.php"
+            ]
+        },
+        {
+            "file": "verify_milestone.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/verify_milestone.php"
+            ]
+        },
+        {
+            "file": "verify_workshop.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/verify_workshop.php"
+            ]
+        },
+        {
+            "file": "verify_workshop_vehicle_history.php",
+            "exit_code": 0,
+            "output": [
+                "No syntax errors detected in C:\\xampp\\htdocs\\originalshargh\/verify_workshop_vehicle_history.php"
+            ]
+        }
+    ]
+}

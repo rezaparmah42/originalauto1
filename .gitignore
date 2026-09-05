@@ -1,0 +1,51 @@
+.env
+.env.*
+!.env.example
+
+# Configuration
+config.php
+config/config.php
+
+# Logs and backups
+*.log
+logs/
+backups/
+*.bak
+
+# Temp and cache
+*.tmp
+tmp/
+temp/
+cache/
+storage/
+uploads/
+public/uploads/
+
+# Zip archives
+*.zip
+
+# SQL: ignore dumps/backups and files that look like they contain credentials
+database/*dump*.sql
+database/*backup*.sql
+database/*_backup*.sql
+database/*credentials*.sql
+database/*credential*.sql
+database/*password*.sql
+db_updates/*password*.sql
+
+# Explicit sensitive files to always ignore
+database/fix_real_admin_credentials.sql
+database/gen_and_verify_admin_hash.php
+database/verify_specific_hash.php
+database/seed.sql
+database/production_complete.sql
+database/production_ready.sql
+database/production_ready_cpanel.sql
+database/production_ready_cpanel_v2.sql
+
+# Audit output files (temporary) — do not commit
+audit_git_check.txt
+audit_git_check_utf8.txt
+
+# Keep cpanel and examples
+!.cpanel.yml

@@ -1,0 +1,258 @@
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+
+Warning: preg_match_all(): Compilation failed: missing closing parenthesis at offset 52 in C:\xampp\htdocs\originalshargh\tools\audit_model_schema.php on line 29
+FILE: app/Models/Admin.php
+PROBLEM: Possible missing column for table users: users
+SQL: UPDATE users SET password = ? WHERE id = ?
+---
+FILE: app/Models/Admin.php
+PROBLEM: Missing table: suppliers
+SQL: SELECT COUNT(*) FROM suppliers
+---
+FILE: app/Models/ApiDevice.php
+PROBLEM: Possible missing column for table api_devices: api_devices
+SQL: UPDATE api_devices SET last_active = ? WHERE id = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Possible missing column for table api_tokens: api_tokens
+SQL: UPDATE api_tokens SET last_used_at = ? WHERE token = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Possible missing column for table api_tokens: api_tokens
+SQL: UPDATE api_tokens SET revoked = 1 WHERE token = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Possible missing column for table api_tokens: api_tokens
+SQL: UPDATE api_tokens SET revoked = 1 WHERE id = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Possible missing column for table api_tokens: api_tokens
+SQL: UPDATE api_tokens SET revoked = 1 WHERE user_id = ?
+---
+FILE: app/Models/Booking.php
+PROBLEM: Possible missing column for table bookings: bookings
+SQL: UPDATE bookings SET status = ? WHERE id = ?
+---
+FILE: app/Models/Booking.php
+PROBLEM: Possible missing column for table bookings: bookings
+SQL: DELETE FROM bookings WHERE id = ?
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Possible missing column for table diagnostic_sessions: diagnostic_sessions
+SQL: UPDATE diagnostic_sessions SET connection_status = ? WHERE id = ?
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Possible missing column for table diagnostic_knowledge: diagnostic_knowledge
+SQL: UPDATE diagnostic_knowledge SET dtc_code=?, title=?, description=?, severity=?, possible_causes=?, recommended_actions=? WHERE id=?
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Possible missing column for table diagnostic_knowledge: diagnostic_knowledge
+SQL: DELETE FROM diagnostic_knowledge WHERE id = ?
+---
+FILE: app/Models/Maintenance.php
+PROBLEM: Possible missing column for table maintenance_records: maintenance_records
+SQL: UPDATE maintenance_records SET status = ? WHERE id = ?
+---
+FILE: app/Models/Notification.php
+PROBLEM: Possible missing column for table notifications: notifications
+SQL: UPDATE notifications SET status = ?, read_at = ? WHERE id = ?
+---
+FILE: app/Models/Order.php
+PROBLEM: Possible missing column for table orders: orders
+SQL: UPDATE orders SET status = ? WHERE id = ?
+---
+FILE: app/Models/Order.php
+PROBLEM: Possible missing column for table orders: orders
+SQL: UPDATE orders SET payment_status = ? WHERE id = ?
+---
+FILE: app/Models/Payment.php
+PROBLEM: Possible missing column for table payments: payments
+SQL: UPDATE payments SET status = ?, updated_at = ? WHERE id = ?
+---
+FILE: app/Models/Product.php
+PROBLEM: Possible missing column for table products: products
+SQL: UPDATE products SET title_fa = ?, title_en = ?, slug = ?, description_fa = ?, description_en = ?, image = ?, price = ?, stock = ?, status = ? WHERE id = ?
+---
+FILE: app/Models/Product.php
+PROBLEM: Possible missing column for table products: products
+SQL: DELETE FROM products WHERE id = ?
+---
+FILE: app/Models/Product.php
+PROBLEM: Possible missing column for table products: products
+SQL: UPDATE products SET stock = ? WHERE id = ?
+---
+FILE: app/Models/Product.php
+PROBLEM: Missing table: inventory_history
+SQL: SELECT ih.*, p.title_fa, p.title_en, u.name AS admin_name FROM inventory_history ih LEFT JOIN products p ON p.id = ih.product_id LEFT JOIN users u ON u.id = ih.admin_id ORDER BY ih.created_at DESC LIMIT ?
+---
+FILE: app/Models/Product.php
+PROBLEM: Missing table: inventory_history
+SQL: INSERT INTO inventory_history (product_id, admin_id, old_stock, new_stock, change_amount, type, note, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Repair.php
+PROBLEM: Possible missing column for table repairs: repairs
+SQL: UPDATE repairs SET status = ? WHERE id = ?
+---
+FILE: app/Models/Repair.php
+PROBLEM: Possible missing column for table repairs: repairs
+SQL: UPDATE repairs SET technician_id = ? WHERE id = ?
+---
+FILE: app/Models/Service.php
+PROBLEM: Possible missing column for table services: services
+SQL: UPDATE services SET title_fa = ?, title_en = ?, slug = ?, description_fa = ?, description_en = ?, seo_title_fa = ?, seo_title_en = ?, seo_description_fa = ?, seo_description_en = ?, price = ?, duration = ?, status = ? WHERE id = ?
+---
+FILE: app/Models/Service.php
+PROBLEM: Possible missing column for table services: services
+SQL: DELETE FROM services WHERE id = ?
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: SELECT * FROM suppliers ORDER BY name ASC
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: SELECT * FROM suppliers WHERE id = ? LIMIT 1
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: INSERT INTO suppliers (name, contact, phone, email, notes, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: UPDATE suppliers SET name = ?, contact = ?, phone = ?, email = ?, notes = ? WHERE id = ?
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: DELETE FROM suppliers WHERE id = ?
+---
+FILE: app/Models/Technician.php
+PROBLEM: Possible missing column for table technicians: technicians
+SQL: UPDATE technicians SET user_id=?, name=?, phone=?, specialization=?, status=? WHERE id=?
+---
+FILE: app/Models/Technician.php
+PROBLEM: Possible missing column for table technicians: technicians
+SQL: DELETE FROM technicians WHERE id = ?
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Possible missing column for table vehicles: brand_id
+SQL: INSERT INTO vehicles (user_id, brand_id, model, year, engine, vin, mileage, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Possible missing column for table vehicles: vehicles
+SQL: UPDATE vehicles SET mileage = ? WHERE id = ?
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Possible missing column for table vehicles: vehicles
+SQL: UPDATE vehicles SET brand_id = ?, model = ?, year = ?, engine = ?, vin = ?, mileage = ? WHERE id = ?
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Possible missing column for table vehicles: vehicles
+SQL: DELETE FROM vehicles WHERE id = ?
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Possible missing column for table workshop_tasks: workshop_tasks
+SQL: UPDATE workshop_tasks SET technician_id = ? WHERE id = ?
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Possible missing column for table workshop_tasks: workshop_tasks
+SQL: UPDATE workshop_tasks SET status = ?, completed_at = ? WHERE id = ?
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Possible missing column for table workshop_tasks: workshop_tasks
+SQL: UPDATE workshop_tasks SET status = ?, started_at = ? WHERE id = ?
+---

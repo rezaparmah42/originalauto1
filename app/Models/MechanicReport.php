@@ -1,0 +1,1 @@
+<?php class MechanicReport { public function getPerformance(){ } }

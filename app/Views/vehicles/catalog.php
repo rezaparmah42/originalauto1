@@ -1,0 +1,30 @@
+<?php
+$title = 'کاتالوگ خودرو و راهنمای تعمیر | ' . SITE_NAME;
+$description = 'جست‌وجو و انتخاب خودرو برای مشاهده اطلاعات فنی، ایرادهای رایج و خدمات پیشنهادی تعمیرگاه.';
+$canonical = SITE_URL . '/vehicles';
+$robots = 'index, follow';
+require __DIR__ . '/../layouts/header.php';
+?>
+<section class="page-hero">
+    <div class="hero-badge">کاتالوگ خودروهای بازار ایران</div>
+    <h1>خودرویتان را انتخاب کنید و مسیر تعمیر را دقیق‌تر بشناسید</h1>
+    <p>برند، مدل، سال یا کد موتور را جست‌وجو کنید تا اطلاعات موجود در کاتالوگ و خدمات مرتبط را ببینید.</p>
+</section>
+<section class="section-shell">
+    <form class="modern-form vehicle-filter" method="get" action="<?= SITE_URL ?>/vehicles">
+        <div class="form-group"><label class="form-label" for="q">جست‌وجوی خودرو</label><input class="form-input" id="q" name="q" value="<?= e($query ?? '') ?>" placeholder="مثلاً پژو 206 یا Corolla"></div>
+        <div class="form-group"><label class="form-label" for="brand">برند</label><select class="form-input" id="brand" name="brand"><option value="">همه برندها</option><?php foreach (($brands ?? []) as $brand): ?><option value="<?= e($brand) ?>" <?= (($filters['brand'] ?? '') === $brand) ? 'selected' : '' ?>><?= e($brand) ?></option><?php endforeach; ?></select></div>
+        <div class="form-group"><label class="form-label" for="model">مدل</label><select class="form-input" id="model" name="model"><option value="">همه مدل‌ها</option><?php foreach (($models ?? []) as $model): ?><option value="<?= e($model) ?>" <?= (($filters['model'] ?? '') === $model) ? 'selected' : '' ?>><?= e($model) ?></option><?php endforeach; ?></select></div>
+        <div class="form-group"><label class="form-label" for="engine">موتور</label><select class="form-input" id="engine" name="engine"><option value="">همه موتورها</option><?php foreach (($engines ?? []) as $engine): ?><option value="<?= e($engine) ?>" <?= (($filters['engine'] ?? '') === $engine) ? 'selected' : '' ?>><?= e($engine) ?></option><?php endforeach; ?></select></div>
+        <div class="form-group"><label class="form-label" for="year">سال</label><input class="form-input" id="year" name="year" inputmode="numeric" value="<?= e($filters['year'] ?? '') ?>" placeholder="مثلاً 1398"></div>
+        <div class="form-actions"><button class="btn-primary" type="submit">جست‌وجو</button><a class="btn-outline" href="<?= SITE_URL ?>/vehicles">پاک کردن فیلتر</a></div>
+    </form>
+</section>
+<section class="section-shell">
+    <div class="section-heading"><h2>خودروهای پیشنهادی</h2><p><?= (int) ($total ?? 0) ?> خودرو در کاتالوگ فعال است.</p></div>
+    <div class="service-grid vehicle-grid">
+        <?php if (!empty($vehicles)): ?><?php foreach ($vehicles as $item): ?><a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($item['brand'] ?? '') ?>/<?= rawurlencode($item['slug'] ?? $item['model'] ?? '') ?>"><span class="meta-pill"><?= e($item['brand'] ?? 'برند خودرو') ?></span><h3><?= e($item['model'] ?? $item['name_fa'] ?? 'مدل خودرو') ?></h3><p><?= e($item['engine_type'] ?? 'اطلاعات موتور در کاتالوگ ثبت نشده است.') ?></p><div class="service-meta"><span><?= e($item['year_start'] ?? '-') ?><?= !empty($item['year_end']) ? ' تا ' . e($item['year_end']) : '' ?></span></div></a><?php endforeach; ?><?php else: ?><div class="info-card"><strong>خودرویی با این فیلتر پیدا نشد.</strong><span>نام فارسی یا انگلیسی خودرو را ساده‌تر جست‌وجو کنید.</span></div><?php endif; ?>
+    </div>
+</section>
+<?php if (!empty($popular)): ?><section class="section-shell"><div class="section-heading"><h2>مدل‌های تازه کاتالوگ</h2></div><div class="resource-links"><?php foreach ($popular as $item): ?><a href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($item['brand'] ?? '') ?>/<?= rawurlencode($item['slug'] ?? '') ?>"><?= e(($item['brand'] ?? '') . ' ' . ($item['model'] ?? '')) ?></a><?php endforeach; ?></div></section><?php endif; ?>
+<?php require __DIR__ . '/../layouts/footer.php'; ?>

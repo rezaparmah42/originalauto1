@@ -1,0 +1,44 @@
+<?php
+
+namespace App\Models;
+
+use PDO;
+
+class ProductCompatibility extends Model
+{
+    public function getCompatibleVehicles($productId)
+    {
+        $stmt = $this->db->prepare(
+            'SELECT vc.* FROM vehicle_catalog vc
+             INNER JOIN product_vehicle_compatibility pvc ON pvc.vehicle_id = vc.id
+             WHERE pvc.product_id = ?
+             ORDER BY vc.brand, vc.model, vc.year_start DESC'
+        );
+        $stmt->execute([$productId]);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function saveCompatibility($productId, $vehicleIds)
+    {
+        $this->db->beginTransaction();
+
+        $stmtDelete = $this->db->prepare('DELETE FROM product_vehicle_compatibility WHERE product_id = ?');
+        $stmtDelete->execute([$productId]);
+
+        $stmtInsert = $this->db->prepare('INSERT INTO product_vehicle_compatibility (product_id, vehicle_id) VALUES (?, ?)');
+        foreach ($vehicleIds as $vehicleId) {
+            $stmtInsert->execute([$productId, $vehicleId]);
+        }
+
+        return $this->db->commit();
+    }
+
+    public function getVehicleIds($productId)
+    {
+        $stmt = $this->db->prepare('SELECT vehicle_id FROM product_vehicle_compatibility WHERE product_id = ?');
+        $stmt->execute([$productId]);
+
+        return array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'vehicle_id');
+    }
+}

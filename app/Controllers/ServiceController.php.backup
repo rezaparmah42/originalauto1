@@ -1,0 +1,32 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Core\Controller;
+
+class ServiceController extends Controller
+{
+    public function index()
+    {
+        $this->view('services/index');
+    }
+
+    public function show($slug = null)
+    {
+        if (!$slug) {
+            $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+            $uri = rtrim($uri, '/') ?: '/';
+            $slug = basename($uri);
+        }
+
+        $viewPath = 'services/' . $slug;
+        if (file_exists(__DIR__ . '/../Views/' . $viewPath . '.php')) {
+            $this->view($viewPath);
+            return;
+        }
+
+        $this->view('services/show', [
+            'slug' => $slug
+        ]);
+    }
+}

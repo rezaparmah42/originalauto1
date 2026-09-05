@@ -1,0 +1,586 @@
+PHASE1_STRUCTURE - 08/28/2026 07:46:31
+\nPATH=index.php
+EXISTS=True
+IS_FILE=TRUE
+\nPATH=app\Core
+EXISTS=True
+FILES_COUNT=10
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\app\Core\APIResponse.php
+C:\xampp\htdocs\originalshargh\app\Core\ArticleSEO.php
+C:\xampp\htdocs\originalshargh\app\Core\Backup.php
+C:\xampp\htdocs\originalshargh\app\Core\Controller.php
+C:\xampp\htdocs\originalshargh\app\Core\Database.php
+C:\xampp\htdocs\originalshargh\app\Core\Notification.php
+C:\xampp\htdocs\originalshargh\app\Core\NotificationManager.php
+C:\xampp\htdocs\originalshargh\app\Core\Router.php
+C:\xampp\htdocs\originalshargh\app\Core\Security.php
+C:\xampp\htdocs\originalshargh\app\Core\SEO.php
+\nPATH=app\Controllers
+EXISTS=True
+FILES_COUNT=55
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\app\Controllers\AccountController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminAIController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminAPIController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminCommunicationController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminDiagnosticController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminOrderController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminProductImagesController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminUserController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AdminVehicleController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\AIRepairController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ArticleController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\BookingController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\BrandController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\CartController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ChatController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\CommonProblemController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\DiagnosticController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ECUDatabaseController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ECUProgrammerController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\FlashController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\GuideController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\HomeController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\InventoryController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\InvoiceController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\J2534Controller.php
+C:\xampp\htdocs\originalshargh\app\Controllers\LoyaltyController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\MaintenanceController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\MechanicController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\MechanicRepairController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\NotificationController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\OrderController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\PaymentController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ProductCategoryController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ProductController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\RepairPartsController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ReportController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ServiceController.php
+C:\xampp\htdocs\originalshargh\app\Controllers\ServiceController.php.backup
+C:\xampp\htdocs\originalshargh\app\Controllers\ShopController.php
+\nPATH=app\Models
+EXISTS=True
+FILES_COUNT=54
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\app\Models\Admin.php
+C:\xampp\htdocs\originalshargh\app\Models\AiDiagnosis.php
+C:\xampp\htdocs\originalshargh\app\Models\ApiDevice.php
+C:\xampp\htdocs\originalshargh\app\Models\ApiLog.php
+C:\xampp\htdocs\originalshargh\app\Models\ApiToken.php
+C:\xampp\htdocs\originalshargh\app\Models\Article.php
+C:\xampp\htdocs\originalshargh\app\Models\Booking.php
+C:\xampp\htdocs\originalshargh\app\Models\Cart.php
+C:\xampp\htdocs\originalshargh\app\Models\ChatMessage.php
+C:\xampp\htdocs\originalshargh\app\Models\Diagnostic.php
+C:\xampp\htdocs\originalshargh\app\Models\DiagnosticAI.php
+C:\xampp\htdocs\originalshargh\app\Models\DiagnosticScan.php
+C:\xampp\htdocs\originalshargh\app\Models\DiagnosticSession.php
+C:\xampp\htdocs\originalshargh\app\Models\DtcCode.php
+C:\xampp\htdocs\originalshargh\app\Models\ECUBackup.php
+C:\xampp\htdocs\originalshargh\app\Models\ECULibrary.php
+C:\xampp\htdocs\originalshargh\app\Models\FaultKnowledge.php
+C:\xampp\htdocs\originalshargh\app\Models\FinanceReport.php
+C:\xampp\htdocs\originalshargh\app\Models\Invoice.php
+C:\xampp\htdocs\originalshargh\app\Models\LoyaltyPoint.php
+C:\xampp\htdocs\originalshargh\app\Models\Maintenance.php
+C:\xampp\htdocs\originalshargh\app\Models\MaintenanceReminder.php
+C:\xampp\htdocs\originalshargh\app\Models\MechanicReport.php
+C:\xampp\htdocs\originalshargh\app\Models\Model.php
+C:\xampp\htdocs\originalshargh\app\Models\Notification.php
+C:\xampp\htdocs\originalshargh\app\Models\OBDCode.php
+C:\xampp\htdocs\originalshargh\app\Models\Order.php
+C:\xampp\htdocs\originalshargh\app\Models\OrderItem.php
+C:\xampp\htdocs\originalshargh\app\Models\Payment.php
+C:\xampp\htdocs\originalshargh\app\Models\Product.php
+C:\xampp\htdocs\originalshargh\app\Models\Product.php.backup
+C:\xampp\htdocs\originalshargh\app\Models\ProductCategory.php
+C:\xampp\htdocs\originalshargh\app\Models\ProductCompatibility.php
+C:\xampp\htdocs\originalshargh\app\Models\ProductCompatibility.php.backup
+C:\xampp\htdocs\originalshargh\app\Models\Recommendation.php
+C:\xampp\htdocs\originalshargh\app\Models\Repair.php
+C:\xampp\htdocs\originalshargh\app\Models\RepairNote.php
+C:\xampp\htdocs\originalshargh\app\Models\RepairPart.php
+C:\xampp\htdocs\originalshargh\app\Models\RepairReport.php
+C:\xampp\htdocs\originalshargh\app\Models\RepairUpdate.php
+\nPATH=app\Views
+EXISTS=True
+FILES_COUNT=167
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\app\Views\about\index.php
+C:\xampp\htdocs\originalshargh\app\Views\account\dashboard.php
+C:\xampp\htdocs\originalshargh\app\Views\account\garage.php
+C:\xampp\htdocs\originalshargh\app\Views\account\login.php
+C:\xampp\htdocs\originalshargh\app\Views\account\profile.php
+C:\xampp\htdocs\originalshargh\app\Views\account\register.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicle_detail.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicle_health.php
+C:\xampp\htdocs\originalshargh\app\Views\account\orders\index.php
+C:\xampp\htdocs\originalshargh\app\Views\account\orders\show.php
+C:\xampp\htdocs\originalshargh\app\Views\account\repairs\index.php
+C:\xampp\htdocs\originalshargh\app\Views\account\repairs\show.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicle-profile\diagnostics.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicle-profile\history.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicle-profile\index.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicle-profile\maintenance.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicles\create.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicles\detail.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicles\edit.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicles\history.php
+C:\xampp\htdocs\originalshargh\app\Views\account\vehicles\index.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\appointments.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\articles.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\brands.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\customers.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\dashboard.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\finance-report.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\homepage.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\inquiries.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\login.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\mechanic-report.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\media.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\products.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\repairs-report.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\repairs.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\seo.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\services.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\ai\create.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\ai\edit.php
+C:\xampp\htdocs\originalshargh\app\Views\admin\ai\index.php
+\nPATH=app\functions
+EXISTS=True
+FILES_COUNT=1
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\app\functions\functions.php
+\nPATH=includes
+EXISTS=True
+FILES_COUNT=3
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\includes\functions.php
+C:\xampp\htdocs\originalshargh\includes\helpers.php
+C:\xampp\htdocs\originalshargh\includes\meta.php
+\nPATH=app\routes.php
+EXISTS=True
+IS_FILE=TRUE
+\nPATH=app\api_routes.php
+EXISTS=True
+IS_FILE=TRUE
+\nPATH=config
+EXISTS=True
+FILES_COUNT=7
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\config\ai.php
+C:\xampp\htdocs\originalshargh\config\config.php
+C:\xampp\htdocs\originalshargh\config\j2534.php
+C:\xampp\htdocs\originalshargh\config\loyalty.php
+C:\xampp\htdocs\originalshargh\config\maintenance.php
+C:\xampp\htdocs\originalshargh\config\reports.php
+C:\xampp\htdocs\originalshargh\config\sms.php
+\nPATH=database
+EXISTS=True
+FILES_COUNT=42
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\database\001_initial_schema.sql
+C:\xampp\htdocs\originalshargh\database\ai_diagnostic_migration.sql
+C:\xampp\htdocs\originalshargh\database\api_security_fix_migration.sql
+C:\xampp\htdocs\originalshargh\database\api_security_migration.sql
+C:\xampp\htdocs\originalshargh\database\api_tokens_migration.sql
+C:\xampp\htdocs\originalshargh\database\diagnostic_knowledge_seed.sql
+C:\xampp\htdocs\originalshargh\database\ecommerce_migration.sql
+C:\xampp\htdocs\originalshargh\database\inventory_migration.sql
+C:\xampp\htdocs\originalshargh\database\notification_system_migration.sql
+C:\xampp\htdocs\originalshargh\database\obd2_migration.sql
+C:\xampp\htdocs\originalshargh\database\order_system_migration.sql
+C:\xampp\htdocs\originalshargh\database\original_east.sql
+C:\xampp\htdocs\originalshargh\database\patch_16_schema.sql
+C:\xampp\htdocs\originalshargh\database\patch_35_encoding_fix.sql
+C:\xampp\htdocs\originalshargh\database\patch_36_frontend_content_cleanup.sql
+C:\xampp\htdocs\originalshargh\database\patch_37_vehicle_content_repair.sql
+C:\xampp\htdocs\originalshargh\database\patch_38_shop_migration.sql
+C:\xampp\htdocs\originalshargh\database\patch_41_payment_system.sql
+C:\xampp\htdocs\originalshargh\database\patch_42_inventory_auto_parts.sql
+C:\xampp\htdocs\originalshargh\database\patch_43_inventory_order_integration.sql
+C:\xampp\htdocs\originalshargh\database\patch_44_admin_vehicle_compatibility.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_bookings_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_check_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_fix_templates.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_maintenance_records_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_products_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_product_compatibility_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_repairs_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_repair_parts_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_services_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_users_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_vehicles_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_vehicle_brands_created_at.sql
+C:\xampp\htdocs\originalshargh\database\patch_47_vehicle_models_created_at.sql
+C:\xampp\htdocs\originalshargh\database\payment_invoice_migration.sql
+C:\xampp\htdocs\originalshargh\database\production_schema.sql
+C:\xampp\htdocs\originalshargh\database\production_schema_fixed.sql
+C:\xampp\htdocs\originalshargh\database\seed.sql
+C:\xampp\htdocs\originalshargh\database\vehicle_intelligence_migration.sql
+C:\xampp\htdocs\originalshargh\database\vehicle_knowledge_base_migration.sql
+\nPATH=api
+EXISTS=True
+FILES_COUNT=8
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\api\products.php
+C:\xampp\htdocs\originalshargh\api\vehicles.php
+C:\xampp\htdocs\originalshargh\api\auth\login.php
+C:\xampp\htdocs\originalshargh\api\auth\register.php
+C:\xampp\htdocs\originalshargh\api\diagnostic\scan.php
+C:\xampp\htdocs\originalshargh\api\repair\request.php
+C:\xampp\htdocs\originalshargh\api\repair\status.php
+C:\xampp\htdocs\originalshargh\api\vehicle\list.php
+\nPATH=admin
+EXISTS=True
+FILES_COUNT=1
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\admin\index.php
+\nPATH=cart
+EXISTS=False
+\nPATH=checkout
+EXISTS=False
+\nPATH=payment
+EXISTS=False
+\nPATH=pages
+EXISTS=False
+\nPATH=assets
+EXISTS=True
+FILES_COUNT=8
+SAMPLE_FILES:
+C:\xampp\htdocs\originalshargh\assets\css\admin.css
+C:\xampp\htdocs\originalshargh\assets\css\professional-home.css
+C:\xampp\htdocs\originalshargh\assets\css\responsive.css
+C:\xampp\htdocs\originalshargh\assets\css\responsive.css.backup
+C:\xampp\htdocs\originalshargh\assets\css\style.css
+C:\xampp\htdocs\originalshargh\assets\css\style.css.backup
+C:\xampp\htdocs\originalshargh\assets\images\.gitkeep
+C:\xampp\htdocs\originalshargh\assets\js\app.js
+\n--ROOT_TOP_LEVEL--
+.continue d----- 8/4/2026 4:04:26 PM
+admin d----- 8/3/2026 2:34:18 PM
+api d----- 8/3/2026 6:29:18 PM
+app d----- 8/7/2026 6:26:53 AM
+assets d----- 8/3/2026 2:34:18 PM
+config d----- 8/3/2026 2:34:18 PM
+Controllers d----- 8/3/2026 2:34:18 PM
+database d----- 8/26/2026 2:20:13 AM
+db_updates d----- 8/19/2026 2:31:35 PM
+flutter d----- 8/3/2026 2:34:18 PM
+includes d----- 8/14/2026 3:21:04 AM
+patches d----- 8/26/2026 2:51:27 AM
+public d----- 8/11/2026 3:54:49 AM
+Services_legacy d----- 8/3/2026 2:34:18 PM
+shop_legacy d----- 8/3/2026 2:34:18 PM
+storage d----- 8/3/2026 2:34:18 PM
+tests d----- 8/28/2026 6:05:24 AM
+tools d----- 8/28/2026 4:45:24 AM
+.env.example -a---- 8/5/2026 11:41:20 PM
+.htaccess -a---- 8/28/2026 7:32:59 AM
+API_DOCUMENTATION.md -a---- 8/7/2026 7:08:49 AM
+audit_model_schema_output.txt -a---- 8/10/2026 4:04:28 AM
+audit_output.txt -a---- 8/7/2026 1:20:20 PM
+audit_run.txt -a---- 8/7/2026 12:55:55 PM
+audit_run.txt.utf8 -a---- 8/7/2026 1:21:16 PM
+AUDIT_SUMMARY.txt -a---- 8/19/2026 7:42:55 PM
+check_db.php -a---- 8/5/2026 11:12:26 PM
+COMPLETION_REPORT.txt -a---- 8/5/2026 11:44:02 PM
+db_test.php -a---- 8/18/2026 2:08:27 PM
+db_verify_script.ps1 -a---- 8/9/2026 6:16:07 PM
+DEPLOYMENT.md -a---- 8/5/2026 11:41:20 PM
+first_run_check.php -a---- 8/5/2026 11:44:02 PM
+garage_verify_result.txt -a---- 8/28/2026 2:23:33 AM
+http_checks.json -a---- 8/11/2026 3:13:29 AM
+http_checks.txt -a---- 8/11/2026 3:14:20 AM
+http_checks_apache.txt -a---- 8/11/2026 3:26:30 AM
+http_checks_apache_after_db.txt -a---- 8/11/2026 3:32:32 AM
+http_checks_fix.txt -a---- 8/11/2026 3:23:45 AM
+index.php -a---- 8/14/2026 12:11:53 PM
+lint_invoice.txt -a---- 8/10/2026 2:29:32 PM
+lint_output.txt -a---- 8/7/2026 1:20:18 PM
+lint_output.txt.utf8 -a---- 8/7/2026 1:20:27 PM
+MASTER_AUTONOMOUS_ADMIN.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_API.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_AUTH.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_BASELINE.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_BROWSER.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_DATABASE.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_INVENTORY.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_ORDER_FLOW.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_PAYMENT.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_REGRESSION.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_REMAINING_WORK.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_SCHEMA.md -a---- 8/28/2026 5:40:13 AM
+MASTER_AUTONOMOUS_SECURITY.md -a---- 8/28/2026 5:40:13 AM
+MASTER_COMPLETION_BASELINE.md -a---- 8/28/2026 5:40:13 AM
+MASTER_COMPLETION_REPORT.md -a---- 8/28/2026 5:40:13 AM
+MASTER_COMPLETION_STATUS.md -a---- 8/28/2026 5:40:13 AM
+MASTER_FINAL_RELEASE_GATE.md -a---- 8/28/2026 5:40:13 AM
+MASTER_FINAL_RELEASE_REPORT.md -a---- 8/28/2026 5:40:13 AM
+MASTER_FINAL_STATUS.md -a---- 8/28/2026 1:44:56 AM
+MASTER_GAP_ANALYSIS.md -a---- 8/28/2026 1:44:56 AM
+MASTER_PROJECT_AUDIT.md -a---- 8/28/2026 1:44:56 AM
+MASTER_PROJECT_ROADMAP.md -a---- 8/28/2026 1:44:56 AM
+MASTER_RELEASE_AUDIT.md -a---- 8/28/2026 5:40:13 AM
+MASTER_RELEASE_BLOCKERS.md -a---- 8/28/2026 5:40:13 AM
+MASTER_RELEASE_FINAL_REPORT.md -a---- 8/28/2026 5:40:13 AM
+MASTER_RELEASE_ROADMAP.md -a---- 8/28/2026 5:40:13 AM
+MASTER_RELEASE_STATUS.md -a---- 8/28/2026 5:40:13 AM
+MASTER_RELEASE_TEST_MATRIX.md -a---- 8/28/2026 5:40:13 AM
+MASTER_REMAINING_WORK.md -a---- 8/28/2026 5:40:13 AM
+MASTER_TEST_MATRIX.md -a---- 8/28/2026 5:40:13 AM
+MASTER_ULTRA_AUDIT.md -a---- 8/28/2026 5:40:13 AM
+MASTER_ULTRA_AUTH.md -a---- 8/28/2026 5:40:13 AM
+MASTER_ULTRA_BASELINE.md -a---- 8/28/2026 5:40:13 AM
+MASTER_ULTRA_SCHEMA.md -a---- 8/28/2026 5:40:13 AM
+MASTER_ULTRA_SECURITY.md -a---- 8/28/2026 5:40:13 AM
+PATCH_100_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_101_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_102_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_103_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_104_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_105_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_106_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_107_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_108_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_109_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_110_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_111_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_112_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_113_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+PATCH_114_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_115_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_116_135_BATCH_FINAL_REPORT.md -a---- 8/28/2026 1:03:14 AM
+PATCH_14_REPORT.md -a---- 8/8/2026 5:52:51 AM
+PATCH_16_DB_AUDIT.md -a---- 8/10/2026 3:31:37 AM
+PATCH_18_REPORT.md -a---- 8/11/2026 1:39:40 AM
+PATCH_19_REPORT.md -a---- 8/11/2026 1:39:40 AM
+PATCH_20_FINAL_REPORT.md -a---- 8/11/2026 1:39:40 AM
+PATCH_21_DB_SCHEMA_FIX_REPORT.md -a---- 8/11/2026 3:40:14 AM
+PATCH_21_FINAL_AUDIT_REPORT.md -a---- 8/11/2026 3:40:14 AM
+PATCH_21_FINAL_RUNTIME_REPORT.md -a---- 8/11/2026 3:28:35 AM
+PATCH_21_HTTP_FIX_REPORT.md -a---- 8/11/2026 3:24:37 AM
+PATCH_21_HTTP_RUNTIME_REPORT.md -a---- 8/11/2026 3:16:40 AM
+PATCH_21_RUNTIME_REPORT.md -a---- 8/11/2026 3:06:23 AM
+PATCH_22_PHASE2_REPORT.md -a---- 8/11/2026 9:32:02 AM
+PATCH_22_PHASE3_REPORT.md -a---- 8/11/2026 2:17:05 PM
+PATCH_22_SEO_AUDIT_REPORT.md -a---- 8/11/2026 3:47:43 AM
+PATCH_22_SEO_CORE_REPORT.md -a---- 8/11/2026 3:58:15 AM
+PATCH_23_PREMIUM_TRANSFORMATION_REPORT.md -a---- 8/11/2026 10:34:47 PM
+PATCH_24_1_ROUTE_VERIFICATION_REPORT.md -a---- 8/11/2026 10:39:26 PM
+PATCH_25_2_RUNTIME_STABILITY_REPORT.md -a---- 8/13/2026 2:56:10 AM
+PATCH_25_3_DATABASE_SCHEMA_CONSISTENCY_REPORT.md -a---- 8/13/2026 10:43:03 AM
+PATCH_25_4_RUNTIME_VERIFICATION_REPORT.md -a---- 8/13/2026 3:01:47 PM
+PATCH_25_IMPLEMENTATION_PLAN.md -a---- 8/13/2026 1:59:24 AM
+PATCH_25_INITIAL_AUDIT.md -a---- 8/13/2026 1:32:44 AM
+PATCH_26_ADMIN_PANEL_RECOVERY_REPORT.md -a---- 8/13/2026 3:47:43 PM
+PATCH_27_ADMIN_DASHBOARD_DATABASE_REPORT.md -a---- 8/13/2026 3:52:59 PM
+PATCH_28_ADMIN_RUNTIME_FIX_REPORT.md -a---- 8/19/2026 2:30:18 PM
+PATCH_30_LOGOUT_FIX_REPORT.md -a---- 8/19/2026 3:19:52 PM
+PATCH_31_ADMIN_AUTH_DIAGNOSTIC_REPORT.md -a---- 8/19/2026 7:42:53 PM
+PATCH_31_AUTH_FIX_REPORT.md -a---- 8/19/2026 3:19:54 PM
+PATCH_32_ADMIN_DASHBOARD_AUDIT_REPORT.md -a---- 8/19/2026 7:42:55 PM
+PATCH_33_ADMIN_CRUD_COMPLETION_REPORT.md -a---- 8/19/2026 8:06:57 PM
+PATCH_35_AUTOMOTIVE_CONTENT_SEO_REPORT.md -a---- 8/19/2026 8:30:25 PM
+PATCH_35_ENCODING_FIX_REPORT.md -a---- 8/19/2026 8:55:14 PM
+PATCH_36_FRONTEND_UX_COMPLETE_REPORT.md -a---- 8/19/2026 9:22:45 PM
+PATCH_37_ENCODING_FINAL_REPORT.md -a---- 8/20/2026 11:40:45 AM
+PATCH_38_SHOP_FINAL_REPORT.md -a---- 8/20/2026 10:07:56 PM
+PATCH_39_SHOP_UPGRADE_REPORT.md -a---- 8/20/2026 10:19:52 PM
+PATCH_40_SHOP_FRONTEND_COMPLETE_REPORT.md -a---- 8/20/2026 10:38:43 PM
+PATCH_41_PAYMENT_INVOICE_REPORT.md -a---- 8/20/2026 10:59:02 PM
+patch_48_report.json -a---- 8/26/2026 2:53:19 AM
+PATCH_50_FINAL_REPORT.md -a---- 8/26/2026 3:17:15 AM
+PATCH_51_FINAL_REPORT.md -a---- 8/26/2026 3:30:59 AM
+patch_51_lint.php -a---- 8/26/2026 3:29:51 AM
+PATCH_52_FINAL_REPORT.md -a---- 8/26/2026 3:35:31 AM
+PATCH_53_FINAL_REPORT.md -a---- 8/27/2026 11:16:48 PM
+PATCH_54_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_56_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_57_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_58_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_59_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_5_INITIALIZATION_REPORT.md -a---- 8/5/2026 11:44:02 PM
+PATCH_60_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_61_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_62_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_63_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_64_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_65_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_66_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_67_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_68_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_69_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_6_1_REPORT.md -a---- 8/6/2026 1:02:58 AM
+PATCH_6_2_REPORT.md -a---- 8/6/2026 1:11:18 AM
+PATCH_6_4_REPORT.md -a---- 8/6/2026 1:33:28 AM
+PATCH_6_5_REPORT.md -a---- 8/6/2026 2:08:16 AM
+PATCH_6_6_REPORT.md -a---- 8/7/2026 1:45:18 AM
+PATCH_6_7_REPORT.md -a---- 8/7/2026 2:24:00 AM
+PATCH_6_8_REPORT.md -a---- 8/7/2026 4:51:37 AM
+PATCH_70_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_71_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_72_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_73_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_74_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_75_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_76_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_77_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_78_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_79_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_7_1_REPORT.md -a---- 8/7/2026 5:07:31 AM
+PATCH_7_2_COMPLETE_REPORT.md -a---- 8/7/2026 5:44:38 AM
+PATCH_7_2_REPORT.md -a---- 8/7/2026 5:31:42 AM
+PATCH_7_3_REPORT.md -a---- 8/7/2026 5:50:07 AM
+PATCH_7_4_REPORT.md -a---- 8/7/2026 6:12:31 AM
+PATCH_7_6_FINAL_REPORT.md -a---- 8/7/2026 7:25:31 AM
+PATCH_7_6_SECURITY_REPORT.md -a---- 8/7/2026 7:41:11 AM
+PATCH_80_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_81_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_82_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_83_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_84_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_85_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_86_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_87_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_88_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_89_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_90_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_91_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_92_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_93_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_94_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_95_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_96_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_97_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_98_FINAL_REPORT.md -a---- 8/28/2026 12:56:47 AM
+PATCH_99_FINAL_REPORT.md -a---- 8/28/2026 12:21:49 AM
+phase1_inventory.txt -a---- 8/28/2026 7:43:59 AM
+phase1_structure.txt -a---- 8/28/2026 7:46:49 AM
+php_simple_probe.php -a---- 8/25/2026 3:06:40 PM
+php_version.txt -a---- 8/10/2026 3:14:48 PM
+README-FINAL.md -a---- 7/30/2026 6:31:10 PM
+README.md -a---- 7/30/2026 6:31:10 PM
+robots.txt -a---- 8/19/2026 8:30:25 PM
+route_check_output.txt -a---- 8/11/2026 1:50:13 AM
+route_check_run.txt -a---- 8/10/2026 2:30:17 PM
+route_check_run.txt.utf8 -a---- 8/7/2026 1:21:17 PM
+route_output.txt -a---- 8/7/2026 1:20:23 PM
+run_verify_inproc.php -a---- 8/25/2026 1:19:25 AM
+simple_probe2.txt -a---- 8/9/2026 6:18:28 PM
+sitemap_out.txt -a---- 8/11/2026 3:56:47 AM
+smoke_before_error.log -a---- 8/17/2026 2:05:16 PM
+smoke_output.txt -a---- 8/7/2026 1:20:21 PM
+smoke_run.txt -a---- 8/10/2026 2:30:27 PM
+smoke_run.txt.utf8 -a---- 8/7/2026 1:21:16 PM
+smoke_test.php -a---- 8/7/2026 10:04:12 AM
+smoke_test_output.txt -a---- 8/11/2026 1:48:44 AM
+SMOKE_TEST_REPORT.txt -a---- 8/5/2026 11:24:16 PM
+smoke_test_run.txt -a---- 8/7/2026 12:55:52 PM
+smoke_test_v2.php -a---- 8/5/2026 11:19:40 PM
+STABILITY_CHECKPOINT_REPORT.md -a---- 8/7/2026 1:09:44 PM
+temp_smoke_admin_ai.php -a---- 8/7/2026 5:27:47 AM
+temp_smoke_admin_ai_out.txt -a---- 8/7/2026 5:33:56 AM
+temp_smoke_admin_diag.php -a---- 8/7/2026 5:18:51 AM
+temp_smoke_admin_diag_out.txt -a---- 8/7/2026 5:14:56 AM
+temp_smoke_admin_notifications.php -a---- 8/7/2026 5:55:19 AM
+temp_smoke_admin_notifications_out.txt -a---- 8/7/2026 6:11:49 AM
+temp_smoke_admin_technicians.php -a---- 8/7/2026 5:50:07 AM
+temp_smoke_admin_technicians_out.txt -a---- 8/7/2026 5:49:28 AM
+temp_smoke_ai.php -a---- 8/7/2026 5:27:47 AM
+temp_smoke_ai_out.txt -a---- 8/7/2026 5:33:51 AM
+temp_smoke_api_diag.php -a---- 8/7/2026 5:44:38 AM
+temp_smoke_api_diag_out.txt -a---- 8/7/2026 5:34:02 AM
+temp_smoke_diag.php -a---- 8/7/2026 5:18:51 AM
+temp_smoke_diag_out.txt -a---- 8/7/2026 5:14:56 AM
+temp_smoke_notifications.php -a---- 8/7/2026 5:55:19 AM
+temp_smoke_notifications_out.txt -a---- 8/7/2026 6:11:01 AM
+temp_smoke_repair_chat.php -a---- 8/7/2026 5:55:19 AM
+temp_smoke_repair_chat_out.txt -a---- 8/7/2026 6:11:21 AM
+temp_smoke_technician_dashboard.php -a---- 8/7/2026 5:50:07 AM
+temp_smoke_technician_dashboard_out.txt -a---- 8/7/2026 5:49:31 AM
+temp_sql_fix.js -a---- 7/30/2026 9:38:12 PM
+terminal_probe.txt -a---- 8/9/2026 6:05:31 PM
+terminal_probe_result.txt -a---- 8/9/2026 6:06:13 PM
+test_components.php -a---- 8/7/2026 10:04:12 AM
+test_terminal_cmd.txt -a---- 8/9/2026 6:08:28 PM
+tmp_apply_sql.php -a---- 8/10/2026 3:44:19 AM
+tmp_app_db_check.php -a---- 8/10/2026 3:31:38 AM
+tmp_auth_route_out.txt -a---- 8/10/2026 3:23:05 PM
+tmp_check_session.php -a---- 8/10/2026 2:47:38 PM
+tmp_customer_dashboard_probe.php -a---- 8/28/2026 12:56:47 AM
+tmp_db_connection_test.php -a---- 8/9/2026 6:29:29 PM
+tmp_db_inspect.php -a---- 8/10/2026 2:34:22 PM
+tmp_db_inspect_output.txt -a---- 8/10/2026 4:04:30 AM
+tmp_db_inspect_run.txt -a---- 8/10/2026 2:30:35 PM
+tmp_db_schema_verify.php -a---- 8/9/2026 6:29:29 PM
+tmp_db_verify.php -a---- 8/9/2026 6:03:27 PM
+tmp_get_slugs.php -a---- 8/10/2026 4:02:53 AM
+tmp_http_check.php -a---- 8/13/2026 2:17:58 AM
+tmp_http_probe.php -a---- 8/10/2026 3:44:19 AM
+tmp_http_probe_php.php -a---- 8/10/2026 4:02:53 AM
+tmp_http_probe_status.php -a---- 8/10/2026 4:02:53 AM
+tmp_http_probe_status.txt -a---- 8/10/2026 3:47:36 AM
+tmp_login_body.html -a---- 8/13/2026 3:40:56 PM
+tmp_php_lint.txt -a---- 8/13/2026 1:28:58 AM
+tmp_probe_local.php -a---- 8/13/2026 2:41:26 AM
+tmp_route_check_out.txt -a---- 8/10/2026 3:35:19 PM
+tmp_route_check_out3.txt -a---- 8/10/2026 3:52:38 PM
+tmp_route_check_out_utf8.txt -a---- 8/10/2026 3:33:31 PM
+tmp_route_check_syntax.txt -a---- 8/10/2026 3:22:48 PM
+tmp_run.bat -a---- 8/7/2026 12:06:25 PM
+tmp_run_schema_verify.php -a---- 8/10/2026 3:31:38 AM
+tmp_schema_inspect.php -a---- 8/10/2026 3:31:37 AM
+tmp_seo_check.php -a---- 8/11/2026 3:58:15 AM
+tmp_smoke_out.txt -a---- 8/10/2026 3:23:27 PM
+verify_compat_test.php -a---- 8/22/2026 9:28:11 PM
+verify_customer_garage.php -a---- 8/22/2026 11:43:13 PM
+verify_customer_smart_garage.php -a---- 8/25/2026 1:17:22 AM
+verify_milestone.php -a---- 8/22/2026 11:00:05 PM
+verify_payment_callback_token.php -a---- 8/28/2026 5:40:13 AM
+verify_workshop.php -a---- 8/22/2026 9:49:10 PM
+verify_workshop_vehicle_history.php -a---- 8/22/2026 11:21:00 PM
+_apache_bin_list.txt -a---- 8/17/2026 5:17:36 AM
+_apache_test_V.txt -a---- 8/17/2026 5:16:47 AM
+_apply_vehicle_content_repair.php -a---- 8/19/2026 9:37:10 PM
+_audit_dashboard.php -a---- 8/19/2026 7:42:55 PM
+_audit_db.php -a---- 8/19/2026 7:42:54 PM
+_audit_db2.php -a---- 8/19/2026 7:42:54 PM
+_audit_db_output.txt -a---- 8/19/2026 7:30:20 PM
+_db_probe.php -a---- 8/25/2026 3:06:40 PM
+_db_probe.ps1 -a---- 8/25/2026 3:06:40 PM
+_debug_admin_render.php -a---- 8/18/2026 3:27:17 PM
+_debug_admin_smoke.php -a---- 8/17/2026 4:49:58 AM
+_debug_admin_smoke_cli.txt -a---- 8/17/2026 2:05:21 PM
+_debug_admin_smoke_cli_out.txt -a---- 8/17/2026 5:21:55 AM
+_debug_admin_smoke_status.txt -a---- 8/17/2026 5:20:46 AM
+_debug_admin_smoke_webout.html -a---- 8/17/2026 5:20:46 AM
+_debug_index_content.html -a---- 8/17/2026 5:20:35 AM
+_debug_index_status.txt -a---- 8/17/2026 5:20:35 AM
+_debug_netstat_443.txt -a---- 8/17/2026 4:54:34 AM
+_debug_netstat_80.txt -a---- 8/17/2026 4:54:22 AM
+_debug_root_content.html -a---- 8/17/2026 5:20:42 AM
+_debug_root_http_check.txt -a---- 8/17/2026 2:04:33 PM
+_debug_root_http_status.txt -a---- 8/17/2026 2:05:10 PM
+_debug_root_status.txt -a---- 8/17/2026 5:20:42 AM
+_debug_smoke_errlog_tail.txt -a---- 8/17/2026 4:42:50 AM
+_debug_smoke_err_after.txt -a---- 8/17/2026 2:05:21 PM
+_debug_smoke_err_before.txt -a---- 8/17/2026 2:05:08 PM
+_debug_smoke_files.txt -a---- 8/17/2026 5:20:48 AM
+_debug_tasklist_httpd.txt -a---- 8/17/2026 4:54:44 AM
+_diagnose_created_at.php -a---- 8/26/2026 2:52:08 AM
+_httpd_exists.txt -a---- 8/17/2026 5:17:35 AM
+_lint_changes_summary.txt -a---- 8/14/2026 1:22:36 PM
+_live_db_and_verify.php -a---- 8/25/2026 3:06:40 PM
+_live_mysql_check.php -a---- 8/25/2026 3:06:40 PM
+_netstat_443.txt -a---- 8/17/2026 5:16:50 AM
+_netstat_80.txt -a---- 8/17/2026 5:16:48 AM
+_patch_48_runner.php -a---- 8/26/2026 2:52:08 AM
+_run_php_lint.php -a---- 8/26/2026 2:52:08 AM
+_tcp_80.txt -a---- 8/17/2026 5:17:20 AM
+_test_dashboard_data.php -a---- 8/19/2026 7:42:55 PM
+_test_dashboard_render.php -a---- 8/19/2026 7:42:55 PM
+_verify_live.php -a---- 8/25/2026 3:06:40 PM
+_verify_patch46.php -a---- 8/22/2026 9:28:11 PM

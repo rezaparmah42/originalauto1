@@ -1,0 +1,1 @@
+<?php class FinanceReport { public function getIncome(){ } }

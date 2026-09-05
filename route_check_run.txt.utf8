@@ -1,0 +1,24 @@
+﻿/                  200  -> http://localhost/originalshargh/
+/login             200  -> http://localhost/originalshargh/login
+/register          200  -> http://localhost/originalshargh/register
+/account/dashboard 0    -> http://localhost/originalshargh/account/dashboard
+/admin/dashboard   200  -> http://localhost/originalshargh/admin/login
+  redirects: 1
+/vehicles          200  -> http://localhost/originalshargh/vehicles
+/repairs           0    -> http://localhost/originalshargh/repairs
+/cart              200  -> http://localhost/originalshargh/cart
+/checkout          200  -> http://localhost/originalshargh/login
+  redirects: 1
+/orders            200  -> http://localhost/originalshargh/login
+  redirects: 1
+/payment           200  -> http://localhost/originalshargh/login
+  redirects: 2
+/invoice           200  -> http://localhost/originalshargh/login
+  redirects: 2
+/diagnostic        200  -> http://localhost/originalshargh/login
+  redirects: 1
+/api               200  -> http://localhost/originalshargh/api/
+  redirects: 1
+/api/auth/login    404  -> http://localhost/originalshargh/api/auth/login
+/api/vehicles      401  -> http://localhost/originalshargh/api/vehicles
+/api/diagnostics   401  -> http://localhost/originalshargh/api/diagnostics

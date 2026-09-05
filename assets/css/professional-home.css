@@ -1,0 +1,48 @@
+.hero-professional{
+    min-height:450px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:#182536;
+    color:white;
+    padding:40px;
+}
+
+.hero-content h1{
+    font-size:42px;
+}
+
+.btn-primary{
+    display:inline-block;
+    background:#f28c18;
+    color:white;
+    padding:14px 30px;
+    border-radius:8px;
+    text-decoration:none;
+}
+
+.trust-section{
+    display:flex;
+    justify-content:center;
+    gap:25px;
+    padding:40px;
+    flex-wrap:wrap;
+}
+
+.trust-section div{
+    background:white;
+    padding:25px;
+    border-radius:12px;
+}
+
+.brands,.services-home,.articles-preview{
+    padding:40px;
+}
+
+.cta{
+    background:#111;
+    color:white;
+    text-align:center;
+    padding:50px;
+}

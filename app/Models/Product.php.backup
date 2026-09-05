@@ -1,0 +1,139 @@
+<?php
+
+namespace App\Models;
+
+use PDO;
+
+class Product extends Model
+{
+    public function findBySlug($slug)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM products WHERE slug = ? AND status = 1 LIMIT 1');
+        $stmt->execute([$slug]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function findById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM products WHERE id = ? LIMIT 1');
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+
+    public function getAll()
+    {
+        $stmt = $this->db->prepare('SELECT * FROM products ORDER BY created_at DESC');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function searchParts($filters)
+    {
+        $sql = 'SELECT DISTINCT p.* FROM products p';
+        $params = [];
+        $conditions = ['p.status = 1'];
+
+        if (!empty($filters['brand']) || !empty($filters['model']) || !empty($filters['year'])) {
+            $sql .= ' INNER JOIN product_vehicle_compatibility pvc ON pvc.product_id = p.id'
+                 . ' INNER JOIN vehicle_catalog vc ON vc.id = pvc.vehicle_id';
+        }
+
+        if (!empty($filters['brand'])) {
+            $conditions[] = 'vc.brand = ?';
+            $params[] = $filters['brand'];
+        }
+
+        if (!empty($filters['model'])) {
+            $conditions[] = 'vc.model = ?';
+            $params[] = $filters['model'];
+        }
+
+        if (!empty($filters['year'])) {
+            $year = $filters['year'];
+            if (strpos($year, '-') !== false) {
+                $parts = array_map('trim', explode('-', $year));
+                if (count($parts) === 2) {
+                    $yearStart = $parts[0];
+                    $yearEnd = $parts[1];
+                    $conditions[] = 'vc.year_start <= ? AND vc.year_end >= ?';
+                    $params[] = $yearStart;
+                    $params[] = $yearEnd;
+                }
+            } else {
+                $conditions[] = 'vc.year_start <= ? AND vc.year_end >= ?';
+                $params[] = $year;
+                $params[] = $year;
+            }
+        }
+
+        if (!empty($filters['part_number'])) {
+            $conditions[] = 'p.part_number LIKE ?';
+            $params[] = '%' . $filters['part_number'] . '%';
+        }
+
+        if (!empty($conditions)) {
+            $sql .= ' WHERE ' . implode(' AND ', $conditions);
+        }
+
+        $sql .= ' ORDER BY p.created_at DESC';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function createProduct($data)
+    {
+        $stmt = $this->db->prepare(
+            'INSERT INTO products (title, slug, category, brand, part_number, manufacturer, description, technical_specifications, images, price, stock, stock_status, warranty, status, created_at)
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)'
+        );
+
+        return $stmt->execute([
+            $data['title'],
+            $data['slug'],
+            $data['category'],
+            $data['brand'],
+            $data['part_number'],
+            $data['manufacturer'],
+            $data['description'],
+            $data['technical_specifications'],
+            $data['images'],
+            $data['price'],
+            $data['stock'],
+            $data['stock_status'],
+            $data['warranty'],
+            $data['status'],
+            date('Y-m-d H:i:s'),
+        ]);
+    }
+
+    public function updateProduct($id, $data)
+    {
+        $stmt = $this->db->prepare(
+            'UPDATE products SET title = ?, slug = ?, category = ?, brand = ?, part_number = ?, manufacturer = ?, description = ?, technical_specifications = ?, images = ?, price = ?, stock = ?, stock_status = ?, warranty = ?, status = ? WHERE id = ?'
+        );
+
+        return $stmt->execute([
+            $data['title'],
+            $data['slug'],
+            $data['category'],
+            $data['brand'],
+            $data['part_number'],
+            $data['manufacturer'],
+            $data['description'],
+            $data['technical_specifications'],
+            $data['images'],
+            $data['price'],
+            $data['stock'],
+            $data['stock_status'],
+            $data['warranty'],
+            $data['status'],
+            $id,
+        ]);
+    }
+}

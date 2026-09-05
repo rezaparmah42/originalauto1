@@ -1,0 +1,969 @@
+{
+    "db": "original_east",
+    "results": {
+        "vehicle_catalog": {
+            "exists": false,
+            "columns": []
+        },
+        "vehicle_brands": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "name",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "name_fa",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "name_en",
+                    "COLUMN_TYPE": "varchar(150)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "logo",
+                    "COLUMN_TYPE": "varchar(255)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "country",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "tinyint(4)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "1"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "vehicle_models": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "brand_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "name",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "name_fa",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "name_en",
+                    "COLUMN_TYPE": "varchar(180)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "common_name_fa",
+                    "COLUMN_TYPE": "varchar(180)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "common_name_en",
+                    "COLUMN_TYPE": "varchar(180)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "slug",
+                    "COLUMN_TYPE": "varchar(191)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "year_from",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "year_to",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "start_year",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "end_year",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "engine_type",
+                    "COLUMN_TYPE": "varchar(120)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "body_type",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "tinyint(4)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "1"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "vehicles": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "user_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "brand_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "brand",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "model",
+                    "COLUMN_TYPE": "varchar(120)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "model_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "brand_name",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "model_name",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "year",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "engine",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "vin",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "plate",
+                    "COLUMN_TYPE": "varchar(20)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "mileage",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0"
+                },
+                {
+                    "COLUMN_NAME": "engine_type",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "engine_code",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "fuel_type",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "transmission",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "ecu_info",
+                    "COLUMN_TYPE": "varchar(255)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "color",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "notes",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "tinyint(4)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "1"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                },
+                {
+                    "COLUMN_NAME": "updated_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "products": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "title",
+                    "COLUMN_TYPE": "varchar(200)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "title_fa",
+                    "COLUMN_TYPE": "varchar(200)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "title_en",
+                    "COLUMN_TYPE": "varchar(200)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "slug",
+                    "COLUMN_TYPE": "varchar(191)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "description",
+                    "COLUMN_TYPE": "mediumtext",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "description_fa",
+                    "COLUMN_TYPE": "mediumtext",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "description_en",
+                    "COLUMN_TYPE": "mediumtext",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "seo_title_fa",
+                    "COLUMN_TYPE": "varchar(200)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "seo_title_en",
+                    "COLUMN_TYPE": "varchar(200)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "seo_description_fa",
+                    "COLUMN_TYPE": "mediumtext",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "seo_description_en",
+                    "COLUMN_TYPE": "mediumtext",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "search_keywords_fa",
+                    "COLUMN_TYPE": "mediumtext",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "search_keywords_en",
+                    "COLUMN_TYPE": "mediumtext",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "price",
+                    "COLUMN_TYPE": "decimal(10,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "stock",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0"
+                },
+                {
+                    "COLUMN_NAME": "supplier_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "image",
+                    "COLUMN_TYPE": "varchar(255)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "tinyint(4)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "1"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "product_compatibility": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "product_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "model_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "year",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "engine_type",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                }
+            ]
+        },
+        "inventory": {
+            "exists": false,
+            "columns": []
+        },
+        "suppliers": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "name",
+                    "COLUMN_TYPE": "varchar(191)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "contact",
+                    "COLUMN_TYPE": "varchar(191)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "phone",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "email",
+                    "COLUMN_TYPE": "varchar(191)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "notes",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "bookings": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "user_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "vehicle_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "service_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "problem",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "'new'"
+                },
+                {
+                    "COLUMN_NAME": "booking_date",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "repairs": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "booking_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "repair_code",
+                    "COLUMN_TYPE": "varchar(30)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "user_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "vehicle_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "customer_name",
+                    "COLUMN_TYPE": "varchar(150)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "customer_phone",
+                    "COLUMN_TYPE": "varchar(20)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "problem_description",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "diagnosis",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "repair_notes",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "cost",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "technician_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "technician_name",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "labor_cost",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "parts_cost",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "total_cost",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "varchar(30)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "'received'"
+                },
+                {
+                    "COLUMN_NAME": "priority",
+                    "COLUMN_TYPE": "varchar(20)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "'normal'"
+                },
+                {
+                    "COLUMN_NAME": "received_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "completed_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "notes",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                },
+                {
+                    "COLUMN_NAME": "updated_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "orders": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "user_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "vehicle_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "total",
+                    "COLUMN_TYPE": "decimal(10,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "'pending'"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                },
+                {
+                    "COLUMN_NAME": "total_amount",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "payment_status",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "'pending'"
+                },
+                {
+                    "COLUMN_NAME": "address",
+                    "COLUMN_TYPE": "text",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "updated_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "order_items": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "order_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "product_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "quantity",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "1"
+                },
+                {
+                    "COLUMN_NAME": "price_snapshot",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "price",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "payments": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "order_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "user_id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "amount",
+                    "COLUMN_TYPE": "decimal(12,2)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "0.00"
+                },
+                {
+                    "COLUMN_NAME": "transaction_id",
+                    "COLUMN_TYPE": "varchar(191)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "'pending'"
+                },
+                {
+                    "COLUMN_NAME": "gateway",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                },
+                {
+                    "COLUMN_NAME": "updated_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "users": {
+            "exists": true,
+            "columns": [
+                {
+                    "COLUMN_NAME": "id",
+                    "COLUMN_TYPE": "int(11)",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": null
+                },
+                {
+                    "COLUMN_NAME": "name",
+                    "COLUMN_TYPE": "varchar(100)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "email",
+                    "COLUMN_TYPE": "varchar(150)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "password",
+                    "COLUMN_TYPE": "varchar(255)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "role",
+                    "COLUMN_TYPE": "varchar(50)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "'user'"
+                },
+                {
+                    "COLUMN_NAME": "created_at",
+                    "COLUMN_TYPE": "timestamp",
+                    "IS_NULLABLE": "NO",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                },
+                {
+                    "COLUMN_NAME": "phone",
+                    "COLUMN_TYPE": "varchar(20)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "national_id",
+                    "COLUMN_TYPE": "varchar(20)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "avatar",
+                    "COLUMN_TYPE": "varchar(255)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "status",
+                    "COLUMN_TYPE": "tinyint(4)",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "1"
+                },
+                {
+                    "COLUMN_NAME": "last_login",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "NULL"
+                },
+                {
+                    "COLUMN_NAME": "updated_at",
+                    "COLUMN_TYPE": "datetime",
+                    "IS_NULLABLE": "YES",
+                    "COLUMN_DEFAULT": "current_timestamp()"
+                }
+            ]
+        },
+        "roles": {
+            "exists": false,
+            "columns": []
+        },
+        "permissions": {
+            "exists": false,
+            "columns": []
+        }
+    }
+}

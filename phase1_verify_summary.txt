@@ -1,0 +1,14 @@
+PHASE1_VERIFY_SUMMARY - available verify scripts
+
+Found verify scripts (tools/ or project root):
+- verify_workshop_vehicle_history.php
+- verify_workshop.php
+- verify_payment_callback_token.php
+- verify_milestone.php
+- verify_customer_smart_garage.php
+- verify_customer_garage.php
+- verify_compat_test.php
+- tools/verify_routes.php
+- tools/verify_admin_authorization.php
+
+For Phase-1 (read-only) these files are listed for runtime verification. Execution requires PHP CLI and may need DB credentials or live services; current session captured file names for evidence. If you want, I can run them to produce runtime outputs (non-destructive) and save to `phase1_verify_<name>.txt`.

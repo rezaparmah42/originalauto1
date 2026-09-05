@@ -1,0 +1,30 @@
+<?php
+
+namespace App\Controllers;
+
+use App\Core\Controller;
+
+class ShopController extends Controller
+{
+    public function index()
+    {
+        $this->view('shop/index');
+    }
+
+    public function product($slug)
+    {
+        $this->view('shop/product', [
+            'slug' => $slug
+        ]);
+    }
+
+    public function cart()
+    {
+        $this->view('shop/cart');
+    }
+
+    public function checkout()
+    {
+        $this->view('shop/checkout');
+    }
+}

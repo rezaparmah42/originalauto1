@@ -1,0 +1,456 @@
+﻿FILE: app/Models/Admin.php
+PROBLEM: Missing table: suppliers
+SQL: SELECT COUNT(*) FROM suppliers
+---
+FILE: app/Models/ApiDevice.php
+PROBLEM: Missing table: api_devices
+SQL: INSERT INTO api_devices (user_id, token_id, device_name, platform, last_active, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/ApiDevice.php
+PROBLEM: Missing table: api_devices
+SQL: UPDATE api_devices SET last_active = ? WHERE id = ?
+---
+FILE: app/Models/ApiDevice.php
+PROBLEM: Missing table: api_devices
+SQL: SELECT * FROM api_devices WHERE token_id = ? LIMIT 1
+---
+FILE: app/Models/ApiDevice.php
+PROBLEM: Missing table: api_devices
+SQL: SELECT * FROM api_devices WHERE user_id = ? ORDER BY last_active DESC LIMIT ?
+---
+FILE: app/Models/ApiLog.php
+PROBLEM: Missing table: api_logs
+SQL: INSERT INTO api_logs (user_id, endpoint, method, ip_address, response_code, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/ApiLog.php
+PROBLEM: Missing table: api_logs
+SQL: SELECT l.*, u.name AS user_name, u.email AS user_email, u.phone AS user_phone FROM api_logs l LEFT JOIN users u ON u.id = l.user_id ORDER BY l.created_at DESC LIMIT ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Missing column: api_tokens.name
+SQL: INSERT INTO api_tokens (user_id, name, token, created_at, expires_at, revoked) VALUES (?, ?, ?, ?, ?, 0)
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Missing column: api_tokens.revoked
+SQL: INSERT INTO api_tokens (user_id, name, token, created_at, expires_at, revoked) VALUES (?, ?, ?, ?, ?, 0)
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Missing column: api_tokens.last_used_at
+SQL: UPDATE api_tokens SET last_used_at = ? WHERE token = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Missing column: api_tokens.revoked
+SQL: UPDATE api_tokens SET revoked = 1 WHERE token = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Missing column: api_tokens.revoked
+SQL: UPDATE api_tokens SET revoked = 1 WHERE id = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Missing column: api_tokens.revoked
+SQL: UPDATE api_tokens SET revoked = 1 WHERE user_id = ?
+---
+FILE: app/Models/ApiToken.php
+PROBLEM: Missing table: api_devices
+SQL: SELECT t.*, u.name AS user_name, u.email AS user_email, d.device_name, d.platform, d.last_active FROM api_tokens t LEFT JOIN users u ON u.id = t.user_id LEFT JOIN api_devices d ON d.token_id = t.id WHERE t.revoked = 0 AND t.expires_at > NOW() ORDER BY t.last_used_at DESC, t.created_at DESC LIMIT ?
+---
+FILE: app/Models/ChatMessage.php
+PROBLEM: Missing table: chat_messages
+SQL: INSERT INTO chat_messages (repair_id, sender_id, sender_type, message, created_at) VALUES (?, ?, ?, ?, ?)
+---
+FILE: app/Models/ChatMessage.php
+PROBLEM: Missing table: chat_messages
+SQL: SELECT * FROM chat_messages WHERE repair_id = ? ORDER BY created_at ASC LIMIT ?
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: INSERT INTO diagnostic_sessions (vehicle_id, user_id, device_type, connection_status, created_at) VALUES (?, ?, ?, ?, ?)
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: UPDATE diagnostic_sessions SET connection_status = ? WHERE id = ?
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_results
+SQL: INSERT INTO diagnostic_results (session_id, error_code_id, raw_data, created_at) VALUES (?, ?, ?, ?)
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_results
+SQL: SELECT dr.*, ds.vehicle_id, ds.connection_status, ds.created_at AS session_created_at, oc.code, oc.title_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY ds.created_at DESC, dr.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT dr.*, ds.vehicle_id, ds.connection_status, ds.created_at AS session_created_at, oc.code, oc.title_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY ds.created_at DESC, dr.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT dr.*, ds.vehicle_id, ds.connection_status, ds.created_at AS session_created_at, oc.code, oc.title_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY ds.created_at DESC, dr.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_results
+SQL: SELECT dr.*, ds.vehicle_id, ds.connection_status, ds.created_at AS session_created_at, oc.code, oc.title_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY dr.created_at DESC LIMIT 1
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT dr.*, ds.vehicle_id, ds.connection_status, ds.created_at AS session_created_at, oc.code, oc.title_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY dr.created_at DESC LIMIT 1
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT dr.*, ds.vehicle_id, ds.connection_status, ds.created_at AS session_created_at, oc.code, oc.title_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY dr.created_at DESC LIMIT 1
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT ds.id AS session_id, ds.vehicle_id, ds.user_id, ds.device_type, ds.connection_status, ds.created_at AS session_created_at, v.brand AS vehicle_brand, v.model AS vehicle_model, v.vin AS vehicle_vin, GROUP_CONCAT(DISTINCT oc.code SEPARATOR ",") AS dtc_codes, GROUP_CONCAT(DISTINCT oc.title_fa SEPARATOR "; ") AS dtc_titles, GROUP_CONCAT(DISTINCT oc.severity SEPARATOR ",") AS severities FROM diagnostic_sessions ds LEFT JOIN vehicles v ON v.id = ds.vehicle_id LEFT JOIN diagnostic_results dr ON dr.session_id = ds.id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.user_id = ? GROUP BY ds.id ORDER BY ds.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_results
+SQL: SELECT ds.id AS session_id, ds.vehicle_id, ds.user_id, ds.device_type, ds.connection_status, ds.created_at AS session_created_at, v.brand AS vehicle_brand, v.model AS vehicle_model, v.vin AS vehicle_vin, GROUP_CONCAT(DISTINCT oc.code SEPARATOR ",") AS dtc_codes, GROUP_CONCAT(DISTINCT oc.title_fa SEPARATOR "; ") AS dtc_titles, GROUP_CONCAT(DISTINCT oc.severity SEPARATOR ",") AS severities FROM diagnostic_sessions ds LEFT JOIN vehicles v ON v.id = ds.vehicle_id LEFT JOIN diagnostic_results dr ON dr.session_id = ds.id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.user_id = ? GROUP BY ds.id ORDER BY ds.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT ds.id AS session_id, ds.vehicle_id, ds.user_id, ds.device_type, ds.connection_status, ds.created_at AS session_created_at, v.brand AS vehicle_brand, v.model AS vehicle_model, v.vin AS vehicle_vin, GROUP_CONCAT(DISTINCT oc.code SEPARATOR ",") AS dtc_codes, GROUP_CONCAT(DISTINCT oc.title_fa SEPARATOR "; ") AS dtc_titles, GROUP_CONCAT(DISTINCT oc.severity SEPARATOR ",") AS severities FROM diagnostic_sessions ds LEFT JOIN vehicles v ON v.id = ds.vehicle_id LEFT JOIN diagnostic_results dr ON dr.session_id = ds.id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.user_id = ? GROUP BY ds.id ORDER BY ds.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT ds.*, v.model AS vehicle_model, u.name AS customer_name FROM diagnostic_sessions ds LEFT JOIN vehicles v ON v.id = ds.vehicle_id LEFT JOIN users u ON u.id = ds.user_id WHERE ds.id = ? LIMIT 1
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_results
+SQL: SELECT dr.*, oc.code, oc.title_fa, oc.description_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE dr.session_id = ? ORDER BY dr.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT dr.*, oc.code, oc.title_fa, oc.description_fa, oc.severity, oc.recommended_actions FROM diagnostic_results dr LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE dr.session_id = ? ORDER BY dr.created_at DESC
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT ds.*, v.model AS vehicle_model, u.name AS customer_name FROM diagnostic_sessions ds LEFT JOIN vehicles v ON v.id = ds.vehicle_id LEFT JOIN users u ON u.id = ds.user_id ORDER BY ds.created_at DESC LIMIT ?
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT COUNT(*) AS total FROM diagnostic_sessions
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: diagnostic_results
+SQL: SELECT COUNT(DISTINCT dr.session_id) FROM diagnostic_results dr
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT id FROM obd_error_codes WHERE code = ? LIMIT 1
+---
+FILE: app/Models/Diagnostic.php
+PROBLEM: Missing table: obd_error_codes
+SQL: INSERT INTO obd_error_codes (code, system, title_fa, description_fa, severity, possible_causes, recommended_actions, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/DiagnosticAI.php
+PROBLEM: Missing table: diagnostic_knowledge
+SQL: SELECT * FROM diagnostic_knowledge WHERE dtc_code = ? LIMIT 1
+---
+FILE: app/Models/DiagnosticAI.php
+PROBLEM: Missing table: repair_recommendations
+SQL: SELECT * FROM repair_recommendations WHERE diagnostic_id = ? ORDER BY priority DESC
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Missing table: diagnostic_knowledge
+SQL: SELECT * FROM diagnostic_knowledge WHERE dtc_code = ? LIMIT 1
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Missing table: diagnostic_knowledge
+SQL: INSERT INTO diagnostic_knowledge (dtc_code, title, description, severity, possible_causes, recommended_actions, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Missing table: diagnostic_knowledge
+SQL: UPDATE diagnostic_knowledge SET dtc_code=?, title=?, description=?, severity=?, possible_causes=?, recommended_actions=? WHERE id=?
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Missing table: diagnostic_knowledge
+SQL: DELETE FROM diagnostic_knowledge WHERE id = ?
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Missing table: diagnostic_knowledge
+SQL: SELECT * FROM diagnostic_knowledge WHERE dtc_code LIKE ? OR title LIKE ? OR description LIKE ? LIMIT ?
+---
+FILE: app/Models/FaultKnowledge.php
+PROBLEM: Missing table: diagnostic_knowledge
+SQL: SELECT * FROM diagnostic_knowledge WHERE id = ? LIMIT 1
+---
+FILE: app/Models/Invoice.php
+PROBLEM: Missing column: invoices.invoice_number
+SQL: INSERT INTO invoices (order_id, invoice_number, amount, status, created_at) VALUES (?, ?, ?, ?, ?)
+---
+FILE: app/Models/Invoice.php
+PROBLEM: Missing column: invoices.amount
+SQL: INSERT INTO invoices (order_id, invoice_number, amount, status, created_at) VALUES (?, ?, ?, ?, ?)
+---
+FILE: app/Models/Maintenance.php
+PROBLEM: Missing table: maintenance_records
+SQL: INSERT INTO maintenance_records (vehicle_id, title, description, service_date, next_service_date, mileage, status, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Maintenance.php
+PROBLEM: Missing table: maintenance_records
+SQL: UPDATE maintenance_records SET status = ? WHERE id = ?
+---
+FILE: app/Models/Maintenance.php
+PROBLEM: Missing table: maintenance_records
+SQL: SELECT * FROM maintenance_records WHERE vehicle_id = ? ORDER BY service_date DESC
+---
+FILE: app/Models/Maintenance.php
+PROBLEM: Missing table: maintenance_records
+SQL: SELECT * FROM maintenance_records WHERE vehicle_id = ? AND status != ? ORDER BY service_date ASC LIMIT 5
+---
+FILE: app/Models/Maintenance.php
+PROBLEM: Missing table: diagnostic_reports
+SQL: SELECT * FROM diagnostic_reports WHERE vehicle_id = ? ORDER BY created_at DESC LIMIT 10
+---
+FILE: app/Models/Notification.php
+PROBLEM: Missing table: notifications
+SQL: INSERT INTO notifications (user_id, type, title, message, status, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Notification.php
+PROBLEM: Missing table: notifications
+SQL: SELECT * FROM notifications WHERE user_id = ? ORDER BY created_at DESC LIMIT ?
+---
+FILE: app/Models/Notification.php
+PROBLEM: Missing table: notifications
+SQL: UPDATE notifications SET status = ?, read_at = ? WHERE id = ?
+---
+FILE: app/Models/Notification.php
+PROBLEM: Missing table: notifications
+SQL: SELECT COUNT(*) FROM notifications WHERE user_id = ? AND status = ?
+---
+FILE: app/Models/OBDCode.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT * FROM obd_error_codes WHERE code = ? LIMIT 1
+---
+FILE: app/Models/OBDCode.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT * FROM obd_error_codes WHERE code LIKE ? OR title_fa LIKE ? OR description_fa LIKE ? ORDER BY code ASC LIMIT 20
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing column: orders.vehicle_id
+SQL: INSERT INTO orders (user_id, vehicle_id, total_amount, status, payment_status, address, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing column: orders.total_amount
+SQL: INSERT INTO orders (user_id, vehicle_id, total_amount, status, payment_status, address, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing column: orders.payment_status
+SQL: INSERT INTO orders (user_id, vehicle_id, total_amount, status, payment_status, address, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing column: orders.address
+SQL: INSERT INTO orders (user_id, vehicle_id, total_amount, status, payment_status, address, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing column: orders.updated_at
+SQL: INSERT INTO orders (user_id, vehicle_id, total_amount, status, payment_status, address, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing table: order_items
+SQL: INSERT INTO order_items (order_id, product_id, quantity, price) VALUES (?, ?, ?, ?)
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing table: order_items
+SQL: SELECT oi.*, p.title_fa, p.title_en, p.slug FROM order_items oi LEFT JOIN products p ON p.id = oi.product_id WHERE oi.order_id = ?
+---
+FILE: app/Models/Order.php
+PROBLEM: Missing column: orders.payment_status
+SQL: UPDATE orders SET payment_status = ? WHERE id = ?
+---
+FILE: app/Models/Payment.php
+PROBLEM: Missing table: payments
+SQL: INSERT INTO payments (order_id, user_id, amount, transaction_id, status, gateway, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Payment.php
+PROBLEM: Missing table: payments
+SQL: SELECT * FROM payments WHERE order_id = ? ORDER BY created_at DESC LIMIT 1
+---
+FILE: app/Models/Payment.php
+PROBLEM: Missing table: payments
+SQL: UPDATE payments SET status = ?, updated_at = ? WHERE id = ?
+---
+FILE: app/Models/Payment.php
+PROBLEM: Missing table: payments
+SQL: SELECT * FROM payments WHERE user_id = ? ORDER BY created_at DESC
+---
+FILE: app/Models/Product.php
+PROBLEM: Missing table: inventory_history
+SQL: SELECT ih.*, p.title_fa, p.title_en, u.name AS admin_name FROM inventory_history ih LEFT JOIN products p ON p.id = ih.product_id LEFT JOIN users u ON u.id = ih.admin_id ORDER BY ih.created_at DESC LIMIT ?
+---
+FILE: app/Models/Product.php
+PROBLEM: Missing table: inventory_history
+SQL: INSERT INTO inventory_history (product_id, admin_id, old_stock, new_stock, change_amount, type, note, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/ProductCompatibility.php
+PROBLEM: Missing table: product_compatibility
+SQL: SELECT * FROM product_compatibility WHERE product_id = ? ORDER BY id ASC
+---
+FILE: app/Models/ProductCompatibility.php
+PROBLEM: Missing table: product_compatibility
+SQL: SELECT * FROM product_compatibility WHERE model_id = ? ORDER BY id ASC
+---
+FILE: app/Models/Recommendation.php
+PROBLEM: Missing table: repair_recommendations
+SQL: SELECT * FROM repair_recommendations WHERE diagnostic_id = ? ORDER BY priority DESC
+---
+FILE: app/Models/Recommendation.php
+PROBLEM: Missing table: repair_recommendations
+SQL: INSERT INTO repair_recommendations (diagnostic_id, part_name, action, priority) VALUES (?, ?, ?, ?)
+---
+FILE: app/Models/Repair.php
+PROBLEM: Missing column: repairs.booking_id
+SQL: INSERT INTO repairs (booking_id, diagnosis, repair_notes, cost, status, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Repair.php
+PROBLEM: Missing column: repairs.repair_notes
+SQL: INSERT INTO repairs (booking_id, diagnosis, repair_notes, cost, status, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Repair.php
+PROBLEM: Missing column: repairs.cost
+SQL: INSERT INTO repairs (booking_id, diagnosis, repair_notes, cost, status, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Repair.php
+PROBLEM: Missing table: order_items
+SQL: SELECT o.id, o.total, o.status, o.created_at, oi.id AS order_item_id, oi.product_id, oi.quantity, oi.unit_price, p.title_fa, p.title_en FROM orders o LEFT JOIN order_items oi ON oi.order_id = o.id LEFT JOIN products p ON p.id = oi.product_id WHERE o.user_id = ? ORDER BY o.created_at DESC
+---
+FILE: app/Models/Repair.php
+PROBLEM: Missing table: repair_notes
+SQL: SELECT * FROM repair_notes WHERE repair_id = ? ORDER BY created_at ASC
+---
+FILE: app/Models/Repair.php
+PROBLEM: Missing table: workshop_tasks
+SQL: SELECT * FROM workshop_tasks WHERE repair_id = ? ORDER BY id ASC
+---
+FILE: app/Models/Repair.php
+PROBLEM: Missing table: repair_updates
+SQL: SELECT * FROM repair_updates WHERE repair_id = ? ORDER BY created_at ASC
+---
+FILE: app/Models/RepairNote.php
+PROBLEM: Missing table: repair_notes
+SQL: INSERT INTO repair_notes (repair_id, user_id, note, created_at) VALUES (?, ?, ?, ?)
+---
+FILE: app/Models/RepairNote.php
+PROBLEM: Missing table: repair_notes
+SQL: SELECT * FROM repair_notes WHERE repair_id = ? ORDER BY created_at ASC
+---
+FILE: app/Models/RepairUpdate.php
+PROBLEM: Missing table: repair_updates
+SQL: INSERT INTO repair_updates (repair_id, status, title, description, created_by, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/RepairUpdate.php
+PROBLEM: Missing table: repair_updates
+SQL: SELECT * FROM repair_updates WHERE repair_id = ? ORDER BY created_at ASC
+---
+FILE: app/Models/SMS.php
+PROBLEM: Missing table: sms_logs
+SQL: INSERT INTO sms_logs (user_id, phone, message, provider, status, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/SMS.php
+PROBLEM: Missing table: sms_logs
+SQL: SELECT * FROM sms_logs WHERE user_id = ? ORDER BY created_at DESC LIMIT ?
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: SELECT * FROM suppliers ORDER BY name ASC
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: SELECT * FROM suppliers WHERE id = ? LIMIT 1
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: INSERT INTO suppliers (name, contact, phone, email, notes, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: UPDATE suppliers SET name = ?, contact = ?, phone = ?, email = ?, notes = ? WHERE id = ?
+---
+FILE: app/Models/Supplier.php
+PROBLEM: Missing table: suppliers
+SQL: DELETE FROM suppliers WHERE id = ?
+---
+FILE: app/Models/Technician.php
+PROBLEM: Missing column: technicians.specialization
+SQL: INSERT INTO technicians (user_id, name, phone, specialization, status, created_at) VALUES (?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Technician.php
+PROBLEM: Missing column: technicians.specialization
+SQL: UPDATE technicians SET user_id=?, name=?, phone=?, specialization=?, status=? WHERE id=?
+---
+FILE: app/Models/Technician.php
+PROBLEM: Missing table: workshop_tasks
+SQL: SELECT * FROM workshop_tasks WHERE technician_id = ? ORDER BY id DESC
+---
+FILE: app/Models/Technician.php
+PROBLEM: Missing table: workshop_tasks
+SQL: SELECT COUNT(*) AS total, SUM(status = "completed") AS completed FROM workshop_tasks WHERE technician_id = ?
+---
+FILE: app/Models/Technician.php
+PROBLEM: Missing table: technician_activity
+SQL: INSERT INTO technician_activity (technician_id, action, description, created_at) VALUES (?, ?, ?, ?)
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing column: vehicles.model
+SQL: INSERT INTO vehicles (user_id, brand_id, brand, model, year, engine, vin, mileage, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing column: vehicles.engine
+SQL: INSERT INTO vehicles (user_id, brand_id, brand, model, year, engine, vin, mileage, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing table: maintenance_records
+SQL: SELECT mr.*, v.model FROM maintenance_records mr LEFT JOIN vehicles v ON v.id = mr.vehicle_id WHERE mr.vehicle_id = ? ORDER BY mr.service_date DESC
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing table: vehicle_profiles
+SQL: SELECT * FROM vehicle_profiles WHERE vehicle_id = ? LIMIT 1
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing table: diagnostic_results
+SQL: SELECT dr.*, oc.code, oc.title_fa, oc.severity FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY dr.created_at DESC
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT dr.*, oc.code, oc.title_fa, oc.severity FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY dr.created_at DESC
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing table: obd_error_codes
+SQL: SELECT dr.*, oc.code, oc.title_fa, oc.severity FROM diagnostic_results dr LEFT JOIN diagnostic_sessions ds ON ds.id = dr.session_id LEFT JOIN obd_error_codes oc ON oc.id = dr.error_code_id WHERE ds.vehicle_id = ? ORDER BY dr.created_at DESC
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing table: diagnostic_sessions
+SQL: SELECT MAX(created_at) AS last_scan FROM diagnostic_sessions WHERE vehicle_id = ?
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing column: vehicles.model
+SQL: UPDATE vehicles SET brand_id = ?, brand = ?, model = ?, year = ?, engine = ?, vin = ?, mileage = ? WHERE id = ?
+---
+FILE: app/Models/Vehicle.php
+PROBLEM: Missing column: vehicles.engine
+SQL: UPDATE vehicles SET brand_id = ?, brand = ?, model = ?, year = ?, engine = ?, vin = ?, mileage = ? WHERE id = ?
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Missing table: workshop_tasks
+SQL: INSERT INTO workshop_tasks (repair_id, technician_id, title, description, priority, status, started_at, completed_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Missing table: workshop_tasks
+SQL: UPDATE workshop_tasks SET technician_id = ? WHERE id = ?
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Missing table: workshop_tasks
+SQL: UPDATE workshop_tasks SET status = ?, completed_at = ? WHERE id = ?
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Missing table: workshop_tasks
+SQL: UPDATE workshop_tasks SET status = ?, started_at = ? WHERE id = ?
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Missing table: workshop_tasks
+SQL: SELECT * FROM workshop_tasks WHERE repair_id = ? ORDER BY id ASC
+---
+FILE: app/Models/WorkshopTask.php
+PROBLEM: Missing table: workshop_tasks
+SQL: SELECT * FROM workshop_tasks WHERE technician_id = ? ORDER BY id DESC
+---

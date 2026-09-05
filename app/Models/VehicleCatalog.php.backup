@@ -1,0 +1,77 @@
+<?php
+
+namespace App\Models;
+
+use PDO;
+
+class VehicleCatalog extends Model
+{
+    public function getAll()
+    {
+        $stmt = $this->db->prepare('SELECT * FROM vehicle_catalog WHERE status = 1 ORDER BY brand, model, year_start, engine_type');
+        $stmt->execute();
+
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getBrands()
+    {
+        $stmt = $this->db->prepare('SELECT DISTINCT brand FROM vehicle_catalog WHERE status = 1 ORDER BY brand');
+        $stmt->execute();
+
+        return array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'brand');
+    }
+
+    public function getModels($brand = null)
+    {
+        if ($brand) {
+            $stmt = $this->db->prepare('SELECT DISTINCT model FROM vehicle_catalog WHERE status = 1 AND brand = ? ORDER BY model');
+            $stmt->execute([$brand]);
+        } else {
+            $stmt = $this->db->prepare('SELECT DISTINCT model FROM vehicle_catalog WHERE status = 1 ORDER BY model');
+            $stmt->execute();
+        }
+
+        return array_column($stmt->fetchAll(PDO::FETCH_ASSOC), 'model');
+    }
+
+    public function getYears($brand = null, $model = null)
+    {
+        $sql = 'SELECT DISTINCT year_start, year_end FROM vehicle_catalog WHERE status = 1';
+        $params = [];
+
+        if ($brand) {
+            $sql .= ' AND brand = ?';
+            $params[] = $brand;
+        }
+
+        if ($model) {
+            $sql .= ' AND model = ?';
+            $params[] = $model;
+        }
+
+        $sql .= ' ORDER BY year_start, year_end';
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+
+        $years = [];
+        foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            if ($row['year_start'] === $row['year_end']) {
+                $years[] = $row['year_start'];
+            } else {
+                $years[] = $row['year_start'] . ' - ' . $row['year_end'];
+            }
+        }
+
+        return array_unique($years);
+    }
+
+    public function findById($id)
+    {
+        $stmt = $this->db->prepare('SELECT * FROM vehicle_catalog WHERE id = ? LIMIT 1');
+        $stmt->execute([$id]);
+
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
+}

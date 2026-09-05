@@ -1,0 +1,1 @@
+<?php class FlashReader { public function read(){} }

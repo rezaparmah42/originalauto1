@@ -1,0 +1,56 @@
+﻿URL=http://localhost/originalshargh/
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---
+URL=http://localhost/originalshargh/services
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---
+URL=http://localhost/originalshargh/articles
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---
+URL=http://localhost/originalshargh/shop
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---
+URL=http://localhost/originalshargh/booking
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---
+URL=http://localhost/originalshargh/about
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---
+URL=http://localhost/originalshargh/contact
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---
+URL=http://localhost/originalshargh/admin/login
+HTTP_STATUS=ERROR
+RESPONSE_LENGTH=0
+INDEX_OF=/originalshargh=false
+PHP_ERROR_IN_BODY=false
+ERROR=Unable to connect to the remote server
+---

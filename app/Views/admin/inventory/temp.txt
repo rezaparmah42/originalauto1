@@ -1,0 +1,2 @@
+<?php
+// Placeholder to keep directory tracked until inventory views are created.

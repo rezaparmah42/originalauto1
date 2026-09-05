@@ -1,0 +1,1 @@
+<?php class VerifyService { public function verify(){} }

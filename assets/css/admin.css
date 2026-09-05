@@ -1,0 +1,9 @@
+.admin-dashboard{
+    padding:20px;
+}
+
+.dashboard-card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+}
