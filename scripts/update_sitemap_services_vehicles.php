@@ -1,7 +1,15 @@
 <?php
 // Simple sitemap generator for services and vehicles from content banks
-$base = rtrim('" . SITE_URL . "', "/");
 $root = dirname(__DIR__);
+$site = '';
+if (defined('SITE_URL')) {
+    $site = rtrim(SITE_URL, '/');
+} elseif (getenv('SITE_URL')) {
+    $site = rtrim(getenv('SITE_URL'), '/');
+} else {
+    // fallback - please set SITE_URL in your environment or app config
+    $site = 'https://example.com';
+}
 $bank1 = include $root . '/app/Data/content_bank1.php';
 $bank2 = include $root . '/app/Data/content_bank2.php';
 $urls = [];
@@ -32,7 +40,7 @@ foreach ($urls as $u) $unique[$u['loc']] = $u['lastmod'];
 $xml = new \SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"></urlset>');
 foreach ($unique as $loc => $lm) {
     $url = $xml->addChild('url');
-    $url->addChild('loc', htmlspecialchars((isset($_SERVER['SITE_URL']) ? rtrim($_SERVER['SITE_URL'],'/') : '') . $loc));
+    $url->addChild('loc', htmlspecialchars($site . $loc));
     $url->addChild('lastmod', $lm);
 }
 $outPath = $root . '/public/sitemap-services-vehicles.xml';
