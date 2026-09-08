@@ -1,6 +1,7 @@
 <?php
 
 require_once __DIR__ . '/config/config.php';
+error_log('[bootstrap] config loaded');
 
 // Ensure core Database class is available as early fallback for legacy helpers
 // Some legacy files call `Database::connect()` without a namespace; load the
@@ -11,9 +12,11 @@ if (file_exists(__DIR__ . '/app/Core/Database.php')) {
         class_alias('App\\Core\\Database', 'Database');
     }
 }
+error_log('[bootstrap] Database class ensured');
 
 define('PROJECT_ACCESS', true);
 require_once __DIR__ . '/includes/functions.php';
+error_log('[bootstrap] includes/functions.php loaded');
 
 ini_set('session.use_strict_mode', '1');
 ini_set('session.use_only_cookies', '1');
@@ -97,8 +100,11 @@ spl_autoload_register(function($class){
 use App\Core\Router;
 
 $router = new Router();
+error_log('[bootstrap] Router instance created');
 
 require_once __DIR__ . '/app/routes.php';
 require_once __DIR__ . '/app/api_routes.php';
+error_log('[bootstrap] routes loaded');
 
 $router->run();
+error_log('[bootstrap] before router->run()');

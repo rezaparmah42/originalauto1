@@ -18,6 +18,12 @@ class Model
             }
         }
 
-        $this->db = \App\Core\Database::connect();
+        try {
+            $this->db = \App\Core\Database::connect();
+        } catch (\Throwable $e) {
+            // Log DB connection errors for production debugging and rethrow
+            error_log('[Model] Database connect failed: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
+            throw $e;
+        }
     }
 }

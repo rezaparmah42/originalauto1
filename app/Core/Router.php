@@ -23,11 +23,22 @@ class Router
     {
         $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-        $base = dirname($_SERVER['SCRIPT_NAME']);
-        if($base !== '/'){
-            $uri = str_replace($base, '', $uri);
+        error_log('[router] run start; REQUEST_URI=' . ($_SERVER['REQUEST_URI'] ?? '') );
+
+        $base = dirname($_SERVER['SCRIPT_NAME'] ?? '/');
+        // Normalize base: dirname() can return '.' on some setups. Treat '.' or
+        // '/' as an empty base (i.e. no prefix to strip). Use a prefix-only
+        // removal to avoid accidentally removing the base when it appears
+        // elsewhere in the URI (str_replace removed all occurrences).
+        if ($base === '.' || $base === '/') {
+            $base = '';
         }
 
+        if ($base !== '' && strpos($uri, $base) === 0) {
+            $uri = substr($uri, strlen($base));
+        }
+
+        // Ensure a leading slash and normalize trailing slash to single '/'
         $uri = rtrim($uri, '/') ?: '/';
         $method = $_SERVER['REQUEST_METHOD'] ?? 'GET';
         $routes = $this->routes[$method] ?? [];
@@ -80,50 +91,68 @@ class Router
 
     private function dispatch($action, $params = [])
     {
-        if(is_array($action)){
-            $controller = new $action[0]();
+        if (is_array($action)) {
+            $controllerClass = $action[0];
             $method = $action[1];
-            if (method_exists($controller, $method)) {
-                try {
-                    $ref = new \ReflectionMethod($controller, $method);
-                    $callArgs = [];
+            try {
+                error_log('[router] dispatch controller=' . $controllerClass . ' method=' . $method);
+                $controller = new $controllerClass();
 
-                    // Map route parameters by name to the method signature. This avoids
-                    // positional padding that can mask parameter-contract bugs.
-                    foreach ($ref->getParameters() as $p) {
-                        $pname = $p->getName();
-                        if (array_key_exists($pname, $params)) {
-                            $callArgs[] = $params[$pname];
-                            continue;
+                if (method_exists($controller, $method)) {
+                    try {
+                        $ref = new \ReflectionMethod($controller, $method);
+                        $callArgs = [];
+
+                        foreach ($ref->getParameters() as $p) {
+                            $pname = $p->getName();
+                            if (array_key_exists($pname, $params)) {
+                                $callArgs[] = $params[$pname];
+                                continue;
+                            }
+
+                            if ($p->isDefaultValueAvailable()) {
+                                $callArgs[] = $p->getDefaultValue();
+                                continue;
+                            }
+
+                            if ($p->isOptional()) {
+                                $callArgs[] = null;
+                                continue;
+                            }
+
+                            throw new \RuntimeException("Missing route parameter '{$pname}' for {$controllerClass}::{$method}");
                         }
-
-                        if ($p->isDefaultValueAvailable()) {
-                            $callArgs[] = $p->getDefaultValue();
-                            continue;
-                        }
-
-                        if ($p->isOptional()) {
-                            $callArgs[] = null;
-                            continue;
-                        }
-
-                        // Required parameter missing — raise a clear error so we can
-                        // fix the route/controller contract instead of silently masking it.
-                        throw new \RuntimeException("Missing route parameter '{$pname}' for {$action[0]}::{$method}");
+                    } catch (\ReflectionException $e) {
+                        $callArgs = array_values($params);
                     }
-                } catch (\ReflectionException $e) {
-                    // If reflection fails, fall back to positional mapping
-                    $callArgs = array_values($params);
-                }
 
-                call_user_func_array([$controller, $method], $callArgs);
+                    try {
+                        call_user_func_array([$controller, $method], $callArgs);
+                    } catch (\Throwable $e) {
+                        error_log('[router] unhandled exception in controller: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
+                        http_response_code(500);
+                        echo "500 Server Error";
+                    }
+                    return;
+                }
+            } catch (\Throwable $e) {
+                // Catch instantiation errors (e.g. missing class, fatal in constructor)
+                error_log('[router] dispatch failure: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
+                http_response_code(500);
+                echo "500 Server Error";
                 return;
             }
         } else {
-            if ($params) {
-                call_user_func_array($action, array_values($params));
-            } else {
-                call_user_func($action);
+            try {
+                if ($params) {
+                    call_user_func_array($action, array_values($params));
+                } else {
+                    call_user_func($action);
+                }
+            } catch (\Throwable $e) {
+                error_log('[router] action failure: ' . $e->getMessage() . "\n" . $e->getTraceAsString());
+                http_response_code(500);
+                echo "500 Server Error";
             }
         }
     }
