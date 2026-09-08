@@ -21,6 +21,20 @@ require __DIR__ . '/../layouts/header.php';
         <a class="btn-outline" href="<?= SITE_URL ?>/booking">رزرو سرویس</a>
     </div>
 </section>
+<?php
+// If content bank 2 has brand-level notes, render them
+try {
+    $bank2 = include __DIR__ . '/../../app/Data/content_bank2.php';
+    $brandData = $bank2[$brandSlug] ?? null;
+} catch (\Throwable $_) {
+    $brandData = null;
+}
+if (!empty($brandData['note'])): ?>
+    <section class="section-shell">
+        <div class="section-heading"><h2>دربارهٔ <?= e($brandData['name'] ?? $brandLabel) ?></h2></div>
+        <div class="detail-card"><p><?= e($brandData['note']) ?></p></div>
+    </section>
+<?php endif; ?>
 <section class="section-shell">
     <div class="service-grid">
         <?php foreach (($vehicles ?? []) as $item): ?>
