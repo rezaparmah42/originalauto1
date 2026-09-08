@@ -37,6 +37,10 @@ require __DIR__ . '/../partials/schema.php';
     <div class="hero-badge"><a href="<?= SITE_URL ?>/services">خدمات</a> / <?= e($serviceMeta['title_fa'] ?? $serviceMeta['title_en'] ?? 'خدمت') ?></div>
     <h1><?= e($subservice['h1'] ?? $subservice['title_fa'] ?? 'زیرخدمت') ?></h1>
     <p><?= e($subservice['intro'] ?? '') ?></p>
+    <?php $heroImg = SITE_URL . '/uploads/services/' . rawurlencode($serviceSlug) . '/' . rawurlencode($subSlug ?: $serviceSlug) . '-hero.jpg'; ?>
+    <div class="hero-media">
+        <img src="<?= $heroImg ?>" alt="<?= e($subservice['title_fa'] ?? '') ?>" width="1200" height="675" loading="eager" fetchpriority="high" onerror="this.style.display='none'" title="<?= e($subservice['title_fa'] ?? '') ?>">
+    </div>
     <div class="hero-actions">
         <a class="btn-primary" href="<?= SITE_URL ?>/booking">رزرو این خدمت</a>
         <a class="btn-outline" href="<?= SITE_URL ?>/services/<?= rawurlencode($serviceSlug) ?>">بازگشت به خدمات <?= e($serviceMeta['title_fa'] ?? '') ?></a>
@@ -67,6 +71,10 @@ require __DIR__ . '/../partials/schema.php';
 <section class="section-shell">
     <div class="section-heading">
         <h2>مراحل انجام کار در اورجینال شرق</h2>
+    </div>
+    <?php $midImg = SITE_URL . '/uploads/services/' . rawurlencode($serviceSlug) . '/' . rawurlencode($subSlug ?: $serviceSlug) . '-mid.jpg'; ?>
+    <div class="hero-media mid">
+        <img src="<?= $midImg ?>" alt="مراحل <?= e($subservice['title_fa'] ?? '') ?>" width="800" height="600" loading="lazy" onerror="this.style.display='none'" title="<?= e($subservice['title_fa'] ?? '') ?>">
     </div>
     <ol>
         <?php foreach (($subservice['steps'] ?? []) as $step): ?>

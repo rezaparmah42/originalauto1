@@ -225,15 +225,32 @@ $breadcrumb = [
         <h2>خودروهای تحت پوشش</h2>
         <p>خدمات ما برای خودروهای داخلی و وارداتی با رویکرد استاندارد و دقیق طراحی شده است.</p>
     </div>
-    <div class="resource-links">
-        <a href="<?= SITE_URL ?>/brands/iran-khodro">ایران‌خودرو</a>
-        <a href="<?= SITE_URL ?>/brands/saipa">سایپا</a>
-        <a href="<?= SITE_URL ?>/brands/hyundai">هیوندای</a>
-        <a href="<?= SITE_URL ?>/brands/kia">کیا</a>
-        <a href="<?= SITE_URL ?>/brands/toyota">تویوتا</a>
-        <a href="<?= SITE_URL ?>/brands/nissan">نیسان</a>
-        <a href="<?= SITE_URL ?>/brands/chery">چری</a>
+    <div class="service-grid vehicles-grid">
+        <?php $bank2 = include __DIR__ . '/../../app/Data/content_bank2.php'; ?>
+        <?php foreach ($bank2 as $brandSlug => $brand): ?>
+            <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($brandSlug) ?>">
+                <span class="meta-pill"><?= count($brand['models'] ?? []) ?> مدل</span>
+                <h3><?= e($brand['name'] ?? $brandSlug) ?></h3>
+                <p>مشاهده مدل‌ها و خدمات اولویت‌دار هر مدل.</p>
+                <span class="text-link">مشاهده مدل‌ها</span>
+            </a>
+        <?php endforeach; ?>
     </div>
+    <?php foreach ($bank2 as $brandSlug => $brand): ?>
+        <section class="section-shell">
+            <div class="section-heading"><h2><?= e($brand['name'] ?? $brandSlug) ?></h2></div>
+            <div class="service-grid">
+                <?php foreach (($brand['models'] ?? []) as $modelSlug => $model): ?>
+                    <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($brandSlug) ?>/<?= rawurlencode($modelSlug) ?>">
+                        <span class="meta-pill">مدل</span>
+                        <h3><?= e($model['name'] ?? $modelSlug) ?></h3>
+                        <p>خدمات اولویت‌دار: <?php foreach (array_slice($model['priority_services'] ?? [], 0, 3) as $i => $svc): ?><?php if ($i) echo '، '; ?><a href="<?= SITE_URL ?>/services/<?= rawurlencode($svc['slug'] ?? '') ?>/<?= rawurlencode($modelSlug) ?>"><?= e($svc['title'] ?? '') ?></a><?php endforeach; ?></p>
+                        <div class="service-meta"><span><?= e($model['note'] ?? '') ?></span></div>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endforeach; ?>
 </section>
 
 <section class="section-shell">

@@ -69,10 +69,14 @@ require __DIR__.'/../layouts/header.php';
         <div class="hero-badge">خدمات تخصصی</div>
         <h1><?= e($service['title_fa'] ?? ($service['title_en'] ?? 'خدمت')) ?></h1>
         <p><?= e($service['description_fa'] ?? ($service['description_en'] ?? '')) ?></p>
-        <div class="hero-actions">
-            <a class="btn-primary" href="<?= SITE_URL ?>/booking">رزرو این خدمت</a>
-            <a class="btn-outline" href="<?= SITE_URL ?>/services">همه خدمات</a>
-        </div>
+            <?php $heroImg = SITE_URL . '/uploads/services/' . rawurlencode($service['slug'] ?? '') . '/' . rawurlencode(($service['slug'] ?? '')) . '-hero.jpg'; ?>
+            <div class="hero-media">
+                <img src="<?= $heroImg ?>" alt="<?= e($service['title_fa'] ?? '') ?>" width="1200" height="675" loading="eager" fetchpriority="high" onerror="this.style.display='none'" title="<?= e($service['title_fa'] ?? '') ?>">
+            </div>
+            <div class="hero-actions">
+                <a class="btn-primary" href="<?= SITE_URL ?>/booking">رزرو این خدمت</a>
+                <a class="btn-outline" href="<?= SITE_URL ?>/services">همه خدمات</a>
+            </div>
     </section>
 
     <section class="section-shell">
@@ -119,6 +123,10 @@ require __DIR__.'/../layouts/header.php';
     ?>
         <section class="section-shell">
             <div class="section-heading"><h2>زیرخدمت‌های <?= e($service['title_fa'] ?? '') ?></h2><p>محبوب‌ترین مسیرهای عیب‌یابی و تعمیر برای این خدمت.</p></div>
+                    <?php $midImg = SITE_URL . '/uploads/services/' . rawurlencode($service['slug'] ?? '') . '/' . rawurlencode(($service['slug'] ?? '')) . '-mid.jpg'; ?>
+                    <div class="hero-media mid">
+                        <img src="<?= $midImg ?>" alt="نمای خدمات <?= e($service['title_fa'] ?? '') ?>" width="800" height="600" loading="lazy" onerror="this.style.display='none'" title="<?= e($service['title_fa'] ?? '') ?>">
+                    </div>
             <div class="service-grid">
                 <?php foreach (array_slice($subCategories, 0, 8) as $sub): ?>
                     <a class="service-card" href="<?= SITE_URL ?>/services/<?= rawurlencode($service['slug'] ?? '') ?>/<?= rawurlencode($sub['slug'] ?? '') ?>">
