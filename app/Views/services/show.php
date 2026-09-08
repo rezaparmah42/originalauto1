@@ -114,6 +114,23 @@ require __DIR__.'/../layouts/header.php';
         </section>
     <?php endif; ?>
     <?php
+    $subCategories = (new App\Models\ServiceSubcategory())->getByService($service['slug'] ?? '');
+    if (!empty($subCategories)):
+    ?>
+        <section class="section-shell">
+            <div class="section-heading"><h2>زیرخدمت‌های <?= e($service['title_fa'] ?? '') ?></h2><p>محبوب‌ترین مسیرهای عیب‌یابی و تعمیر برای این خدمت.</p></div>
+            <div class="service-grid">
+                <?php foreach (array_slice($subCategories, 0, 8) as $sub): ?>
+                    <a class="service-card" href="<?= SITE_URL ?>/services/<?= rawurlencode($service['slug'] ?? '') ?>/<?= rawurlencode($sub['slug'] ?? '') ?>">
+                        <span class="meta-pill">زیرخدمت</span>
+                        <h3><?= e($sub['title_fa'] ?? '') ?></h3>
+                        <p><?= e($sub['intro'] ?? '') ?></p>
+                    </a>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php
     $relatedServices = array_values(array_filter((new App\Models\Service())->getVisibleServices(), static function ($item) use ($service) {
         return (int) ($item['id'] ?? 0) !== (int) ($service['id'] ?? 0);
     }));

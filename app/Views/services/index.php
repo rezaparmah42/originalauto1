@@ -180,11 +180,16 @@ $breadcrumb = [
     </div>
     <div class="service-grid">
         <?php foreach ($serviceLinks as $service): ?>
+            <?php $subList = (new App\Models\ServiceSubcategory())->getByService($service['slug']); ?>
             <a class="service-card" href="<?= SITE_URL ?>/services/<?= rawurlencode($service['slug']) ?>">
                 <span class="meta-pill">خدمت تخصصی</span>
                 <h3><?= e($service['title']) ?></h3>
                 <p><?= e($service['summary']) ?></p>
-                <div class="service-meta"><span>مشاهده جزئیات</span></div>
+                <div class="service-meta">
+                    <?php foreach (array_slice($subList, 0, 3) as $sub): ?>
+                        <span><?= e($sub['title_fa'] ?? '') ?></span>
+                    <?php endforeach; ?>
+                </div>
             </a>
         <?php endforeach; ?>
     </div>

@@ -19,6 +19,39 @@ class ServiceController extends Controller
         $this->view('services/index');
     }
 
+    public function subservice($service, $subservice)
+    {
+        $serviceSlug = trim((string) $service);
+        $subSlug = trim((string) $subservice);
+        if ($serviceSlug === '' || $subSlug === '') {
+            http_response_code(404);
+            $this->view('services/show', ['slug' => $serviceSlug ?: $subSlug]);
+            return;
+        }
+
+        $subModel = new \App\Models\ServiceSubcategory();
+        $serviceRow = $this->serviceModel->findBySlug($serviceSlug);
+        $category = $subModel->findBySlug($serviceSlug, $subSlug);
+
+        if (!$serviceRow || !$category) {
+            $this->matrix($serviceSlug, $subSlug);
+            return;
+        }
+
+        $catalog = new \App\Models\VehicleCatalog();
+        $relatedVehicles = $catalog->getActiveMatrixModels();
+        $relatedSubservices = array_values(array_filter($subModel->getByService($serviceSlug), static function ($item) use ($subSlug) {
+            return ($item['slug'] ?? '') !== $subSlug;
+        }));
+
+        $this->view('services/subservice', [
+            'service' => $serviceRow,
+            'subservice' => $category,
+            'relatedSubservices' => $relatedSubservices,
+            'relatedVehicles' => $relatedVehicles,
+        ]);
+    }
+
     public function matrix($service, $model)
     {
         $serviceSlug = trim((string) $service);
