@@ -3,23 +3,68 @@ $title = 'کاتالوگ خودرو و راهنمای تعمیر | ' . SITE_NAME
 $description = 'جست‌وجو و انتخاب خودرو برای مشاهده اطلاعات فنی، ایرادهای رایج و خدمات پیشنهادی تعمیرگاه.';
 $canonical = SITE_URL . '/vehicles';
 $robots = 'index, follow';
+$breadcrumb = [
+    ['name' => 'خانه', 'url' => SITE_URL],
+    ['name' => 'کاتالوگ خودرو', 'url' => $canonical],
+];
 require __DIR__ . '/../layouts/header.php';
+$brandGroups = [
+    'داخلی' => [],
+    'فرانسوی (تولید داخل)' => [],
+    'کره‌ای' => [],
+    'ژاپنی' => [],
+    'چینی' => [],
+];
+foreach (($brands ?? []) as $brandItem) {
+    $brandName = is_array($brandItem) ? ($brandItem['name_fa'] ?? $brandItem['name_en'] ?? $brandItem['slug'] ?? '') : (string) $brandItem;
+    $brandSlug = is_array($brandItem) ? ($brandItem['slug'] ?? rawurlencode((string) $brandName)) : rawurlencode((string) $brandName);
+    $brandKey = is_array($brandItem) ? ($brandItem['category'] ?? '') : '';
+    if ($brandKey === 'iranian' || $brandKey === 'internal' || $brandKey === 'local') {
+        $brandGroups['داخلی'][] = ['name' => $brandName, 'slug' => $brandSlug, 'count' => (int) ($brandItem['model_count'] ?? 0)];
+    } elseif (stripos((string) $brandKey, 'french') !== false || stripos((string) $brandKey, 'france') !== false) {
+        $brandGroups['فرانسوی (تولید داخل)'][] = ['name' => $brandName, 'slug' => $brandSlug, 'count' => (int) ($brandItem['model_count'] ?? 0)];
+    } elseif (stripos((string) $brandKey, 'korean') !== false || stripos((string) $brandKey, 'کره') !== false) {
+        $brandGroups['کره‌ای'][] = ['name' => $brandName, 'slug' => $brandSlug, 'count' => (int) ($brandItem['model_count'] ?? 0)];
+    } elseif (stripos((string) $brandKey, 'japan') !== false || stripos((string) $brandKey, 'ژاپن') !== false) {
+        $brandGroups['ژاپنی'][] = ['name' => $brandName, 'slug' => $brandSlug, 'count' => (int) ($brandItem['model_count'] ?? 0)];
+    } elseif (stripos((string) $brandKey, 'china') !== false || stripos((string) $brandKey, 'چین') !== false) {
+        $brandGroups['چینی'][] = ['name' => $brandName, 'slug' => $brandSlug, 'count' => (int) ($brandItem['model_count'] ?? 0)];
+    } else {
+        $brandGroups['داخلی'][] = ['name' => $brandName, 'slug' => $brandSlug, 'count' => (int) ($brandItem['model_count'] ?? 0)];
+    }
+}
 ?>
 <section class="page-hero">
     <div class="hero-badge">کاتالوگ خودروهای بازار ایران</div>
-    <h1>خودرویتان را انتخاب کنید و مسیر تعمیر را دقیق‌تر بشناسید</h1>
-    <p>برند، مدل، سال یا کد موتور را جست‌وجو کنید تا اطلاعات موجود در کاتالوگ و خدمات مرتبط را ببینید.</p>
+    <h1>کاتالوگ خودروهای تحت پوشش تعمیرگاه اورجینال شرق</h1>
+    <p>از خودروهای داخلی و وارداتی تا برندهای پرطرفدار بازار ایران، در این کاتالوگ می‌توانید برند، مدل و خدمات مرتبط را برای هر خودرو به‌صورت دقیق پیدا کنید.</p>
 </section>
 <section class="section-shell">
     <form class="modern-form vehicle-filter" method="get" action="<?= SITE_URL ?>/vehicles">
         <div class="form-group"><label class="form-label" for="q">جست‌وجوی خودرو</label><input class="form-input" id="q" name="q" value="<?= e($query ?? '') ?>" placeholder="مثلاً پژو 206 یا Corolla"></div>
-        <div class="form-group"><label class="form-label" for="brand">برند</label><select class="form-input" id="brand" name="brand"><option value="">همه برندها</option><?php foreach (($brands ?? []) as $brand): ?><option value="<?= e($brand) ?>" <?= (($filters['brand'] ?? '') === $brand) ? 'selected' : '' ?>><?= e($brand) ?></option><?php endforeach; ?></select></div>
+        <div class="form-group"><label class="form-label" for="brand">برند</label><select class="form-input" id="brand" name="brand"><option value="">همه برندها</option><?php foreach (($brands ?? []) as $brand): $brandValue = is_array($brand) ? ($brand['slug'] ?? $brand['name_fa'] ?? $brand['name_en'] ?? '') : (string) $brand; ?><option value="<?= e($brandValue) ?>" <?= (($filters['brand'] ?? '') === $brandValue) ? 'selected' : '' ?>><?= e(is_array($brand) ? ($brand['name_fa'] ?? $brand['name_en'] ?? '') : $brand) ?></option><?php endforeach; ?></select></div>
         <div class="form-group"><label class="form-label" for="model">مدل</label><select class="form-input" id="model" name="model"><option value="">همه مدل‌ها</option><?php foreach (($models ?? []) as $model): ?><option value="<?= e($model) ?>" <?= (($filters['model'] ?? '') === $model) ? 'selected' : '' ?>><?= e($model) ?></option><?php endforeach; ?></select></div>
         <div class="form-group"><label class="form-label" for="engine">موتور</label><select class="form-input" id="engine" name="engine"><option value="">همه موتورها</option><?php foreach (($engines ?? []) as $engine): ?><option value="<?= e($engine) ?>" <?= (($filters['engine'] ?? '') === $engine) ? 'selected' : '' ?>><?= e($engine) ?></option><?php endforeach; ?></select></div>
         <div class="form-group"><label class="form-label" for="year">سال</label><input class="form-input" id="year" name="year" inputmode="numeric" value="<?= e($filters['year'] ?? '') ?>" placeholder="مثلاً 1398"></div>
         <div class="form-actions"><button class="btn-primary" type="submit">جست‌وجو</button><a class="btn-outline" href="<?= SITE_URL ?>/vehicles">پاک کردن فیلتر</a></div>
     </form>
 </section>
+<?php foreach ($brandGroups as $groupName => $groupItems): ?>
+<?php if (empty($groupItems)) continue; ?>
+<section class="section-shell">
+    <div class="section-heading"><h2><?= e($groupName) ?></h2></div>
+    <div class="service-grid">
+        <?php foreach ($groupItems as $brand): ?>
+            <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode((string) ($brand['slug'] ?? '')) ?>">
+                <span class="meta-pill"><?= (int) ($brand['count'] ?? 0) ?> مدل</span>
+                <h3><?= e((string) ($brand['name'] ?? 'برند')) ?></h3>
+                <p>مشاهده خودروهای این برند و خدمات تخصصی مرتبط.</p>
+                <span class="text-link">مشاهده مدل‌ها</span>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</section>
+<?php endforeach; ?>
 <section class="section-shell">
     <div class="section-heading"><h2>خودروهای پیشنهادی</h2><p><?= (int) ($total ?? 0) ?> خودرو در کاتالوگ فعال است.</p></div>
     <div class="service-grid vehicle-grid">

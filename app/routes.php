@@ -39,6 +39,7 @@ $router->get('/vehicles/{brand}/{model}', [App\Controllers\VehicleCatalogControl
 $router->get('/vehicles/{brand}', [App\Controllers\VehicleCatalogController::class, 'brand']);
 
 $router->get('/services', [ServiceController::class, 'index']);
+$router->get('/services/{service}/{model}', [ServiceController::class, 'matrix']);
 $router->get('/services/{slug}', [ServiceController::class, 'show']);
 $router->get('/diagnostic', [DiagnosticController::class, 'index']);
 $router->get('/diagnostic/connect', [DiagnosticController::class, 'connect']);

@@ -94,6 +94,26 @@ require __DIR__.'/../layouts/header.php';
         </div>
     </section>
     <?php
+    $relatedVehicles = [];
+    try {
+        $catalog = new \App\Models\VehicleCatalog();
+        $relatedVehicles = $catalog->getActiveMatrixModels();
+    } catch (\Throwable $e) {
+        $relatedVehicles = [];
+    }
+    ?>
+    <?php if (!empty($relatedVehicles)): ?>
+        <section class="section-shell">
+            <div class="section-heading"><h2>این خدمت برای کدام خودروها؟</h2><p>مدل‌های فعال مناسب برای سرویس موردنظر.</p></div>
+            <div class="resource-links">
+                <?php foreach (array_slice($relatedVehicles, 0, 8) as $vehicle): ?>
+                    <?php $brandName = $vehicle['brand_name_fa'] ?? $vehicle['brand'] ?? ''; $modelName = $vehicle['name_fa'] ?? $vehicle['model'] ?? ''; ?>
+                    <a href="<?= SITE_URL ?>/services/<?= rawurlencode($service['slug'] ?? '') ?>/<?= rawurlencode($vehicle['slug'] ?? '') ?>"><?= e($brandName . ' ' . $modelName) ?></a>
+                <?php endforeach; ?>
+            </div>
+        </section>
+    <?php endif; ?>
+    <?php
     $relatedServices = array_values(array_filter((new App\Models\Service())->getVisibleServices(), static function ($item) use ($service) {
         return (int) ($item['id'] ?? 0) !== (int) ($service['id'] ?? 0);
     }));

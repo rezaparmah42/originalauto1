@@ -18,21 +18,8 @@ class BrandController extends Controller
 
     public function index()
     {
-        try {
-            $db = $this->getDatabase();
-            try {
-                $stmt = $db->query('SELECT DISTINCT vb.id, vb.name AS name, COALESCE(vb.name_fa, vb.name, vb.name_en, vb.slug) AS name_fa, COALESCE(vb.name_en, vb.name, vb.name_fa, vb.slug) AS name_en FROM vehicle_brands vb INNER JOIN vehicle_models vm ON vm.brand_id = vb.id WHERE vb.status = 1 AND vm.status = 1 ORDER BY name_fa ASC, name_en ASC, name ASC');
-                $brands = $stmt->fetchAll();
-            } catch (\Throwable $e) {
-                // Fallback to minimal available columns
-                $stmt = $db->query('SELECT DISTINCT vb.id, vb.name FROM vehicle_brands vb INNER JOIN vehicle_models vm ON vm.brand_id = vb.id WHERE vb.status = 1 AND vm.status = 1 ORDER BY vb.name ASC');
-                $brands = $stmt->fetchAll();
-            }
-        } catch (\Throwable $e) {
-            $brands = [];
-        }
-
-        $this->view('brands/index', ['brands' => $brands]);
+        header('Location: ' . SITE_URL . '/vehicles', true, 301);
+        exit;
     }
 
     public function show($brand)

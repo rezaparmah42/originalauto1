@@ -19,6 +19,66 @@ class ServiceController extends Controller
         $this->view('services/index');
     }
 
+    public function matrix($service, $model)
+    {
+        $serviceSlug = trim((string) $service);
+        $modelSlug = trim((string) $model);
+        if ($serviceSlug === '' || $modelSlug === '') {
+            http_response_code(404);
+            $this->view('services/show', ['slug' => $serviceSlug ?: $modelSlug]);
+            return;
+        }
+
+        $serviceRow = $this->serviceModel->findBySlug($serviceSlug);
+        $catalog = new \App\Models\VehicleCatalog();
+        $vehicle = $catalog->getModelBySlug($modelSlug);
+
+        if (!$serviceRow || !$vehicle) {
+            http_response_code(404);
+            $this->view('services/show', ['slug' => $serviceSlug]);
+            return;
+        }
+
+        $activeModels = $catalog->getActiveMatrixModels();
+        $allowedSlugs = [];
+        foreach ($activeModels as $item) {
+            $slug = trim((string) ($item['slug'] ?? ''));
+            if ($slug !== '') {
+                $allowedSlugs[] = $slug;
+            }
+        }
+        $allowedSlugs = array_values(array_unique(array_filter($allowedSlugs, 'strlen')));
+
+        $isAllowed = in_array($modelSlug, $allowedSlugs, true);
+        if (!$isAllowed) {
+            redirect(SITE_URL . '/vehicles/' . rawurlencode($vehicle['brand'] ?? '') . '/' . rawurlencode($vehicle['slug'] ?? $modelSlug));
+            return;
+        }
+
+        $title = ($serviceRow['title_fa'] ?? $serviceRow['title_en'] ?? 'خدمت') . ' ' . ($vehicle['name_fa'] ?? $vehicle['brand'] ?? '') . ' | ' . SITE_NAME;
+        $description = 'مشاهده خدمات ' . ($serviceRow['title_fa'] ?? '') . ' برای ' . ($vehicle['name_fa'] ?? $vehicle['brand'] ?? '') . ' و بررسی علائم رایج، روند سرویس و پیشنهادهای نگهداری.';
+        $canonical = SITE_URL . '/services/' . rawurlencode($serviceRow['slug']) . '/' . rawurlencode($vehicle['slug'] ?? $modelSlug);
+        $breadcrumb = [
+            ['name' => 'خانه', 'url' => SITE_URL],
+            ['name' => 'خدمات', 'url' => SITE_URL . '/services'],
+            ['name' => $serviceRow['title_fa'] ?? $serviceRow['title_en'] ?? 'خدمت', 'url' => SITE_URL . '/services/' . rawurlencode($serviceRow['slug'])],
+            ['name' => $vehicle['name_fa'] ?? $vehicle['brand'] ?? 'خودرو', 'url' => $canonical],
+        ];
+
+        $this->view('services/matrix', [
+            'title' => $title,
+            'description' => $description,
+            'canonical' => $canonical,
+            'breadcrumb' => $breadcrumb,
+            'service' => $serviceRow,
+            'vehicle' => $vehicle,
+            'modelSlug' => $modelSlug,
+            'relatedServices' => array_filter($this->serviceModel->getVisibleServices(), static function ($row) use ($serviceRow) {
+                return ($row['slug'] ?? '') !== ($serviceRow['slug'] ?? '');
+            }),
+        ]);
+    }
+
     public function show($slug)
     {
         if (!$slug) {

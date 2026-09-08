@@ -40,13 +40,17 @@ class VehicleCatalogController extends Controller
     public function brand($brand)
     {
         $brand = trim((string) $brand);
-        $vehicles = $this->catalog->getModelsByBrand($brand);
+        $brandRow = $this->catalog->getBrandBySlug($brand);
+        $brandName = $brandRow['name_fa'] ?? ($brandRow['name_en'] ?? $brand);
+        $vehicles = $brandRow ? $this->catalog->getModelsByBrand($brandRow['slug'] ?: $brand) : $this->catalog->getModelsByBrand($brand);
+
         if (!$vehicles && !$this->catalog->getVehicle($brand)) {
             http_response_code(404);
             $this->view('vehicles/not-found', ['title' => 'برند خودرو یافت نشد | ' . SITE_NAME, 'message' => 'برند یا دسته خودروی موردنظر در کاتالوگ موجود نیست.']);
             return;
         }
-        $this->view('vehicles/brand', ['brand' => $brand, 'vehicles' => $vehicles]);
+
+        $this->view('vehicles/brand', ['brand' => $brandName, 'brandSlug' => $brandRow['slug'] ?? $brand, 'vehicles' => $vehicles]);
     }
 
     public function model($brand, $model, $year = null)

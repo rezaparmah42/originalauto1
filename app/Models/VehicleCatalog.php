@@ -102,6 +102,77 @@ class VehicleCatalog extends Model
         return 'COALESCE(' . implode(', ', $cands) . ')';
     }
 
+    public function getBrandCatalog(): array
+    {
+        if (!$this->hasTable('vehicle_models') || !$this->hasTable('vehicle_brands')) {
+            return [];
+        }
+
+        try {
+            $brandExpr = $this->getBrandNameExpression('vb');
+            $sql = 'SELECT vb.id, vb.slug, vb.category, COALESCE(vb.name_fa, vb.name, vb.name_en, vb.slug) AS name_fa, COALESCE(vb.name_en, vb.name, vb.name_fa, vb.slug) AS name_en, COUNT(vm.id) AS model_count FROM vehicle_brands vb LEFT JOIN vehicle_models vm ON vm.brand_id = vb.id AND vm.status = 1 WHERE vb.status = 1 GROUP BY vb.id ORDER BY name_fa ASC, name_en ASC';
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\PDOException $e) {
+            return [];
+        }
+    }
+
+    public function getBrandBySlug(string $slug): ?array
+    {
+        $slug = trim((string) $slug);
+        if ($slug === '') {
+            return null;
+        }
+
+        try {
+            $stmt = $this->db->prepare('SELECT * FROM vehicle_brands WHERE status = 1 AND (LOWER(slug) = LOWER(?) OR LOWER(name_fa) = LOWER(?) OR LOWER(name_en) = LOWER(?)) LIMIT 1');
+            $stmt->execute([$slug, $slug, $slug]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row ?: null;
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
+
+    public function getModelBySlug(string $slug): ?array
+    {
+        $slug = trim((string) $slug);
+        if ($slug === '') {
+            return null;
+        }
+
+        try {
+            $brandExpr = $this->getBrandNameExpression('vb');
+            $modelExpr = $this->getModelNameExpression('vm');
+            $stmt = $this->db->prepare('SELECT vm.*, ' . $brandExpr . ' AS brand, COALESCE(vb.name_fa, vb.name, vb.name_en, vb.slug) AS brand_name_fa, COALESCE(vb.name_en, vb.name, vb.name_fa, vb.slug) AS brand_name_en FROM vehicle_models vm INNER JOIN vehicle_brands vb ON vb.id = vm.brand_id WHERE vm.status = 1 AND (LOWER(vm.slug) = LOWER(?) OR LOWER(' . $modelExpr . ') = LOWER(?)) LIMIT 1');
+            $stmt->execute([$slug, $slug]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $row ?: null;
+        } catch (\PDOException $e) {
+            return null;
+        }
+    }
+
+    public function getActiveMatrixModels(): array
+    {
+        $allowed = [
+            'peugeot-206', 'peugeot-207', 'peugeot-405', 'peugeot-pars', 'samand', 'samand-soren', 'dena', 'tara', 'pride',
+            'tiba', 'quick', 'saina', 'shahin', 'tondar-90', 'sandero', 'elantra', 'cerato', 'sportage', 'tuscon', 'tiggo-7'
+        ];
+
+        $models = [];
+        foreach ($allowed as $slug) {
+            $match = $this->getModelBySlug($slug);
+            if ($match) {
+                $models[] = $match;
+            }
+        }
+
+        return $models;
+    }
+
     public function getAll()
     {
         if (!$this->hasTable('vehicle_models') || !$this->hasTable('vehicle_brands')) {
