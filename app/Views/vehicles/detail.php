@@ -44,14 +44,21 @@ require __DIR__ . '/../partials/schema.php';
 </div></section>
 <?php endif; ?>
 <?php
-// Generate expanded model content from content bank if available
+// Prefer pre-generated model content if available; otherwise generate on the fly
 try {
 	$brandSlug = $vehicle['brand'] ?? '';
 	$modelSlug = $vehicle['slug'] ?? ($vehicle['model'] ?? '');
-	if (!empty($brandSlug) && !empty($modelSlug)) {
-		$gen = \App\Helpers\ContentGenerator::generateModelContent($brandSlug, $modelSlug, 1200);
+	$generatedPath = __DIR__ . '/../../app/Data/generated_models/' . $brandSlug . '/' . $modelSlug . '.php';
+	if (!empty($brandSlug) && !empty($modelSlug) && file_exists($generatedPath)) {
+		$data = include $generatedPath;
+		echo $data['html'] ?? '';
+		if (!empty($data['faqSchema'])) {
+			$faqLd = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $data['faqSchema']];
+			echo "<script type=\"application/ld+json\">" . json_encode($faqLd, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) . "</script>";
+		}
+	} elseif (!empty($brandSlug) && !empty($modelSlug)) {
+		$gen = \App\Helpers\ContentGenerator::generateModelContent($brandSlug, $modelSlug, 1500);
 		echo $gen['html'] ?? '';
-		// Inject FAQ schema
 		if (!empty($gen['faqSchema'])) {
 			$faqLd = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $gen['faqSchema']];
 			echo "<script type=\"application/ld+json\">" . json_encode($faqLd, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) . "</script>";
