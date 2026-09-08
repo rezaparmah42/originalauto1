@@ -1,146 +1,294 @@
 <?php
-$serviceModel = new App\Models\Service();
-$services = $serviceModel->getVisibleServices();
-$title = 'خدمات تخصصی تعمیر خودرو | اورجینال شرق';
-$description = 'خدمات تخصصی تعمیرگاه اورجینال شرق: دیاگ خودرو، تعمیر برق، موتور، گیربکس، سرویس دوره‌ای و خدمات تخصصی خودروهای داخلی و وارداتی.';
+$serviceLinks = [
+    ['slug' => 'diagnostic', 'title' => 'دیاگ و عیب‌یابی تخصصی خودرو', 'summary' => 'تشخیص دقیق خطاهای ECU، سنسورها و سیستم‌های الکترونیکی با دستگاه‌های دیاگ پیشرفته.'],
+    ['slug' => 'electrical', 'title' => 'تعمیر برق خودرو', 'summary' => 'رفع مشکلات باتری، دینام، استارت، چراغ‌ها، شیشه و قفل مرکزی با بررسی کامل مدارها.'],
+    ['slug' => 'engine', 'title' => 'تعمیر و اورهال تخصصی موتور', 'summary' => 'بررسی روغن‌سوزی، سرسیلندر، تسمه تایم و عملکرد موتور برای بهره‌وری بهتر و طول عمر بیشتر.'],
+    ['slug' => 'gearbox', 'title' => 'تعمیر تخصصی گیربکس', 'summary' => 'عیب‌یابی گیربکس اتوماتیک و دستی، تعویض روغن، تعمیر قطعات داخلی و کاهش ضربه در دنده‌ها.'],
+    ['slug' => 'periodic-service', 'title' => 'سرویس دوره‌ای خودرو', 'summary' => 'چک‌اپ ۱۵، ۳۰ و ۴۵ هزار کیلومتر با تعویض روغن، فیلترها و بررسی سیستم‌های مهم.'],
+    ['slug' => 'ac-repair', 'title' => 'سرویس و تعمیر کولر خودرو', 'summary' => 'تشخیص نشتی گاز، خرابی کمپرسور، کندانسور و عملکرد سیستم تهویه مطبوع.'],
+    ['slug' => 'suspension', 'title' => 'تعمیر جلوبندی و تعلیق', 'summary' => 'بررسی کمک‌فنر، سیبک، طبق، بوش و تنظیم زوایا برای فرمان و تعادل بهتر خودرو.'],
+    ['slug' => 'brakes', 'title' => 'سرویس و تعمیر سیستم ترمز', 'summary' => 'بررسی لنت، دیسک، کالیپر و روغن ترمز برای ایمنی بیشتر در حرکت و توقف.'],
+    ['slug' => 'battery', 'title' => 'تست و تعویض باتری خودرو', 'summary' => 'ارزیابی سلامت باتری، دینام و اتصالات برای جلوگیری از خاموشی و مشکل در راه‌اندازی.'],
+    ['slug' => 'ecu', 'title' => 'ریمپ ECU و برنامه‌ریزی تخصصی', 'summary' => 'بهینه‌سازی عملکرد ECU و رفع خطاهای سخت‌افزاری با ابزارهای حرفه‌ای.'],
+    ['slug' => 'pre-purchase-inspection', 'title' => 'بازرسی فنی خودرو قبل از خرید', 'summary' => 'بررسی کامل فنی خودروهای دست‌دوم برای کاهش ریسک خرید و انتخاب درست.'],
+    ['slug' => 'emergency', 'title' => 'امداد خودرو و خدمات سیار', 'summary' => 'خدمات در محل، روشن‌کردن خودرو، سرویس باتری و کمک فوری برای شرایط اضطراری.'],
+    ['slug' => 'airbag', 'title' => 'تعمیر ایربگ و سیستم ایمنی', 'summary' => 'بررسی خطای ایربگ، سنسور ضربه و سیستم‌های ایمنی برای ایمنی بالاتر راننده و سرنشین.'],
+    ['slug' => 'car-air-filter-and-filters', 'title' => 'تعویض فیلترهای خودرو', 'summary' => 'تعویض فیلترهای روغن، هوا، کابین و سوخت برای عملکرد بهتر و کاهش مصرف انرژی.'],
+    ['slug' => 'oil-change', 'title' => 'تعویض روغن موتور', 'summary' => 'استفاده از روغن استاندارد و فیلتر اصلی برای کاهش ساییدگی و حفظ عملکرد موتور.'],
+];
+
+$title = 'خدمات تخصصی تعمیر خودرو در اورجینال شرق | اورجینال شرق';
+$description = 'تعمیرگاه تخصصی خودرو در اورجینال شرق: دیاگ، تعمیر موتور، گیربکس، برق خودرو، سرویس دوره‌ای و خدمات ایمنی با مشاوره فنی دقیق.';
 $canonical = SITE_URL . '/services';
 $robots = 'index, follow';
+$breadcrumb = [
+    ['name' => 'خانه', 'url' => SITE_URL],
+    ['name' => 'خدمات', 'url' => $canonical],
+];
 ?>
 <?php require __DIR__.'/../layouts/header.php'; ?>
 
 <script type="application/ld+json">
 <?= json_encode([
     '@context' => 'https://schema.org',
-    '@type' => 'ItemList',
-    'name' => 'خدمات تخصصی تعمیرگاه اورجینال شرق',
-    'itemListOrder' => 'https://schema.org/ItemListOrderAscending',
-    'itemListElement' => array_values(array_map(static function ($service) {
-        return [
-            '@type' => 'ListItem',
-            'position' => 1,
-            'url' => SITE_URL . '/services/' . rawurlencode((string) ($service['slug'] ?? '')),
-            'name' => $service['title_fa'] ?? ($service['title_en'] ?? 'خدمت تخصصی'),
-        ];
-    }, array_slice($services, 0, 6))),
+    '@type' => 'AutoRepair',
+    'name' => SITE_NAME,
+    'url' => rtrim(SITE_URL, '/'),
+    'telephone' => SITE_PHONE,
+    'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => SITE_ADDRESS,
+        'addressLocality' => 'تهران',
+        'addressRegion' => 'تهران',
+        'addressCountry' => 'IR',
+    ],
+    'openingHours' => 'Mo-Sa 08:00-20:00',
+    'areaServed' => 'تهران',
+    'description' => 'تعمیرگاه تخصصی خودرو برای دیاگ، تعمیر موتور، گیربکس، برق، سرویس دوره‌ای و خدمات ایمنی خودرو.',
+    'hasOfferCatalog' => [
+        '@type' => 'OfferCatalog',
+        'name' => 'خدمات تخصصی تعمیر خودرو',
+        'itemListElement' => array_map(static function ($service) {
+            return [
+                '@type' => 'Offer',
+                'itemOffered' => [
+                    '@type' => 'Service',
+                    'name' => $service['title'],
+                    'url' => SITE_URL . '/services/' . rawurlencode($service['slug']),
+                ],
+            ];
+        }, $serviceLinks),
+    ],
+], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) ?>
+</script>
+
+<script type="application/ld+json">
+<?= json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'FAQPage',
+    'mainEntity' => [
+        [
+            '@type' => 'Question',
+            'name' => 'هزینه عیب‌یابی خودرو چقدر است؟',
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'هزینه پایه عیب‌یابی از طریق بررسی نوع مشکل و زمان لازم اعلام می‌شود و در صورت توافق با مشتری، کار ادامه پیدا می‌کند.']
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'آیا تعهدی روی تعمیرات دارید؟',
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'بله، پس از بررسی دقیق، نتیجه تعمیر و قطعات به‌کاررفته با هماهنگی شما انجام می‌شود و خدمات پس از تعمیر در محدوده منطقی پیگیری می‌شوند.']
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'مدت زمان تعمیرات معمولاً چقدر است؟',
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'بسته به نوع خرابی، بعضی خدمات در یک روز انجام می‌شوند و خدمات پیچیده‌تر با زمان بیشتری پیگیری می‌شوند.']
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'خودروهای وارداتی هم تحت پوشش‌اند؟',
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'بله، خودروهای وارداتی و داخلی با رعایت استانداردهای فنی و تجهیزات مناسب در اورجینال شرق تحت پوشش خدمات تخصصی قرار می‌گیرند.']
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'آیا خدمات سیار هم دارید؟',
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'بله، در شرایط اضطراری و برای برخی خدمات، امکان امداد و خدمات سیار در محدوده خدماتی وجود دارد.']
+        ],
+        [
+            '@type' => 'Question',
+            'name' => 'رزرو آنلاین چگونه انجام می‌شود؟',
+            'acceptedAnswer' => ['@type' => 'Answer', 'text' => 'از طریق فرم رزرو در سایت یا تماس مستقیم با تیم ما، زمان مناسب برای بررسی و تعمیر هماهنگ می‌شود.']
+        ],
+    ],
 ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) ?>
 </script>
 
 <section class="page-hero">
-    <div class="hero-badge">خدمات حرفه‌ای تعمیرگاه</div>
-    <h1>از عیب‌یابی دقیق تا تعمیر تخصصی، همه خدمات خودرو در یک مکان</h1>
-    <p>در اورجینال شرق، خدمات دیاگ خودرو، تعمیر برق، موتور، گیربکس، سرویس دوره‌ای و نگهداری تخصصی برای خودروهای داخلی و وارداتی با تجهیزات حرفه‌ای و مشاوره فنی دقیق ارائه می‌شود.</p>
+    <div class="hero-badge">خدمات تخصصی تعمیرگاه</div>
+    <h1>خدمات تخصصی تعمیر خودرو در اورجینال شرق</h1>
+    <p>تعمیرگاه تخصصی خودرو در اورجینال شرق با تمرکز روی دیاگ دقیق، تعمیر موتور، گیربکس، برق خودرو، سرویس دوره‌ای و بررسی سیستم‌های ایمنی، بهترین مسیر برای حفظ عملکرد، ایمنی و آرامش شما در سوار شدن به خودرو است. با تیم فنی مجرب و تجهیزات حرفه‌ای، مشکلات خودرو شما پیش از اینکه تبدیل به هزینه‌های سنگین شود، شناسایی و اصلاح می‌شود.</p>
     <div class="hero-actions">
         <a class="btn-primary" href="<?= SITE_URL ?>/booking">رزرو وقت</a>
-        <a class="btn-outline" href="<?= SITE_URL ?>/diagnostic">دیاگ آنلاین</a>
+        <a class="btn-outline" href="<?= SITE_URL ?>/contact">مشاوره رایگان</a>
     </div>
 </section>
 
 <section class="section-shell">
-    <div class="section-intro">
-        <div class="intro-card">
-            <h2>چرا خدمات اورجینال شرق انتخاب مناسبی است؟</h2>
-            <p>ما بر تشخیص دقیق، کیفیت اجرا و شفافیت گزارش خدمات تمرکز می‌کنیم تا خودرو شما با اطمینان و سرعت بیشتری به وضعیت ایمن و قابل استفاده خود بازگردد.</p>
+    <div class="metric-strip">
+        <div class="metric-box">
+            <strong>۱۰+</strong>
+            <span>سال تجربه در تعمیر خودرو</span>
         </div>
-        <div class="info-stack">
-            <div class="info-card">
-                <strong>تشخیص دقیق</strong>
-                <span>بررسی واقعی مشکل و ارائه گزارش فنی قبل از هر تعمیر.</span>
-            </div>
-            <div class="info-card">
-                <strong>کیفیت اجرا</strong>
-                <span>استفاده از استانداردهای فنی برای تعمیرات تخصصی و پایدار.</span>
-            </div>
+        <div class="metric-box">
+            <strong>۹۸٪</strong>
+            <span>رضایت مشتریان از خدمات</span>
+        </div>
+        <div class="metric-box">
+            <strong>۸۵۰۰+</strong>
+            <span>خودرو تعمیرشده و سرویس‌شده</span>
         </div>
     </div>
 </section>
 
 <section class="section-shell">
     <div class="section-heading">
-        <h2>خدمات تخصصی ما</h2>
-        <p>برای نیازهای مختلف خودرو، از سرویس دوره‌ای تا عیب‌یابی و تعمیرات تخصصی، مسیر درست را برای شما مشخص می‌کنیم.</p>
+        <h2>دسته‌بندی خدمات</h2>
+        <p>برای هر نوع نیاز فنی، از عیب‌یابی تا تعمیر تخصصی، گزینه مناسب را پیدا کنید.</p>
     </div>
     <div class="service-grid">
-        <?php if (!empty($services)): ?>
-            <?php foreach ($services as $service): ?>
-                <?php
-                    $slug = $service['slug'] ?? '';
-                    $link = $slug !== '' ? SITE_URL . '/services/' . rawurlencode($slug) : SITE_URL . '/booking';
-                    $isFeatured = in_array((string) $slug, ['diagnostic', 'automatic-transmission', 'engine-repair'], true);
-                    $cardClass = $isFeatured ? 'service-card featured-service' : 'service-card';
-                ?>
-                <a class="<?= e($cardClass) ?>" href="<?= e($link) ?>">
-                    <span class="meta-pill">خدمت تخصصی</span>
-                    <?php if ($isFeatured): ?>
-                        <span class="featured-badge">پیشنهاد ویژه</span>
-                    <?php endif; ?>
-                    <h3><?= e($service['title_fa'] ?? ($service['title_en'] ?? 'خدمات تخصصی')) ?></h3>
-                    <p><?= e($service['description_fa'] ?? ($service['description_en'] ?? 'خدمات تخصصی تعمیرگاه برای نیازهای خودرو شما آماده است.')) ?></p>
-                    <div class="service-meta">
-                        <?php if (!empty($service['duration'])): ?>
-                            <span><?= e($service['duration']) ?></span>
-                        <?php endif; ?>
-                        <?php if (!empty($service['price'])): ?>
-                            <span><?= e($service['price']) ?></span>
-                        <?php endif; ?>
-                    </div>
-                </a>
-            <?php endforeach; ?>
-        <?php else: ?>
-            <a class="service-card" href="<?= SITE_URL ?>/services/diagnostic">
-                <span class="meta-pill">دیاگ تخصصی</span>
-                <h3>دیاگ و عیب‌یابی</h3>
-                <p>تشخیص دقیق خطاهای ECU، سنسورها و سیستم‌های الکترونیکی خودرو.</p>
-            </a>
-            <a class="service-card" href="<?= SITE_URL ?>/services/electrical-repair">
-                <span class="meta-pill">برق خودرو</span>
-                <h3>تعمیر برق خودرو</h3>
-                <p>رفع مشکلات روشنایی، سنسورها، مدارها و عملکرد سیستم الکترونیکی.</p>
-            </a>
-            <a class="service-card" href="<?= SITE_URL ?>/services/engine-repair">
-                <span class="meta-pill">موتور</span>
-                <h3>تعمیر موتور</h3>
-                <p>بررسی و تعمیر موتور، عملکرد، مصرف سوخت و سیستم‌های مرتبط.</p>
-            </a>
-        <?php endif; ?>
+        <a class="service-card featured-service" href="<?= SITE_URL ?>/services/diagnostic">
+            <span class="meta-pill">عیب‌یابی و دیاگ</span>
+            <h3>دیاگ و عیب‌یابی تخصصی</h3>
+            <p>تشخیص دقیق کدهای خطا، ECU و سیستم‌های الکترونیکی خودرو قبل از هر تعمیر یا تعویض قطعه.</p>
+            <div class="service-meta"><span>جزئیات و رزرو</span></div>
+        </a>
+        <a class="service-card" href="<?= SITE_URL ?>/services/electrical">
+            <span class="meta-pill">برق خودرو</span>
+            <h3>برق خودرو</h3>
+            <p>بررسی دینام، استارت، باتری، سیم‌کشی و مدارهای الکترونیکی برای عملکرد مطمئن‌تر.</p>
+            <div class="service-meta"><span>جزئیات و رزرو</span></div>
+        </a>
+        <a class="service-card" href="<?= SITE_URL ?>/services/engine">
+            <span class="meta-pill">موتور</span>
+            <h3>تعمیر موتور</h3>
+            <p>رفع مشکلات موتور، روغن‌سوزی، سرسیلندر و افت عملکرد با بررسی فنی دقیق.</p>
+            <div class="service-meta"><span>جزئیات و رزرو</span></div>
+        </a>
+        <a class="service-card" href="<?= SITE_URL ?>/services/gearbox">
+            <span class="meta-pill">گیربکس</span>
+            <h3>گیربکس</h3>
+            <p>دنده‌گیری، ضربه و ارتعاشات گیربکس با عیب‌یابی تخصصی و خدمات تعمیر یا بازسازی.</p>
+            <div class="service-meta"><span>جزئیات و رزرو</span></div>
+        </a>
+        <a class="service-card" href="<?= SITE_URL ?>/services/periodic-service">
+            <span class="meta-pill">سرویس دوره‌ای</span>
+            <h3>سرویس دوره‌ای</h3>
+            <p>نگهداری منظّم خودرو با تعویض روغن، فیلترها و بازبینی سیستم‌های حیاتی.</p>
+            <div class="service-meta"><span>جزئیات و رزرو</span></div>
+        </a>
+        <a class="service-card" href="<?= SITE_URL ?>/services/suspension">
+            <span class="meta-pill">تعلیق و ترمز</span>
+            <h3>تعلیق و ترمز</h3>
+            <p>بهبود فرمان‌پذیری، کاهش لرزش و افزایش ایمنی با بررسی سیستم تعلیق و ترمز.</p>
+            <div class="service-meta"><span>جزئیات و رزرو</span></div>
+        </a>
     </div>
 </section>
 
 <section class="section-shell">
-    <div class="feature-strip">
-        <div>
-            <strong>پشتیبانی از خودروهای داخلی و وارداتی</strong>
-            <span>تعمیر و سرویس برای برندهای مختلف با رویکرد تخصصی و دقیق.</span>
+    <div class="section-heading">
+        <h2>فهرست کامل خدمات</h2>
+        <p>هر سرویس با تمرکز روی نیاز واقعی خودرو و ایجاد تجربه ایمن‌تر و اقتصادی‌تر انجام می‌شود.</p>
+    </div>
+    <div class="service-grid">
+        <?php foreach ($serviceLinks as $service): ?>
+            <a class="service-card" href="<?= SITE_URL ?>/services/<?= rawurlencode($service['slug']) ?>">
+                <span class="meta-pill">خدمت تخصصی</span>
+                <h3><?= e($service['title']) ?></h3>
+                <p><?= e($service['summary']) ?></p>
+                <div class="service-meta"><span>مشاهده جزئیات</span></div>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</section>
+
+<section class="section-shell">
+    <div class="section-heading">
+        <h2>فرایند کاری ما</h2>
+        <p>رویایی ساده و شفاف برای شروع تعمیر و تحویل خودرو با آرامش بیشتر.</p>
+    </div>
+    <div class="detail-grid">
+        <div class="detail-card">
+            <h3>۱) ثبت درخواست و مشاوره</h3>
+            <p>در اولین تماس، مشکل خودرو، برند و سابقه خرابی برای ما توضیح داده می‌شود تا مسیر دقیق بررسی مشخص شود.</p>
         </div>
-        <div>
-            <strong>گزارش فنی شفاف</strong>
-            <span>قبل از هر تعمیر، وضعیت خودرو و مسیر پیشنهادی به‌صورت دقیق برای شما توضیح داده می‌شود.</span>
+        <div class="detail-card">
+            <h3>۲) عیب‌یابی دقیق و گزارش فنی</h3>
+            <p>پس از تست اولیه، کدهای خطا، عملکرد قطعات و ریشه مشکل با جزئیات به شما اعلام می‌شود.</p>
         </div>
-        <div>
-            <strong>رزرو سریع و راحت</strong>
-            <span>از همین صفحه برای هماهنگی زمان مراجعه یا مشاوره اولیه اقدام کنید.</span>
+        <div class="detail-card">
+            <h3>۳) تأیید شما و انجام تعمیر</h3>
+            <p>برآورد هزینه، زمان انجام کار و قطعات مورد نیاز به صورت شفاف مطرح می‌شود و پس از تأیید شما کار انجام می‌شود.</p>
+        </div>
+        <div class="detail-card">
+            <h3>۴) تحویل، تست جاده‌ای و پشتیبانی</h3>
+            <p>پس از تعمیر، عملکرد خودرو بررسی شده و در صورت نیاز، راهنمایی‌های لازم برای نگهداری آینده ارائه می‌شود.</p>
         </div>
     </div>
 </section>
 
 <section class="section-shell">
     <div class="section-heading">
-        <h2>پیشنهادهای مرتبط</h2>
-        <p>برای حرکت بهتر در مسیر اطلاعات فنی و خدمات خودرو، از این بخش‌ها استفاده کنید.</p>
+        <h2>خودروهای تحت پوشش</h2>
+        <p>خدمات ما برای خودروهای داخلی و وارداتی با رویکرد استاندارد و دقیق طراحی شده است.</p>
     </div>
     <div class="resource-links">
-        <a href="<?= SITE_URL ?>/vehicles">کاتالوگ خودروها</a>
-        <a href="<?= SITE_URL ?>/articles">مقالات فنی و آموزشی</a>
-        <a href="<?= SITE_URL ?>/services/diagnostic">دیاگ تخصصی</a>
-        <a href="<?= SITE_URL ?>/services/electrical-repair">تعمیر برق خودرو</a>
+        <a href="<?= SITE_URL ?>/brands/iran-khodro">ایران‌خودرو</a>
+        <a href="<?= SITE_URL ?>/brands/saipa">سایپا</a>
+        <a href="<?= SITE_URL ?>/brands/hyundai">هیوندای</a>
+        <a href="<?= SITE_URL ?>/brands/kia">کیا</a>
+        <a href="<?= SITE_URL ?>/brands/toyota">تویوتا</a>
+        <a href="<?= SITE_URL ?>/brands/nissan">نیسان</a>
+        <a href="<?= SITE_URL ?>/brands/chery">چری</a>
+    </div>
+</section>
+
+<section class="section-shell">
+    <div class="section-heading">
+        <h2>چرا تعمیر تخصصی بهتر از تعمیرگاه عمومی است؟</h2>
+    </div>
+    <p>در تعمیرگاه عمومی، معمولاً هدف اصلی بررسی سریع مشکل است و گاهی تکرار خرابی به‌دلیل تشخیص نادرست یا تعویض قطعه بدون بررسی ریشه اصلی رخ می‌دهد. در تعمیرگاه تخصصی، تمرکز روی عیب‌یابی فنی و فهم درست عملکرد خودرو است؛ بنابراین، نتیجه نهایی با اطمینان بیشتری به دست می‌آید. وقتی یک خودرو با سیستم کدخوانی، سنسورهای دقیق و تجربه فنی درست بررسی شود، احتمال پرداخت هزینه‌های اضافی یا آسیب به قطعات جانبی به شدت کاهش می‌یابد.</p>
+    <p>این موضوع در سیستم‌های حساس مانند گیربکس، ترمز، برق خودرو و موتور کاملاً اهمیت بیشتری پیدا می‌کند. گرد آلودگی، خوردگی، نشت روغن، سنسور معیوب و خطای برق ممکن است در نگاه اول شبیه یک مشکل ساده به نظر برسند، اما اگر بدون بررسی فنی دقیق به‌کار گرفته شوند، باعث خرابی‌های بعدی می‌شوند. در اورجینال شرق، بررسی دقیق و انجام تعمیر بر اساس داده فنی و بررسی عملکرد واقعی خودرو انجام می‌شود.</p>
+    <h3>تفاوت قطعات اصلی و متفرقه در تعمیر خودرو</h3>
+    <p>در ظاهر ممکن است همه قطعه‌ها شبیه هم به نظر برسند، اما کیفیت، ابعاد، استاندارد تولید و تطابق با خودرو تفاوت‌های زیادی دارد. قطعات نامرغوب ممکن است در کوتاه‌مدت کار کنند، اما در طول زمان باعث افزایش مصرف سوخت، کاهش عملکرد، ایجاد لرزش، خرابی مجدد و حتی آسیب به سیستم‌های جانبی می‌شوند. همین دلیل است که نصب قطعات استاندارد و بررسی دقیق قبل از تعویض، نقش مهمی در بهبود عمر مفید خودرو دارد.</p>
+    <p>در فهرست خدمات ما، هم تعمیر قطعات، هم بررسی و راهنمایی برای انتخاب گزینه مناسب به کار می‌آید. به‌عبارت ساده‌تر، ما روی تصمیم درست برای خودرو شما تمرکز می‌کنیم، نه فقط سرعت انجام کار.</p>
+    <h3>چه زمانی باید به تعمیرگاه مراجعه کنیم؟</h3>
+    <p>اگر چراغ چک روشن شد، صدای غیرعادی از موتور یا گیربکس شنیده می‌شود، ترمز هنگام توقف ضعیف می‌شود، سیستم کولر کار نمی‌کند، یا خودرو در سر پیچ‌ها و هنگام شتاب‌گیری رفتار نامتعارف دارد، بهتر است همین حالا بررسی شود. خیلی از خرابی‌ها در ابتدا جزئی به نظر می‌آیند، اما اگر در زمان مناسب به تعمیرگاه نرفته شوند، در آینده به هزینه‌های بسیار بیشتر تبدیل می‌شوند.</p>
+    <ul>
+        <li>روشن شدن چراغ چک موتور</li>
+        <li>افت شدید شتاب یا دنده‌گیری نامنظم</li>
+        <li>لرزش زیاد در سر پیچ‌ها یا هنگام ترمز</li>
+        <li>مصرف سوخت بالا یا بی‌ثباتی عملکرد</li>
+        <li>کولر یا گرمکن خودرو بدون عملکرد مناسب</li>
+    </ul>
+</section>
+
+<section class="section-shell">
+    <div class="section-heading">
+        <h2>سوالات متداول</h2>
+    </div>
+    <div class="faq-list">
+        <div class="faq-item">
+            <h3>هزینه عیب‌یابی خودرو چقدر است؟</h3>
+            <p>برآورد هزینه بسته به نوع مشکل، زمان بررسی و پیچیدگی کار متفاوت است. در اکثر موارد، قبل از شروع تعمیر، وضعیت خودرو و راه‌حل پیشنهادی با شما هماهنگ می‌شود.</p>
+        </div>
+        <div class="faq-item">
+            <h3>آیا خدمات شما برای خودروهای وارداتی هم انجام می‌شود؟</h3>
+            <p>بله، برای خودروهای داخلی و وارداتی، به‌خصوص در بخش‌های دیگ، برق، موتور، گیربکس و سیستم تهویه، خدمات تخصصی انجام می‌شود.</p>
+        </div>
+        <div class="faq-item">
+            <h3>آیا ضمانت روی خدمات شما وجود دارد؟</h3>
+            <p>خدمات انجام‌شده بر اساس نوع کار و قطعات به‌کاررفته، با رعایت استانداردها و هماهنگی فنی پیگیری می‌شوند. جزئیات دقیق به شما اعلام می‌شود.</p>
+        </div>
+        <div class="faq-item">
+            <h3>مدت زمان تعمیرات معمولاً چقدر است؟</h3>
+            <p>بسته به نوع خرابی و قطعات مصرفی، زمان متفاوت است. خدمات ساده معمولاً سریع‌تر انجام می‌شوند و کارهای پیچیده‌تر نیاز به زمان بیشتری دارند.</p>
+        </div>
+        <div class="faq-item">
+            <h3>اگر خودرو در مسیر نبود امکان خدمات سیار هست؟</h3>
+            <p>در برخی شرایط اضطراری و خدمات محدود، خدمات سیار یا کمک در محل فراهم می‌شود. برای هماهنگی، با تیم ما تماس بگیرید.</p>
+        </div>
+        <div class="faq-item">
+            <h3>رزرو وقت به چه شکل است؟</h3>
+            <p>از طریق فرم رزرو آنلاین یا تماس مستقیم، زمان مناسب برای مراجعه مشخص می‌شود و هماهنگی کامل انجام می‌گیرد.</p>
+        </div>
     </div>
 </section>
 
 <section class="cta">
-    <h2>برای هماهنگی مشاوره یا رزرو زمان مراجعه آماده هستیم</h2>
-    <p>در اورجینال شرق، تشخیص دقیق و تعمیر اصولی از همان ابتدا باعث کاهش هزینه و افزایش عمر خودرو می‌شود.</p>
+    <h2>برای رزرو وقت و دریافت مشاوره رایگان آماده هستیم</h2>
+    <p>در اورجینال شرق، با تشخیص دقیق و تعمیر اصولی، خودرو شما به بهترین وضعیت ممکن برمی‌گردد. برای هماهنگی، با ما تماس بگیرید یا از فرم رزرو استفاده کنید.</p>
     <div class="hero-actions">
-        <a class="btn-primary" href="<?= SITE_URL ?>/booking">رزرو آنلاین</a>
-        <a class="btn-outline" href="<?= SITE_URL ?>/diagnostic">مشاوره دیاگ</a>
+        <a class="btn-primary" href="<?= SITE_URL ?>/booking">رزرو وقت</a>
+        <a class="btn-outline" href="tel:<?= rawurlencode(SITE_PHONE) ?>">تماس مستقیم</a>
     </div>
 </section>
 

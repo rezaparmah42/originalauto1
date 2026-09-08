@@ -286,6 +286,16 @@ $router->get('/sitemap.xml', function () {
         echo "    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>\n";
     }
 
+    $clusterServices = [
+        'diagnostic', 'electrical', 'engine', 'gearbox', 'periodic-service', 'ac-repair', 'suspension',
+        'brakes', 'battery', 'ecu', 'pre-purchase-inspection', 'emergency', 'airbag',
+        'car-air-filter-and-filters', 'oil-change'
+    ];
+    foreach ($clusterServices as $slug) {
+        $serviceUrl = $siteUrl . '/services/' . rawurlencode($slug);
+        echo "  <url>\n    <loc>{$serviceUrl}</loc>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>\n";
+    }
+
     foreach ($services as $service) {
         if (empty($service['slug'])) {
             continue;
