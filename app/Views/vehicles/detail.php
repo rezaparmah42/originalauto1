@@ -43,4 +43,22 @@ require __DIR__ . '/../partials/schema.php';
 	<?php endforeach; ?>
 </div></section>
 <?php endif; ?>
+<?php
+// Generate expanded model content from content bank if available
+try {
+	$brandSlug = $vehicle['brand'] ?? '';
+	$modelSlug = $vehicle['slug'] ?? ($vehicle['model'] ?? '');
+	if (!empty($brandSlug) && !empty($modelSlug)) {
+		$gen = \App\Helpers\ContentGenerator::generateModelContent($brandSlug, $modelSlug, 1200);
+		echo $gen['html'] ?? '';
+		// Inject FAQ schema
+		if (!empty($gen['faqSchema'])) {
+			$faqLd = ['@context' => 'https://schema.org', '@type' => 'FAQPage', 'mainEntity' => $gen['faqSchema']];
+			echo "<script type=\"application/ld+json\">" . json_encode($faqLd, JSON_UNESCAPED_UNICODE|JSON_UNESCAPED_SLASHES) . "</script>";
+		}
+	}
+} catch (\Throwable $_) {
+	// don't break page on generator error
+}
+?>
 <?php require __DIR__ . '/../layouts/footer.php'; ?>
