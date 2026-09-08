@@ -105,16 +105,44 @@ require __DIR__.'/../layouts/header.php';
     } catch (\Throwable $e) {
         $relatedVehicles = [];
     }
+    // Load content bank 1 for service-specific narrative and vehicle targets
+    $bank1 = [];
+    try {
+        $bank1 = include __DIR__ . '/../../app/Data/content_bank1.php';
+    } catch (\Throwable $_) {
+        $bank1 = [];
+    }
+    $svcBank = $bank1[$service['slug'] ?? ''] ?? null;
     ?>
     <?php if (!empty($relatedVehicles)): ?>
         <section class="section-shell">
-            <div class="section-heading"><h2>این خدمت برای کدام خودروها؟</h2><p>مدل‌های فعال مناسب برای سرویس موردنظر.</p></div>
+            <div class="section-heading"><h2><?= e($service['title_fa'] ?? '') ?> برای کدام خودروها حیاتی‌تر است؟</h2>
+                <p><?= e($svcBank['why'] ?? 'مدل‌هایی که بیشترین کاربرد این خدمت را دارند در زیر فهرست شده‌اند.') ?></p>
+            </div>
             <div class="resource-links">
                 <?php foreach (array_slice($relatedVehicles, 0, 8) as $vehicle): ?>
                     <?php $brandName = $vehicle['brand_name_fa'] ?? $vehicle['brand'] ?? ''; $modelName = $vehicle['name_fa'] ?? $vehicle['model'] ?? ''; ?>
                     <a href="<?= SITE_URL ?>/services/<?= rawurlencode($service['slug'] ?? '') ?>/<?= rawurlencode($vehicle['slug'] ?? '') ?>"><?= e($brandName . ' ' . $modelName) ?></a>
                 <?php endforeach; ?>
             </div>
+            <?php if (!empty($svcBank['vehicle_targets'])): ?>
+                <div class="table-wrap">
+                    <table>
+                        <thead>
+                            <tr><th>خودرو</th><th>رایج‌ترین زیرخدمت برای آن</th><th>لینک</th></tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($svcBank['vehicle_targets'] as $vt): ?>
+                                <tr>
+                                    <td><?= e($vt['label'] ?? $vt['slug']) ?></td>
+                                    <td><?= e($vt['common_subservice'] ?? '') ?></td>
+                                    <td><a href="<?= SITE_URL ?>/services/<?= rawurlencode($service['slug'] ?? '') ?>/<?= rawurlencode($vt['slug'] ?? '') ?>">مشاهده</a></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php endif; ?>
         </section>
     <?php endif; ?>
     <?php
