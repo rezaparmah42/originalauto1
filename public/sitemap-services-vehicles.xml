@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<?php
+$now = date('Y-m-d');
+$site = 'https://example.com';
+$urls = [];
+$bank1 = include __DIR__ . '/../../app/Data/content_bank1.php';
+$bank2 = include __DIR__ . '/../../app/Data/content_bank2.php';
+foreach ($bank1 as $serviceSlug => $svc) {
+    $urls[] = $site . '/services/' . rawurlencode($serviceSlug);
+    if (!empty($svc['vehicle_targets'])) {
+        foreach ($svc['vehicle_targets'] as $vt) {
+            $urls[] = $site . '/services/' . rawurlencode($serviceSlug) . '/' . rawurlencode($vt['slug']);
+        }
+    }
+}
+foreach ($bank2 as $brandSlug => $brand) {
+    foreach (($brand['models'] ?? []) as $modelSlug => $model) {
+        $urls[] = $site . '/vehicles/' . rawurlencode($brandSlug) . '/' . rawurlencode($modelSlug);
+        foreach (($model['priority_services'] ?? []) as $ps) {
+            $urls[] = $site . '/services/' . rawurlencode($ps['slug']) . '/' . rawurlencode($modelSlug);
+        }
+    }
+}
+$unique = array_values(array_unique($urls));
+foreach ($unique as $u) {
+    echo "  <url>\n    <loc>" . htmlspecialchars($u) . "</loc>\n    <lastmod>" . $now . "</lastmod>\n  </url>\n";
+}
+?>
+</urlset>

@@ -1,4 +1,12 @@
 <?php
+// Matrix: diagnostic x chery/tiggo-7
+return [
+    'html' => '<section class="matrix"><h2>دیاگ و چری تیگو ۷</h2><p>تیگو ۷ ممکن است به‌واسطه‌ی مشکلات نرم‌افزاری یا خطاهای BCM رفتار غیرمنتظره‌ای نشان دهد؛ دیاگ و آپدیت نرم‌افزار در برخی موارد لازم است.</p><p>تشخیص باید شامل بررسی نسخهٔ نرم‌افزار، کدهای خطا و تست عملکرد واحدهای جانبی باشد.</p></section>',
+    'faqSchema' => [
+        ['@type'=>'Question','name'=>'آیا آپدیت نرم‌افزار لازم است؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'در برخی موارد بله؛ به خصوص اگر خطا مرتبط با نرم‌افزار تشخیص داده شود.']]
+    ]
+];
+<?php
 // Short generated matrix for diagnostic / chery / tiggo-7
 return [
     'title' => 'ماتریس دیاگ برای تیگو ۷',

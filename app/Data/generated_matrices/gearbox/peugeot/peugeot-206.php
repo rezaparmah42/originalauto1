@@ -1,4 +1,12 @@
 <?php
+// Matrix: gearbox x peugeot/peugeot-206
+return [
+    'html' => '<section class="matrix"><h2>گیربکس و پژو ۲۰۶ (AL4)</h2><p>پژو ۲۰۶ اتوماتیک AL4 به روغن و شیر برقی حساس است؛ تقه و تعویض نابه‌هنگام دنده نشان‌دهندهٔ مشکل در سیستم هیدرولیک یا الکترونیک کنترل است.</p></section>',
+    'faqSchema' => [
+        ['@type'=>'Question','name'=>'چه زمانی روغن ATF را تعویض کنیم؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'طبق دستور سازنده و در صورت تغییر وضعیت تعویض دنده یا بوی سوختگی.']]
+    ]
+];
+<?php
 // Generated matrix content for gearbox / peugeot / peugeot-206
 return [
     'title' => 'گیربکس برای پژو ۲۰۶ — ماتریس علائم و اقدامات',

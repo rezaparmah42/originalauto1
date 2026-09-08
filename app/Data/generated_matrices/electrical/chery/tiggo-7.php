@@ -1,4 +1,12 @@
 <?php
+// Matrix: electrical x chery/tiggo-7
+return [
+    'html' => '<section class="matrix"><h2>برق و چری تیگو ۷</h2><p>برای تیگو ۷ خطاهای نرم‌افزاری و BCM می‌تواند موجب اختلالات الکتریکی شود؛ اسکن و بررسی نسخهٔ نرم‌افزاری و کابل‌کشی توصیه می‌شود.</p></section>',
+    'faqSchema' => [
+        ['@type'=>'Question','name'=>'BCM چیست و چرا مهم است؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'BCM واحد کنترل بدنه است که بسیاری از عملکردهای جانبی را مدیریت می‌کند؛ خطا در آن می‌تواند اختلالات متعدد ایجاد کند.']]
+    ]
+];
+<?php
 // Short generated matrix for electrical / chery / tiggo-7
 return [
     'title' => 'ماتریس برق برای تیگو ۷',

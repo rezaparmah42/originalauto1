@@ -1,4 +1,12 @@
 <?php
+// Matrix: diagnostic x saipa/pride
+return [
+    'html' => '<section class="matrix"><h2>دیاگ و پراید</h2><p>پراید در صورت خاموشی ناگهانی یا اختلال استارت، نیاز به دیاگ و بررسی رله‌ها و فیوزها دارد؛ دیاگ می‌تواند مسیر خطا را مشخص کند.</p><h3>اقدامات اولیه</h3><ul><li>بررسی پایه‌های فیوز و رله</li><li>اسکن ECU و ثبت کد</li></ul></section>',
+    'faqSchema' => [
+        ['@type'=>'Question','name'=>'چه زمانی دیاگ لازم است برای پراید؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'هنگام خاموشی ناگهانی، روشن نشدن یا وجود چراغ‌های خطا در پانل.']]
+    ]
+];
+<?php
 // Short generated matrix for diagnostic / saipa / pride
 return [
     'title' => 'ماتریس دیاگ برای پراید',

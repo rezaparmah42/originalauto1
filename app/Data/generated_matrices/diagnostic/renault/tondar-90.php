@@ -1,4 +1,12 @@
 <?php
+// Matrix: diagnostic x renault/tondar-90
+return [
+    'html' => '<section class="matrix"><h2>دیاگ و تندر ۹۰</h2><p>برای ال۹۰ دیاگ معمولاً در تشخیص لرزش و مشکلات استپر و کوئل مفید است؛ همراه با تست مدار اشتعال و بررسی سنسورها نتیجهٔ دقیق‌تری حاصل می‌شود.</p></section>',
+    'faqSchema' => [
+        ['@type'=>'Question','name'=>'آیا دیاگ مشکل استپر را مشخص می‌کند؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'دیاگ می‌تواند خطاهای مرتبط را نشان دهد اما تست فیزیکی و مشاهده نیز لازم است.']]
+    ]
+];
+<?php
 // Short generated matrix for diagnostic / renault / tondar-90
 return [
     'title' => 'ماتریس دیاگ برای تندر ۹۰',

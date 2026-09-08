@@ -1,4 +1,12 @@
 <?php
+// Matrix: electrical x renault/tondar-90
+return [
+    'html' => '<section class="matrix"><h2>برق و تندر ۹۰</h2><p>در تندر خطاهای الکتریکی معمولا با تست کوئل و استپر همراه است؛ دیاگ و تست سیم‌کشی توصیه می‌شود.</p></section>',
+    'faqSchema' => [
+        ['@type'=>'Question','name'=>'آیا مشکل استپر الکتریکی است؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'بخشی از مشکلات استپر ممکن است ناشی از خطاهای الکتریکی یا مکانیکی باشد.']]
+    ]
+];
+<?php
 // Short generated matrix for electrical / renault / tondar-90
 return [
     'title' => 'ماتریس برق برای تندر ۹۰',

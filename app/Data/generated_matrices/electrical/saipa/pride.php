@@ -1,4 +1,12 @@
 <?php
+// Matrix: electrical x saipa/pride
+return [
+    'html' => '<section class="matrix"><h2>برق و پراید</h2><p>پراید اغلب به‌خاطر رلهٔ دوبل و مشکلات فیوز دچار خاموشی می‌شود؛ تست ولتاژ و بررسی فیوزها اولین قدم است.</p></section>',
+    'faqSchema' => [
+        ['@type'=>'Question','name'=>'چه کارهایی برای برق پراید سریع انجام دهیم؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'بررسی بست باتری، فیوزها و رله‌ها اولین اقدامات است؛ سپس دیاگ انجام شود.']]
+    ]
+];
+<?php
 // Generated matrix content for electrical / saipa / pride
 return [
     'title' => 'ماتریس برق برای پراید — علائم و اقدامات',
