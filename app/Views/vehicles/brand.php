@@ -38,8 +38,8 @@ if (!empty($brandData['note'])): ?>
 <section class="section-shell">
     <div class="service-grid">
         <?php foreach (($vehicles ?? []) as $item): ?>
-            <?php $modelSlug = $item['slug'] ?? $item['model'] ?? ''; ?>
-            <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode((string) $brandSlug) ?>/<?= rawurlencode((string) $modelSlug) ?>">
+            <?php $modelSlug = $item['model_slug'] ?? ($item['slug'] ?? $item['model'] ?? ''); ?>
+            <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode((string) ($brandSlug ?: ($item['brand_slug'] ?? ''))) ?>/<?= rawurlencode((string) $modelSlug) ?>">
                 <span class="meta-pill"><?= e($item['brand'] ?? $brandLabel) ?></span>
                 <h2><?= e($item['model'] ?? $item['name_fa'] ?? 'مدل خودرو') ?></h2>
                 <p><?= e($item['engine_type'] ?? 'اطلاعات موتور ثبت نشده است.') ?></p>

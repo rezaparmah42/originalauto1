@@ -55,7 +55,8 @@ foreach (($brands ?? []) as $brandItem) {
     <div class="section-heading"><h2><?= e($groupName) ?></h2></div>
     <div class="service-grid">
         <?php foreach ($groupItems as $brand): ?>
-            <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode((string) ($brand['slug'] ?? '')) ?>">
+            <?php $brandRoute = (string) ($brand['slug'] ?? $brand['brand_slug'] ?? ''); ?>
+            <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($brandRoute) ?>">
                 <span class="meta-pill"><?= (int) ($brand['count'] ?? 0) ?> مدل</span>
                 <h3><?= e((string) ($brand['name'] ?? 'برند')) ?></h3>
                 <p>مشاهده خودروهای این برند و خدمات تخصصی مرتبط.</p>
@@ -68,8 +69,8 @@ foreach (($brands ?? []) as $brandItem) {
 <section class="section-shell">
     <div class="section-heading"><h2>خودروهای پیشنهادی</h2><p><?= (int) ($total ?? 0) ?> خودرو در کاتالوگ فعال است.</p></div>
     <div class="service-grid vehicle-grid">
-        <?php if (!empty($vehicles)): ?><?php foreach ($vehicles as $item): ?><a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($item['brand'] ?? '') ?>/<?= rawurlencode($item['slug'] ?? $item['model'] ?? '') ?>"><span class="meta-pill"><?= e($item['brand'] ?? 'برند خودرو') ?></span><h3><?= e($item['model'] ?? $item['name_fa'] ?? 'مدل خودرو') ?></h3><p><?= e($item['engine_type'] ?? 'اطلاعات موتور در کاتالوگ ثبت نشده است.') ?></p><div class="service-meta"><span><?= e($item['year_start'] ?? '-') ?><?= !empty($item['year_end']) ? ' تا ' . e($item['year_end']) : '' ?></span></div></a><?php endforeach; ?><?php else: ?><div class="info-card"><strong>خودرویی با این فیلتر پیدا نشد.</strong><span>نام فارسی یا انگلیسی خودرو را ساده‌تر جست‌وجو کنید.</span></div><?php endif; ?>
+        <?php if (!empty($vehicles)): ?><?php foreach ($vehicles as $item): $brandRoute = (string) ($item['brand_slug'] ?? $item['brand'] ?? ''); $modelRoute = (string) ($item['model_slug'] ?? $item['slug'] ?? $item['model'] ?? ''); ?><a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($brandRoute) ?>/<?= rawurlencode($modelRoute) ?>"><span class="meta-pill"><?= e($item['brand'] ?? 'برند خودرو') ?></span><h3><?= e($item['model'] ?? $item['name_fa'] ?? 'مدل خودرو') ?></h3><p><?= e($item['engine_type'] ?? 'اطلاعات موتور در کاتالوگ ثبت نشده است.') ?></p><div class="service-meta"><span><?= e($item['year_start'] ?? '-') ?><?= !empty($item['year_end']) ? ' تا ' . e($item['year_end']) : '' ?></span></div></a><?php endforeach; ?><?php else: ?><div class="info-card"><strong>خودرویی با این فیلتر پیدا نشد.</strong><span>نام فارسی یا انگلیسی خودرو را ساده‌تر جست‌وجو کنید.</span></div><?php endif; ?>
     </div>
 </section>
-<?php if (!empty($popular)): ?><section class="section-shell"><div class="section-heading"><h2>مدل‌های تازه کاتالوگ</h2></div><div class="resource-links"><?php foreach ($popular as $item): ?><a href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($item['brand'] ?? '') ?>/<?= rawurlencode($item['slug'] ?? '') ?>"><?= e(($item['brand'] ?? '') . ' ' . ($item['model'] ?? '')) ?></a><?php endforeach; ?></div></section><?php endif; ?>
+<?php if (!empty($popular)): ?><section class="section-shell"><div class="section-heading"><h2>مدل‌های تازه کاتالوگ</h2></div><div class="resource-links"><?php foreach ($popular as $item): $brandRoute = (string) ($item['brand_slug'] ?? $item['brand'] ?? ''); $modelRoute = (string) ($item['model_slug'] ?? $item['slug'] ?? ''); ?><a href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($brandRoute) ?>/<?= rawurlencode($modelRoute) ?>"><?= e(($item['brand'] ?? '') . ' ' . ($item['model'] ?? '')) ?></a><?php endforeach; ?></div></section><?php endif; ?>
 <?php require __DIR__ . '/../layouts/footer.php'; ?>

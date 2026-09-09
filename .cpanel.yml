@@ -2,6 +2,9 @@ deployment:
   tasks:
     - export DEPLOYPATH=/home/h420462/public_html/
     - /bin/cp -R app $DEPLOYPATH
+    - /bin/cp -R public $DEPLOYPATH
+    - /bin/cp -R config $DEPLOYPATH
+    - /bin/cp -R database $DEPLOYPATH
     - /bin/cp -R assets $DEPLOYPATH
     - /bin/cp -R admin $DEPLOYPATH
     - /bin/cp -R api $DEPLOYPATH

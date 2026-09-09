@@ -1,6 +1,13 @@
 <?php
 // Matrix: electrical x peugeot/peugeot-206
 return [
+    'title' => 'الکتریکال — پژو ۲۰۶',
+    'html' => '<section class="matrix"><h2>سیستم الکتریکال پژو ۲۰۶</h2><p>بررسی باتری، دینام، استارت و سیم‌کشی و همچنین فیوزها از گام‌های اولیه در رفع اختلالات الکتریکی است.</p></section>',
+    'faqSchema' => [['@type'=>'Question','name'=>'روشن‌نشدن خودرو ناشی از باتری است؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'اغلب مواقع بله، اما ممکن است دینام یا استارت نیز مشکل داشته باشد.']]]
+];
+<?php
+// Matrix: electrical x peugeot/peugeot-206
+return [
     'html' => '<section class="matrix"><h2>برق و پژو ۲۰۶</h2><p>پژو ۲۰۶ به مشکلات دسته‌سیم و اتصالات حساس است؛ بررسی رله‌ها، فیوزها و اتصال بدنه باید در اولویت باشد. گاهی اوقات خطاهای شبکه‌ای CAN نیاز به دیاگ تخصصی دارند.</p></section>',
     'faqSchema' => [
         ['@type'=>'Question','name'=>'آیا مشکل برق همیشه الکترونیکی است؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'نه؛ گاهی مشکل ناشی از اتصالات ضعیف یا خوردگی در سیم‌کشی است.']]

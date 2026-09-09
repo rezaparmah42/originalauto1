@@ -210,9 +210,9 @@ class VehicleCatalog extends Model
         $brandCol = $this->chooseColumn($brandCols, ['name_fa', 'name_en', 'name', 'slug'], 'slug');
         $modelCol = $this->chooseColumn($modelCols, ['name_fa', 'name_en', 'common_name_fa', 'common_name_en', 'name', 'slug'], 'slug');
 
-        $sql = 'SELECT vm.id, ' . $brandExpr . ' AS brand, ' . $modelExpr . ' AS model, vm.`' . $modelCol . '` AS slug, vm.year_from AS year_start, vm.year_to AS year_end, vm.engine_type, vm.body_type, vm.status FROM vehicle_models vm INNER JOIN vehicle_brands vb ON vb.id = vm.brand_id WHERE vm.status = 1 AND (LOWER(' . $brandExpr . ') = LOWER(?) OR LOWER(vb.`' . $brandCol . '`) = LOWER(?)) ORDER BY model';
+        $sql = 'SELECT vm.id, ' . $brandExpr . ' AS brand, vb.slug AS brand_slug, ' . $modelExpr . ' AS model, vm.`' . $modelCol . '` AS slug, vm.slug AS model_slug, vm.year_from AS year_start, vm.year_to AS year_end, vm.engine_type, vm.body_type, vm.status FROM vehicle_models vm INNER JOIN vehicle_brands vb ON vb.id = vm.brand_id WHERE vm.status = 1 AND (LOWER(' . $brandExpr . ') = LOWER(?) OR LOWER(vb.`' . $brandCol . '`) = LOWER(?) OR LOWER(vb.slug) = LOWER(?)) ORDER BY model';
         $stmt = $this->db->prepare($sql);
-        $stmt->execute([$brand, $brand]);
+        $stmt->execute([$brand, $brand, $brand]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
@@ -277,7 +277,7 @@ class VehicleCatalog extends Model
 
         // Build a safe select list based on available model columns
         $modelCols = $this->getTableColumns('vehicle_models');
-        $selectCols = ['vm.id', 'vm.brand_id', $brandExpr . ' AS brand', $modelExpr . ' AS model'];
+        $selectCols = ['vm.id', 'vm.brand_id', $brandExpr . ' AS brand', 'vb.slug AS brand_slug', $modelExpr . ' AS model', 'vm.slug AS model_slug'];
         foreach (['name_fa', 'name_en', 'slug', 'year_from', 'year_to', 'engine_type', 'body_type'] as $c) {
             if (isset($modelCols[$c])) {
                 $selectCols[] = 'vm.' . $c;
@@ -322,7 +322,7 @@ class VehicleCatalog extends Model
             $params[] = (int) $year;
         }
         // Build select list safely
-        $select = ['vm.*', $brandExpr . ' AS brand', 'vb.country', 'vb.status AS brand_status'];
+        $select = ['vm.*', $brandExpr . ' AS brand', 'vb.slug AS brand_slug', 'vb.country', 'vb.status AS brand_status'];
         if (isset($brandCols['name_fa'])) $select[] = 'vb.name_fa AS brand_name_fa';
         if (isset($brandCols['name_en'])) $select[] = 'vb.name_en AS brand_name_en';
 
@@ -333,7 +333,7 @@ class VehicleCatalog extends Model
 
     public function getPopularVehicles($limit = 6)
     {
-        $stmt = $this->db->prepare('SELECT vm.id, ' . $this->getBrandNameExpression('vb') . ' AS brand, ' . $this->getModelNameExpression('vm') . ' AS model, vm.slug, vm.year_from AS year_start, vm.year_to AS year_end, vm.engine_type FROM vehicle_models vm INNER JOIN vehicle_brands vb ON vb.id = vm.brand_id WHERE vm.status = 1 AND vb.status = 1 ORDER BY vm.id DESC LIMIT ?');
+        $stmt = $this->db->prepare('SELECT vm.id, ' . $this->getBrandNameExpression('vb') . ' AS brand, vb.slug AS brand_slug, ' . $this->getModelNameExpression('vm') . ' AS model, vm.slug AS model_slug, vm.slug, vm.year_from AS year_start, vm.year_to AS year_end, vm.engine_type FROM vehicle_models vm INNER JOIN vehicle_brands vb ON vb.id = vm.brand_id WHERE vm.status = 1 AND vb.status = 1 ORDER BY vm.id DESC LIMIT ?');
         $stmt->bindValue(1, max(1, min(20, (int) $limit)), PDO::PARAM_INT);
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);

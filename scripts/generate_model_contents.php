@@ -7,7 +7,7 @@ foreach ($bank2 as $brandSlug => $brand) {
     $models = $brand['models'] ?? [];
     foreach ($models as $modelSlug => $model) {
         try {
-            $out = \App\Helpers\ContentGenerator::generateModelContent($brandSlug, $modelSlug, 1500);
+            $out = \App\Helpers\ContentGenerator::generateModelContent($brandSlug, $modelSlug, 2000);
             $dir = $root . '/app/Data/generated_models/' . $brandSlug;
             if (!is_dir($dir)) mkdir($dir, 0755, true);
             $file = $dir . '/' . $modelSlug . '.php';

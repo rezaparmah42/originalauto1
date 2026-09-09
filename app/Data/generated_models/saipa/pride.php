@@ -1,4 +1,11 @@
 <?php
+// Generated model content: saipa/pride
+return [
+    'title' => 'پراید — معرفی، نگهداری و مشکلات متداول',
+    'html' => '<article><h1>نگهداری پراید</h1><p>پراید خودرویی اقتصادی با ساختار ساده است؛ نگهداری منظم روغن موتور، تعویض به‌موقع فیلترها و بررسی سیستم تعلیق و ترمز به افزایش طول عمر کمک می‌کند.</p></article>',
+    'faqSchema' => [['@type'=>'Question','name'=>'چه روغنی برای پراید؟','acceptedAnswer'=>['@type'=>'Answer','text'=>'بر اساس دفترچهٔ راهنما و شرایط آب و هوایی منطقه انتخاب شود، معمولاً SAE 10W-40 توصیه می‌شود.']]]
+];
+<?php
 // Generated content for saipa/pride (pre-generated)
 return [
     'title' => 'پراید — برق، استارت و نگهداری روزمره',

@@ -9,6 +9,32 @@ class ServiceController extends Controller
 {
     private $serviceModel;
 
+    private function normalizeServiceSlug(string $slug): string
+    {
+        $slug = trim((string) $slug);
+        if ($slug === '') {
+            return '';
+        }
+
+        $aliases = [
+            'engine' => 'engine-repair',
+            'engine-repair' => 'engine-repair',
+            'motor' => 'engine-repair',
+            'gearbox' => 'automatic-transmission',
+            'automatic-gearbox' => 'automatic-transmission',
+            'transmission' => 'automatic-transmission',
+            'diagnostic' => 'diagnostic',
+            'periodic-service' => 'periodic-service',
+            'periodic' => 'periodic-service',
+            'electrical' => 'electrical',
+            'ac-repair' => 'ac-repair',
+            'suspension' => 'suspension',
+            'brakes' => 'brakes',
+        ];
+
+        return $aliases[$slug] ?? $slug;
+    }
+
     public function __construct()
     {
         $this->serviceModel = new Service();
@@ -21,7 +47,7 @@ class ServiceController extends Controller
 
     public function subservice($service, $subservice)
     {
-        $serviceSlug = trim((string) $service);
+        $serviceSlug = $this->normalizeServiceSlug((string) $service);
         $subSlug = trim((string) $subservice);
         if ($serviceSlug === '' || $subSlug === '') {
             http_response_code(404);
@@ -54,7 +80,7 @@ class ServiceController extends Controller
 
     public function matrix($service, $model)
     {
-        $serviceSlug = trim((string) $service);
+        $serviceSlug = $this->normalizeServiceSlug((string) $service);
         $modelSlug = trim((string) $model);
         if ($serviceSlug === '' || $modelSlug === '') {
             http_response_code(404);
@@ -119,6 +145,8 @@ class ServiceController extends Controller
             $uri = rtrim($uri, '/') ?: '/';
             $slug = basename($uri);
         }
+
+        $slug = $this->normalizeServiceSlug((string) $slug);
 
         $viewPath = 'services/' . $slug;
         if (file_exists(__DIR__ . '/../Views/' . $viewPath . '.php')) {

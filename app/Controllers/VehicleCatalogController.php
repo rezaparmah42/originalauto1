@@ -42,20 +42,31 @@ class VehicleCatalogController extends Controller
         $brand = trim((string) $brand);
         $brandRow = $this->catalog->getBrandBySlug($brand);
         $brandName = $brandRow['name_fa'] ?? ($brandRow['name_en'] ?? $brand);
-        $vehicles = $brandRow ? $this->catalog->getModelsByBrand($brandRow['slug'] ?: $brand) : $this->catalog->getModelsByBrand($brand);
+        $brandSlug = $brandRow['slug'] ?? $brand;
+        $vehicles = $brandRow ? $this->catalog->getModelsByBrand($brandSlug) : $this->catalog->getModelsByBrand($brand);
 
-        if (!$vehicles && !$this->catalog->getVehicle($brand)) {
+        if (!$brandRow && !$this->catalog->getVehicle($brand)) {
             http_response_code(404);
             $this->view('vehicles/not-found', ['title' => 'برند خودرو یافت نشد | ' . SITE_NAME, 'message' => 'برند یا دسته خودروی موردنظر در کاتالوگ موجود نیست.']);
             return;
         }
 
-        $this->view('vehicles/brand', ['brand' => $brandName, 'brandSlug' => $brandRow['slug'] ?? $brand, 'vehicles' => $vehicles]);
+        $this->view('vehicles/brand', ['brand' => $brandName, 'brandSlug' => $brandSlug, 'vehicles' => $vehicles]);
     }
 
     public function model($brand, $model, $year = null)
     {
+        $brand = trim((string) $brand);
+        $model = trim((string) $model);
+
         $vehicle = $this->catalog->getVehicle($brand, $model, $year);
+        if (!$vehicle) {
+            $brandRow = $this->catalog->getBrandBySlug($brand);
+            if ($brandRow && $model !== '') {
+                $vehicle = $this->catalog->getVehicle($brandRow['slug'] ?? $brand, $model, $year);
+            }
+        }
+
         if (!$vehicle) {
             http_response_code(404);
             $this->view('vehicles/not-found', ['title' => 'خودرو یافت نشد | ' . SITE_NAME, 'message' => 'مدل یا سال خودروی موردنظر در کاتالوگ موجود نیست.']);
