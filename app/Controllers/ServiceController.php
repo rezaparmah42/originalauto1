@@ -111,6 +111,28 @@ class ServiceController extends Controller
             return;
         }
 
+        $modelId = isset($vehicle['id']) ? (int) $vehicle['id'] : 0;
+        $serviceId = isset($serviceRow['id']) ? (int) $serviceRow['id'] : 0;
+        if ($modelId <= 0 || $serviceId <= 0) {
+            http_response_code(404);
+            $this->view('services/show', ['slug' => $serviceSlug]);
+            return;
+        }
+
+        try {
+            $relationStmt = $this->serviceModel->db->prepare('SELECT 1 FROM vehicle_model_service WHERE model_id = ? AND service_id = ? LIMIT 1');
+            $relationStmt->execute([$modelId, $serviceId]);
+            if ($relationStmt->fetchColumn() === false) {
+                http_response_code(404);
+                $this->view('services/show', ['slug' => $serviceSlug]);
+                return;
+            }
+        } catch (\Throwable $e) {
+            http_response_code(404);
+            $this->view('services/show', ['slug' => $serviceSlug]);
+            return;
+        }
+
         $activeModels = $catalog->getActiveMatrixModels();
         $allowedSlugs = [];
         foreach ($activeModels as $item) {

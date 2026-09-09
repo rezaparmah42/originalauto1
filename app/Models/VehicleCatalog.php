@@ -377,18 +377,25 @@ class VehicleCatalog extends Model
 
     public function getVehicleServiceMatrixLinks(array $vehicle, int $limit = 6): array
     {
-        $brandSlug = trim((string) ($vehicle['brand_slug'] ?? $vehicle['brand'] ?? ''));
-        $modelSlug = trim((string) ($vehicle['model_slug'] ?? $vehicle['slug'] ?? $vehicle['model'] ?? ''));
-        if ($brandSlug === '' || $modelSlug === '') {
+        $modelId = isset($vehicle['id']) ? (int) $vehicle['id'] : 0;
+        if ($modelId <= 0) {
             return [];
         }
 
+        $brandSlug = trim((string) ($vehicle['brand_slug'] ?? $vehicle['brand'] ?? ''));
+        $modelSlug = trim((string) ($vehicle['model_slug'] ?? $vehicle['slug'] ?? $vehicle['model'] ?? ''));
         $brandSlug = strtolower(str_replace([' ', '_'], '-', $brandSlug));
         $modelSlug = strtolower(str_replace([' ', '_'], '-', $modelSlug));
 
         try {
-            $stmt = $this->db->prepare('SELECT id, slug, title_fa, title_en, description_fa FROM services WHERE status = 1 ORDER BY id ASC');
-            $stmt->execute();
+            $stmt = $this->db->prepare(
+                'SELECT s.id, s.slug, s.title_fa, s.title_en, s.description_fa ' .
+                'FROM vehicle_model_service vms ' .
+                'INNER JOIN services s ON s.id = vms.service_id ' .
+                'WHERE vms.model_id = ? AND s.status = 1 ' .
+                'ORDER BY s.id ASC'
+            );
+            $stmt->execute([$modelId]);
             $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
         } catch (\Throwable $e) {
             return [];
@@ -404,7 +411,7 @@ class VehicleCatalog extends Model
 
             $matrixPath = $matrixRoot . '/' . $serviceSlug . '/' . $brandSlug . '/' . $modelSlug . '.php';
             if (!file_exists($matrixPath)) {
-                continue;
+                $matrixPath = null;
             }
 
             $subUrl = null;
@@ -421,8 +428,11 @@ class VehicleCatalog extends Model
             $links[] = [
                 'slug' => $serviceSlug,
                 'title_fa' => $serviceRow['title_fa'] ?? $serviceRow['title_en'] ?? '',
+                'title_en' => $serviceRow['title_en'] ?? $serviceRow['title_fa'] ?? '',
+                'description_fa' => $serviceRow['description_fa'] ?? '',
                 'service_url' => SITE_URL . '/services/' . rawurlencode($serviceSlug) . '/' . rawurlencode($modelSlug),
                 'sub_url' => $subUrl,
+                'matrix_available' => $matrixPath !== null && file_exists($matrixPath),
             ];
         }
 
