@@ -57,25 +57,38 @@ class ServiceController extends Controller
 
         $subModel = new \App\Models\ServiceSubcategory();
         $serviceRow = $this->serviceModel->findBySlug($serviceSlug);
-        $category = $subModel->findBySlug($serviceSlug, $subSlug);
+        if (!$serviceRow) {
+            http_response_code(404);
+            $this->view('services/show', ['slug' => $serviceSlug]);
+            return;
+        }
 
-        if (!$serviceRow || !$category) {
-            $this->matrix($serviceSlug, $subSlug);
+        $category = $subModel->findBySlug($serviceSlug, $subSlug);
+        if ($category) {
+            $catalog = new \App\Models\VehicleCatalog();
+            $relatedVehicles = $catalog->getActiveMatrixModels();
+            $relatedSubservices = array_values(array_filter($subModel->getByService($serviceSlug), static function ($item) use ($subSlug) {
+                return ($item['slug'] ?? '') !== $subSlug;
+            }));
+
+            $this->view('services/subservice', [
+                'service' => $serviceRow,
+                'subservice' => $category,
+                'relatedSubservices' => $relatedSubservices,
+                'relatedVehicles' => $relatedVehicles,
+            ]);
             return;
         }
 
         $catalog = new \App\Models\VehicleCatalog();
-        $relatedVehicles = $catalog->getActiveMatrixModels();
-        $relatedSubservices = array_values(array_filter($subModel->getByService($serviceSlug), static function ($item) use ($subSlug) {
-            return ($item['slug'] ?? '') !== $subSlug;
-        }));
+        $vehicle = $catalog->getModelBySlug($subSlug);
+        if ($vehicle) {
+            $this->matrix($serviceSlug, $subSlug);
+            return;
+        }
 
-        $this->view('services/subservice', [
-            'service' => $serviceRow,
-            'subservice' => $category,
-            'relatedSubservices' => $relatedSubservices,
-            'relatedVehicles' => $relatedVehicles,
-        ]);
+        http_response_code(404);
+        $this->view('services/show', ['slug' => $serviceSlug]);
     }
 
     public function matrix($service, $model)
@@ -114,6 +127,9 @@ class ServiceController extends Controller
             return;
         }
 
+        $subModel = new \App\Models\ServiceSubcategory();
+        $serviceSubcategories = $subModel->getByService($serviceSlug);
+
         $title = ($serviceRow['title_fa'] ?? $serviceRow['title_en'] ?? 'خدمت') . ' ' . ($vehicle['name_fa'] ?? $vehicle['brand'] ?? '') . ' | ' . SITE_NAME;
         $description = 'مشاهده خدمات ' . ($serviceRow['title_fa'] ?? '') . ' برای ' . ($vehicle['name_fa'] ?? $vehicle['brand'] ?? '') . ' و بررسی علائم رایج، روند سرویس و پیشنهادهای نگهداری.';
         $canonical = SITE_URL . '/services/' . rawurlencode($serviceRow['slug']) . '/' . rawurlencode($vehicle['slug'] ?? $modelSlug);
@@ -132,6 +148,7 @@ class ServiceController extends Controller
             'service' => $serviceRow,
             'vehicle' => $vehicle,
             'modelSlug' => $modelSlug,
+            'subcategories' => $serviceSubcategories,
             'relatedServices' => array_filter($this->serviceModel->getVisibleServices(), static function ($row) use ($serviceRow) {
                 return ($row['slug'] ?? '') !== ($serviceRow['slug'] ?? '');
             }),

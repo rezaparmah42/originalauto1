@@ -47,6 +47,28 @@ require __DIR__ . '/../layouts/header.php';
 <?php $midImg = SITE_URL . '/uploads/services/' . rawurlencode($service['slug'] ?? '') . '/' . rawurlencode($service['slug'] ?? '') . '-mid.jpg'; ?>
 <section class="section-shell"><div class="hero-media mid"><img src="<?= $midImg ?>" alt="نمای سرویس <?= e($service['title_fa'] ?? '') ?>" width="800" height="600" loading="lazy" onerror="this.style.display='none'" title="<?= e($service['title_fa'] ?? '') ?>"></div></section>
 
+<?php $serviceSubcategories = $subcategories ?? []; ?>
+<section class="section-shell">
+    <div class="section-heading">
+        <h2>زیرخدمت‌های مرتبط با <?= e($service['title_fa'] ?? $service['title_en'] ?? 'خدمت') ?> برای <?= e($vehicle['name_fa'] ?? $vehicle['brand'] ?? '') ?></h2>
+    </div>
+    <?php if (!empty($serviceSubcategories)): ?>
+        <div class="service-grid">
+            <?php foreach (array_slice($serviceSubcategories, 0, 6) as $sub): ?>
+                <a class="service-card" href="<?= SITE_URL ?>/services/<?= rawurlencode((string) ($service['slug'] ?? '')) ?>/<?= rawurlencode((string) ($sub['slug'] ?? '')) ?>">
+                    <span class="meta-pill">زیرخدمت</span>
+                    <h3><?= e($sub['title_fa'] ?? ($sub['title_en'] ?? 'زیرخدمت')) ?></h3>
+                    <p><?= e($sub['intro'] ?? '') ?></p>
+                </a>
+            <?php endforeach; ?>
+        </div>
+    <?php else: ?>
+        <div class="detail-card">
+            <p>برای این سرویس، زیرخدمت‌های تخصصی در بانک محتوا ثبت شده‌اند و در مسیرهای بعدی تکمیل می‌شوند.</p>
+        </div>
+    <?php endif; ?>
+</section>
+
 <section class="section-shell">
     <div class="section-heading">
         <h2>نکات فنی در مدل <?= e($vehicle['name_fa'] ?? $vehicle['brand'] ?? '') ?></h2>

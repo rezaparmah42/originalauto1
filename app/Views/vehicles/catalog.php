@@ -72,5 +72,42 @@ foreach (($brands ?? []) as $brandItem) {
         <?php if (!empty($vehicles)): ?><?php foreach ($vehicles as $item): $brandRoute = (string) ($item['brand_slug'] ?? $item['brand'] ?? ''); $modelRoute = (string) ($item['model_slug'] ?? $item['slug'] ?? $item['model'] ?? ''); ?><a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($brandRoute) ?>/<?= rawurlencode($modelRoute) ?>"><span class="meta-pill"><?= e($item['brand'] ?? 'برند خودرو') ?></span><h3><?= e($item['model'] ?? $item['name_fa'] ?? 'مدل خودرو') ?></h3><p><?= e($item['engine_type'] ?? 'اطلاعات موتور در کاتالوگ ثبت نشده است.') ?></p><div class="service-meta"><span><?= e($item['year_start'] ?? '-') ?><?= !empty($item['year_end']) ? ' تا ' . e($item['year_end']) : '' ?></span></div></a><?php endforeach; ?><?php else: ?><div class="info-card"><strong>خودرویی با این فیلتر پیدا نشد.</strong><span>نام فارسی یا انگلیسی خودرو را ساده‌تر جست‌وجو کنید.</span></div><?php endif; ?>
     </div>
 </section>
+<?php
+$variantLinks = [];
+foreach (($vehicles ?? []) as $item) {
+    if (!is_array($item) || empty($item['variants']) || !is_array($item['variants'])) {
+        continue;
+    }
+    $brandRoute = (string) ($item['brand_slug'] ?? $item['brand'] ?? '');
+    $modelRoute = (string) ($item['model_slug'] ?? $item['slug'] ?? $item['model'] ?? '');
+    foreach ($item['variants'] as $variantItem) {
+        if (!is_array($variantItem) || empty($variantItem['slug'])) {
+            continue;
+        }
+        $variantLinks[] = [
+            'brand' => $item['brand'] ?? '',
+            'model' => $item['model'] ?? $item['name_fa'] ?? '',
+            'brand_route' => $brandRoute,
+            'model_route' => $modelRoute,
+            'variant' => $variantItem,
+        ];
+    }
+}
+?>
+<?php if (!empty($variantLinks)): ?>
+<section class="section-shell">
+    <div class="section-heading"><h2>تیپ‌های خودرو</h2></div>
+    <div class="service-grid vehicle-grid">
+        <?php foreach ($variantLinks as $link): $variantItem = $link['variant']; ?>
+            <a class="service-card" href="<?= SITE_URL ?>/vehicles/<?= rawurlencode((string) $link['brand_route']) ?>/<?= rawurlencode((string) $link['model_route']) ?>/<?= rawurlencode((string) ($variantItem['slug'] ?? '')) ?>">
+                <span class="meta-pill"><?= e((string) ($link['brand'] ?? '')) ?></span>
+                <h3><?= e(trim(($link['model'] ?? '') . ' ' . ($variantItem['name_fa'] ?? $variantItem['name_en'] ?? ''))) ?></h3>
+                <?php if (!empty($variantItem['engine_code'])): ?><p><?= e($variantItem['engine_code']) ?></p><?php endif; ?>
+                <?php if (isset($variantItem['year_from']) && $variantItem['year_from'] !== null): ?><div class="service-meta"><span><?= e($variantItem['year_from']) ?><?= !empty($variantItem['year_to']) ? ' تا ' . e($variantItem['year_to']) : '' ?></span></div><?php endif; ?>
+            </a>
+        <?php endforeach; ?>
+    </div>
+</section>
+<?php endif; ?>
 <?php if (!empty($popular)): ?><section class="section-shell"><div class="section-heading"><h2>مدل‌های تازه کاتالوگ</h2></div><div class="resource-links"><?php foreach ($popular as $item): $brandRoute = (string) ($item['brand_slug'] ?? $item['brand'] ?? ''); $modelRoute = (string) ($item['model_slug'] ?? $item['slug'] ?? ''); ?><a href="<?= SITE_URL ?>/vehicles/<?= rawurlencode($brandRoute) ?>/<?= rawurlencode($modelRoute) ?>"><?= e(($item['brand'] ?? '') . ' ' . ($item['model'] ?? '')) ?></a><?php endforeach; ?></div></section><?php endif; ?>
 <?php require __DIR__ . '/../layouts/footer.php'; ?>

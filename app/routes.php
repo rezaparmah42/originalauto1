@@ -34,7 +34,7 @@ $router->get('/about', [HomeController::class, 'about']);
 $router->get('/contact', [HomeController::class, 'contact']);
 
 $router->get('/vehicles', [App\Controllers\VehicleCatalogController::class, 'index']);
-$router->get('/vehicles/{brand}/{model}/{year}', [App\Controllers\VehicleCatalogController::class, 'model']);
+$router->get('/vehicles/{brand}/{model}/{variant}', [App\Controllers\VehicleCatalogController::class, 'model']);
 $router->get('/vehicles/{brand}/{model}', [App\Controllers\VehicleCatalogController::class, 'model']);
 $router->get('/vehicles/{brand}', [App\Controllers\VehicleCatalogController::class, 'brand']);
 

@@ -6,6 +6,8 @@ use PDO;
 
 class VehicleCatalog extends Model
 {
+    private $variantModel;
+
     private function hasTable(string $table): bool
     {
         try {
@@ -157,16 +159,37 @@ class VehicleCatalog extends Model
 
     public function getActiveMatrixModels(): array
     {
-        $allowed = [
-            'peugeot-206', 'peugeot-207', 'peugeot-405', 'peugeot-pars', 'samand', 'samand-soren', 'dena', 'tara', 'pride',
-            'tiba', 'quick', 'saina', 'shahin', 'tondar-90', 'sandero', 'elantra', 'cerato', 'sportage', 'tuscon', 'tiggo-7'
+        $roots = [
+            __DIR__ . '/../Data/generated_models',
+            __DIR__ . '/../Data/generated_matrices',
         ];
 
+        $seen = [];
         $models = [];
-        foreach ($allowed as $slug) {
-            $match = $this->getModelBySlug($slug);
-            if ($match) {
-                $models[] = $match;
+
+        foreach ($roots as $root) {
+            if (!is_dir($root)) {
+                continue;
+            }
+
+            $brandDirs = glob($root . '/*', GLOB_ONLYDIR);
+            if (!$brandDirs) {
+                continue;
+            }
+
+            foreach ($brandDirs as $brandDir) {
+                foreach (glob($brandDir . '/*.php') as $file) {
+                    $slug = strtolower(basename($file, '.php'));
+                    if ($slug === '' || isset($seen[$slug])) {
+                        continue;
+                    }
+
+                    $match = $this->getModelBySlug($slug);
+                    if ($match) {
+                        $models[] = $match;
+                        $seen[$slug] = true;
+                    }
+                }
             }
         }
 
@@ -329,6 +352,81 @@ class VehicleCatalog extends Model
         $stmt = $this->db->prepare('SELECT ' . implode(', ', $select) . ' FROM vehicle_models vm INNER JOIN vehicle_brands vb ON vb.id = vm.brand_id WHERE ' . implode(' AND ', $where) . ' ORDER BY vm.id LIMIT 1');
         $stmt->execute($params);
         return $stmt->fetch(PDO::FETCH_ASSOC) ?: false;
+    }
+
+    public function getGeneratedModelData(array $vehicle): array
+    {
+        $brandSlug = trim((string) ($vehicle['brand_slug'] ?? $vehicle['brand'] ?? ''));
+        $modelSlug = trim((string) ($vehicle['model_slug'] ?? $vehicle['slug'] ?? $vehicle['model'] ?? ''));
+        if ($brandSlug === '' || $modelSlug === '') {
+            return [];
+        }
+
+        $path = __DIR__ . '/../Data/generated_models/' . $brandSlug . '/' . $modelSlug . '.php';
+        if (!file_exists($path)) {
+            return [];
+        }
+
+        try {
+            $data = include $path;
+            return is_array($data) ? $data : [];
+        } catch (\Throwable $e) {
+            return [];
+        }
+    }
+
+    public function getVehicleServiceMatrixLinks(array $vehicle, int $limit = 6): array
+    {
+        $brandSlug = trim((string) ($vehicle['brand_slug'] ?? $vehicle['brand'] ?? ''));
+        $modelSlug = trim((string) ($vehicle['model_slug'] ?? $vehicle['slug'] ?? $vehicle['model'] ?? ''));
+        if ($brandSlug === '' || $modelSlug === '') {
+            return [];
+        }
+
+        $brandSlug = strtolower(str_replace([' ', '_'], '-', $brandSlug));
+        $modelSlug = strtolower(str_replace([' ', '_'], '-', $modelSlug));
+
+        try {
+            $stmt = $this->db->prepare('SELECT id, slug, title_fa, title_en, description_fa FROM services WHERE status = 1 ORDER BY id ASC');
+            $stmt->execute();
+            $services = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (\Throwable $e) {
+            return [];
+        }
+
+        $matrixRoot = __DIR__ . '/../Data/generated_matrices';
+        $links = [];
+        foreach ($services as $serviceRow) {
+            $serviceSlug = trim((string) ($serviceRow['slug'] ?? ''));
+            if ($serviceSlug === '') {
+                continue;
+            }
+
+            $matrixPath = $matrixRoot . '/' . $serviceSlug . '/' . $brandSlug . '/' . $modelSlug . '.php';
+            if (!file_exists($matrixPath)) {
+                continue;
+            }
+
+            $subUrl = null;
+            try {
+                $subModel = new \App\Models\ServiceSubcategory();
+                $subs = $subModel->getByService($serviceSlug);
+                if (!empty($subs)) {
+                    $subUrl = SITE_URL . '/services/' . rawurlencode($serviceSlug) . '/' . rawurlencode((string) ($subs[0]['slug'] ?? ''));
+                }
+            } catch (\Throwable $e) {
+                $subUrl = null;
+            }
+
+            $links[] = [
+                'slug' => $serviceSlug,
+                'title_fa' => $serviceRow['title_fa'] ?? $serviceRow['title_en'] ?? '',
+                'service_url' => SITE_URL . '/services/' . rawurlencode($serviceSlug) . '/' . rawurlencode($modelSlug),
+                'sub_url' => $subUrl,
+            ];
+        }
+
+        return array_slice($links, 0, max(1, (int) $limit));
     }
 
     public function getPopularVehicles($limit = 6)
@@ -519,6 +617,133 @@ class VehicleCatalog extends Model
         } catch (\PDOException $e) {
             return [];
         }
+    }
+
+    /**
+     * Resolve a public vehicle route to its brand, model, and active variant.
+     *
+     * The model-level fields remain at the top level for compatibility with
+     * the existing detail view. Variant fields are also exposed under the
+     * `variant` key and with `variant_*` aliases for callers that need them.
+     */
+    public function findVehicleVariant($brandSlug, $modelSlug, $variantSlug)
+    {
+        $brandSlug = trim((string) $brandSlug);
+        $modelSlug = trim((string) $modelSlug);
+        $variantSlug = trim((string) $variantSlug);
+        if ($brandSlug === '' || $modelSlug === '' || $variantSlug === '') {
+            return false;
+        }
+
+        try {
+            $variantModel = $this->getVariantModel();
+            if (!$variantModel) {
+                return false;
+            }
+
+            $row = $variantModel->findForVehicleRoute($brandSlug, $modelSlug, $variantSlug);
+            if (!$row) {
+                return false;
+            }
+
+            $variant = $this->normalizeVariantRow($row);
+            $row['variant'] = $variant;
+            foreach ($variant as $key => $value) {
+                $row['variant_' . $key] = $value;
+            }
+
+            // Keep the aliases expected by the existing model-level view.
+            $row['brand'] = $row['brand'] ?? ($row['brand_name_fa'] ?? ($row['brand_name_en'] ?? $brandSlug));
+            $row['model'] = $row['model'] ?? ($row['name_fa'] ?? ($row['name_en'] ?? $modelSlug));
+            $row['model_slug'] = $row['model_slug'] ?? ($row['slug'] ?? $modelSlug);
+
+            return $row;
+        } catch (\Throwable $e) {
+            // A not-yet-applied migration must not break model-level pages.
+            return false;
+        }
+    }
+
+    /**
+     * Backward-compatible alias for callers that use a get* naming convention.
+     */
+    public function getVehicleVariant($brandSlug, $modelSlug, $variantSlug)
+    {
+        return $this->findVehicleVariant($brandSlug, $modelSlug, $variantSlug);
+    }
+
+    /**
+     * Return active variants for a model for use by public selector pages.
+     */
+    public function getActiveVariantsByModelId($modelId): array
+    {
+        try {
+            $variantModel = $this->getVariantModel();
+            return $variantModel ? $variantModel->getActiveByModelId((int) $modelId) : [];
+        } catch (\Throwable $e) {
+            return [];
+        }
+    }
+
+    private function getVariantModel()
+    {
+        if ($this->variantModel !== null) {
+            return $this->variantModel;
+        }
+
+        try {
+            $this->variantModel = new VehicleVariant();
+        } catch (\Throwable $e) {
+            $this->variantModel = false;
+        }
+
+        return $this->variantModel ?: null;
+    }
+
+    private function normalizeVariantRow(array $row): array
+    {
+        $fields = [
+            'id',
+            'model_id',
+            'name_fa',
+            'name_en',
+            'slug',
+            'engine_code',
+            'engine_type',
+            'fuel_type',
+            'transmission',
+            'year_from',
+            'year_to',
+            'description_fa',
+            'description_en',
+            'seo_title_fa',
+            'seo_description_fa',
+            'search_keywords_fa',
+            'status',
+            'created_at',
+            'updated_at',
+        ];
+
+        $variant = [];
+        foreach ($fields as $field) {
+            $alias = 'variant_' . $field;
+            if (array_key_exists($alias, $row)) {
+                $variant[$field] = $row[$alias];
+            } elseif (array_key_exists($field, $row)) {
+                $variant[$field] = $row[$field];
+            } else {
+                $variant[$field] = null;
+            }
+        }
+
+        if (isset($variant['id'])) {
+            $variant['id'] = (int) $variant['id'];
+        }
+        if (isset($variant['model_id'])) {
+            $variant['model_id'] = (int) $variant['model_id'];
+        }
+
+        return $variant;
     }
 
     public function findById($id)

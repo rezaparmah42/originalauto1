@@ -23,9 +23,11 @@ class VehicleCatalogController extends Controller
             'year' => trim((string) ($_GET['year'] ?? '')),
         ];
         $result = $this->catalog->search($_GET['q'] ?? '', $filters, $_GET['page'] ?? 1, 18);
+        $vehicles = $this->attachVariants($result['vehicles'] ?? []);
+        $popular = $this->attachVariants($this->catalog->getPopularVehicles(6));
         $this->view('vehicles/catalog', [
-            'vehicles' => $result['vehicles'],
-            'popular' => $this->catalog->getPopularVehicles(6),
+            'vehicles' => $vehicles,
+            'popular' => $popular,
             'brands' => $this->catalog->getBrands(),
             'models' => $this->catalog->getModels($filters['brand'] ?: null),
             'engines' => $this->catalog->getEngines($filters['brand'] ?: null, $filters['model'] ?: null),
@@ -44,6 +46,7 @@ class VehicleCatalogController extends Controller
         $brandName = $brandRow['name_fa'] ?? ($brandRow['name_en'] ?? $brand);
         $brandSlug = $brandRow['slug'] ?? $brand;
         $vehicles = $brandRow ? $this->catalog->getModelsByBrand($brandSlug) : $this->catalog->getModelsByBrand($brand);
+        $vehicles = $this->attachVariants($vehicles);
 
         if (!$brandRow && !$this->catalog->getVehicle($brand)) {
             http_response_code(404);
@@ -54,16 +57,34 @@ class VehicleCatalogController extends Controller
         $this->view('vehicles/brand', ['brand' => $brandName, 'brandSlug' => $brandSlug, 'vehicles' => $vehicles]);
     }
 
-    public function model($brand, $model, $year = null)
+    public function model($brand, $model, $variant = null)
     {
         $brand = trim((string) $brand);
         $model = trim((string) $model);
+        $requestedVariant = trim((string) $variant);
+        $variantRecord = null;
+        $legacyYear = null;
+        $variantRouteMiss = false;
 
-        $vehicle = $this->catalog->getVehicle($brand, $model, $year);
-        if (!$vehicle) {
-            $brandRow = $this->catalog->getBrandBySlug($brand);
-            if ($brandRow && $model !== '') {
-                $vehicle = $this->catalog->getVehicle($brandRow['slug'] ?? $brand, $model, $year);
+        // The three-segment public route is variant-first. Numeric segments
+        // retain the old year behavior only when no matching variant exists.
+        if ($requestedVariant !== '') {
+            $variantRecord = $this->catalog->findVehicleVariant($brand, $model, $requestedVariant);
+            if (!$variantRecord && ctype_digit($requestedVariant)) {
+                $legacyYear = $requestedVariant;
+            } elseif (!$variantRecord) {
+                $variantRouteMiss = true;
+            }
+        }
+
+        $vehicle = $variantRecord;
+        if (!$vehicle && !$variantRouteMiss) {
+            $vehicle = $this->catalog->getVehicle($brand, $model, $legacyYear);
+            if (!$vehicle) {
+                $brandRow = $this->catalog->getBrandBySlug($brand);
+                if ($brandRow && $model !== '') {
+                    $vehicle = $this->catalog->getVehicle($brandRow['slug'] ?? $brand, $model, $legacyYear);
+                }
             }
         }
 
@@ -80,12 +101,39 @@ class VehicleCatalogController extends Controller
             $products = [];
         }
 
+        $generatedModel = $this->catalog->getGeneratedModelData($vehicle);
+
         $this->view('vehicles/detail', [
             'vehicle' => $vehicle,
+            'variant' => $variantRecord['variant'] ?? null,
             'symptoms' => $this->catalog->getSymptomsForVehicle((int) $vehicle['id']),
             'services' => $this->catalog->getRecommendedServices(),
+            'serviceLinks' => $this->catalog->getVehicleServiceMatrixLinks($vehicle, 6),
             'articles' => $this->catalog->getRelatedArticles($vehicle),
             'products' => $products,
+            'generatedModel' => $generatedModel,
+            'vehicleFaq' => $generatedModel['faqSchema'] ?? [],
         ]);
+    }
+
+    private function attachVariants($vehicles): array
+    {
+        if (!is_array($vehicles)) {
+            return [];
+        }
+
+        foreach ($vehicles as &$vehicle) {
+            if (!is_array($vehicle)) {
+                continue;
+            }
+
+            $modelId = (int) ($vehicle['id'] ?? $vehicle['model_id'] ?? 0);
+            $vehicle['variants'] = $modelId > 0
+                ? $this->catalog->getActiveVariantsByModelId($modelId)
+                : [];
+        }
+        unset($vehicle);
+
+        return $vehicles;
     }
 }
