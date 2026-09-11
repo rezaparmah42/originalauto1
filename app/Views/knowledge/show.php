@@ -1,0 +1,1 @@
+<?php $title=$item['title_fa']; ?><article class="section-shell"><nav><a href="<?= SITE_URL ?>/vehicles/<?= e($item['brand_slug']) ?>/<?= e($item['model_slug']) ?>">خودرو</a></nav><h1><?= e($item['title_fa']) ?></h1><div class="knowledge-content"><?= nl2br(e($item['content_fa'] ?? '')) ?></div></article>

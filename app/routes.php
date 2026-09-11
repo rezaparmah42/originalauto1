@@ -322,3 +322,9 @@ $router->get('/sitemap.xml', function () {
 
     echo '</urlset>';
 });
+
+$router->get('/knowledge/model/{model}', [App\Controllers\KnowledgeController::class, 'model']);
+$router->get('/knowledge/{brand}/{model}', [App\Controllers\KnowledgeController::class, 'byVehicle']);
+$router->get('/knowledge/{brand}/{model}/{slug}', [App\Controllers\KnowledgeController::class, 'show']);
+$router->get('/knowledge/{slug}', [App\Controllers\KnowledgeController::class, 'show']);
+

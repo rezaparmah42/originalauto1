@@ -1,0 +1,1 @@
+<?php $title='دانش فنی خودرو'; ?><section class="section-shell"><h1><?= e($model) ?></h1><?php foreach($items as $item): ?><article class="info-card"><a href="<?= SITE_URL ?>/knowledge/<?= e($item['slug']) ?>"><h2><?= e($item['title_fa']) ?></h2></a><p><?= e($item['excerpt'] ?? '') ?></p></article><?php endforeach; ?></section>
